@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.eci.arsw</groupId>
-	<artifactId>ecigym</artifactId>
+	<artifactId>saleit</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>EciGym</name>
+	<name>SaleIt</name>
 	<description>ARSW project</description>
 
 	<properties>
