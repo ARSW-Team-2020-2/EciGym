@@ -17,7 +17,7 @@ SaleIt es una aplicación web realizada como proyecto para la materia **Arquitec
  
  ## Integración continua
  
- [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/ARSW-Team-2020-2/EciGym)
+ [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/ARSW-Team-2020-2/SaleIt)
  
  ## Despliegue en Heroku
  
