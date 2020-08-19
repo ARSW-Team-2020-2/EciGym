@@ -13,7 +13,7 @@ SaleIt es una aplicación web realizada como proyecto para la materia **Arquitec
 
  
  ## Calidad del código
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5430bb4ffa9947c9b7a02fa442496563)](https://www.codacy.com/gh/ARSW-Team-2020-2/EciGym?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020-2/EciGym&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5430bb4ffa9947c9b7a02fa442496563)](https://www.codacy.com/gh/ARSW-Team-2020-2/SaleIt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020-2/SaleIt&amp;utm_campaign=Badge_Grade)
  
  ## Integración continua
  
