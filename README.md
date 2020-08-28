@@ -40,9 +40,7 @@ SaleIt es una aplicación web realizada como proyecto para la materia **Arquitec
 
 ## Historias de usuario
 
-### 1.	
-
-COMO Usuario QUIERO Iniciar Sesión PARA PODER autenticarme ante el sistema satisfactoriamente.
+### 1.	COMO Usuario QUIERO Iniciar Sesión PARA PODER autenticarme ante el sistema satisfactoriamente.
 
  **Criterios de aceptación:**
 
@@ -50,9 +48,7 @@ COMO Usuario QUIERO Iniciar Sesión PARA PODER autenticarme ante el sistema sati
 *	Se debe usar una fuente de datos básica para autenticar al usuario.
 
 
-### 2.	
-
-COMO Usuario QUIERO Registrarme PARA PODER realizar las diferentes labores que me permita el sistema dependiendo del rol con el que esté registrado.
+### 2.	COMO Usuario QUIERO Registrarme PARA PODER realizar las diferentes labores que me permita el sistema dependiendo del rol con el que esté registrado.
 
  **Criterios de aceptación:**
 
@@ -62,13 +58,13 @@ COMO Usuario QUIERO Registrarme PARA PODER realizar las diferentes labores que m
 
 
 
-### 3.	
-
-COMO Usuario QUIERO Publicar un artículo PARA PODER venderlo al mejor postor.
+### 3.	COMO Usuario QUIERO Registrar un artículo PARA PODER venderlo al mejor postor.
+Un artículo es todo aquel elemento que es ofrecido por un usuario a los demás usuarios de SaleIt.
 
  **Criterios de aceptación:**
 
-* El vendedor debe proporcionar como mínimo los siguientes datos: 
+* La información básica de un artículo es: 
+    * Identificador interno
     * Nombre del artículo
     * Detalles del artículo (Marca, peso, modelo, material)
     * Precio mínimo
@@ -76,26 +72,43 @@ COMO Usuario QUIERO Publicar un artículo PARA PODER venderlo al mejor postor.
     * Dimensiones
     * Fotografía real del artículo
     * Ubicación del producto
+    * Fecha de vencimiento de la subasta
+*   El usuario vendedor debe proporcionar como mínimo el **nombre**, **fecha de vencimiento**, **precio mínimo** y **ubicación** para poder registrarlo.
+*   Una vez el artículo es registrado debe aparecer disponible para ser pujado por los demás usuarios de SaleIt.
+*   No pueden existir dos identificadores internos iguales para los artículos.
+
+### 4.	COMO Usuario QUIERO Cambiar el estado de un artículo PARA PODER evitar que los usuarios puedan pujar de manera temporal o definitiva.
+
+Cuando algún artículo ofrecido presenta algún problema o un daño irreparable este debe poder ser dado de baja para que los usuarios no puedan hacer uso de este y no se pueda pujar.
+
+Si el problema de este recurso es reparable, se puede cambiar su estado nuevamente para que este disponible nuevamente.
+
+  **Criterios de aceptación:**  
+  * Al darse de baja un artículo, este no debe estar disponible para ser pujado.
+  * Si un artículo es habilitado nuevamente, debe ser posible realizar pujas a este nuevamente.
+ 
 
 
 
-
-### 4.	
-
-COMO Usuario QUIERO consultar los artículos disponibles PARA PODER ofertar alguno.
+### 5. COMO Usuario QUIERO Consultar los artículos disponibles PARA PODER ofertar alguno.
+Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agradable los artículos disponibles para realizar una subasta.
 
  **Criterios de aceptación:**
-
-* Se debe mostrar las categorías más populares.
-* Se debe mostrar las categorías preferidas del usuario.
-* Se debe mostrar todas las diferentes categorías para los productos existentes.
+* Al momento de realizar la consulta, de deben mostrar todos lo artículos que se encuentran activos.
+* Deben existir filtros que me permitan realizar una búsqueda mejor direccionada. Por categoría, precio y ubicación.
 * El usuario podrá ver las ofertas que se cierran pronto (En las próximas 24 horas).
-* El usuario podrá seleccionar una categoría que sea de su interés para consultar productos relacionados a ésta.
 
 
-### 5.	
+### 6. COMO Usuario QUIERO Consultar las categorías PARA PODER conocer cuales existen.
+* Se debe mostrar todas las diferentes categorías para los productos existentes.
+* Se debe mostrar las categorías más populares.
+* Se debe mostrar las categorías "Para ti" (las preferidas del usuario).
 
-COMO Usuario QUIERO consultar un artículo en específico PARA PODER ofertar alguno.
+### 7. COMO Usuario QUIERO Consultar una categoría PARA PODER ver los artículos correspondientes a ésta
+* Se debe mostrar una lista de artículos disponibles correspondiente a la categoría seleccionada.
+
+### 8. COMO Usuario QUIERO Ver un artículo en específico PARA PODER ofertar alguno
+Al seleccionar un artículo se debe poder ver más información de este.
 
  **Criterios de aceptación:**
 
@@ -106,35 +119,43 @@ COMO Usuario QUIERO consultar un artículo en específico PARA PODER ofertar alg
     * Puja con mayor valor
     * Siguiente puja mínima
     * Ubicación del artículo
-    * Una tabla con todas las pujas realizadas, indicando el id del pujador, la fecha y hora de la puja, y el valor pujado.
+    * Una tabla con todas las pujas realizadas, indicando el id del pujador, la fecha de la puja, y el valor pujado.
 
 
-### 6.	
+### 9. COMO Usuario QUIERO Realizar una puja PARA PODER ofertar por un artículo
+Una vez un usuario decide el artículo que desea obtener, puede proceder a hacer su puja respectiva.
+ **Criterios de aceptación:**
+ * El valor a pujar debe ser mayor que la puja mínima
+ * Si el usuario puja por un valor menor al mayor valor pujado, se le mostrará la sugerencia de que debería pujar más.
+ 
+ ### 10. COMO Usuario QUIERO Consultar una puja PARA PODER obtener mayor información de la puja realizada.
+Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agradable la información de una puja realizada.
+  **Criterios de aceptación:**
+  * Al momento de seleccionar una puja, se debe visualizar mayor información sobre la misma.
+    * Artículo pujado
+    * Estado del artículo (vendido o en oferta)
+    * Fecha de la oferta
 
-COMO Comprador QUIERO buscar PARA PODER encontrar un artículo en específico.
+### 11. COMO Usuario QUIERO Buscar un artículo PARA PODER encontrar un artículo deseado.
 
  **Criterios de aceptación:**
 
-* Se podrá buscar un artículo por su nombre
+* Se podrá buscar un artículo por su nombre en una barra de búsqueda.
 * La búsqueda del artículo se hará en todas las categorías.
 
 
-### 7.	
-
-COMO Comprador QUIERO marcar un producto PARA PODER añadirlo a mis favoritos
+### 12. COMO Usuario QUIERO Marcar como favorito PARA PODER añadir un artículo a mis favoritos
 
  **Criterios de aceptación:**
 
 * Al momento de consultar o buscar un artículo debe existir la opción para marcar como favorito.
 
 
-### 8.	
-
-COMO Comprador QUIERO Ver mi lista de favoritos PARA PODER consultar qué productos me han gustado.
+### 13. COMO Comprador QUIERO Ver mi lista de favoritos PARA PODER consultar qué artículos me han gustado.
 
  **Criterios de aceptación:**
 
-* Se debe mostrar con claridad una lista de artículos marcados como favorito.
+* Se debe mostrar con claridad una lista de artículos marcados como favoritos.
 
 
 
@@ -142,23 +163,17 @@ COMO Comprador QUIERO Ver mi lista de favoritos PARA PODER consultar qué produc
 
 ## Mockups
 
-### Página de inicio
 
 
 
-### App
 
-
-
-## Diagrama de componentes
 
 
 
 ## Diagrama de clases
 
 
-
-## Diagrama de despliegue 
+## Diagrama de componentes
 
 
 
