@@ -1,16 +1,27 @@
 # Sale It
 
+![](https://github.com/ARSW-Team-2020-2/SaleIt/blob/master/img/logo.png)
+
 ## Integrantes
 
-*   Juan Sebastián Frásica
+*   Juan Sebastián Frásica Galeano
 *   Daniela Ruiz
 *   Juan Sebastián Díaz
 
-## Resumen
+
+
+
+## Descripción de la aplicación
 SaleIt es una aplicación web realizada como proyecto para la materia **Arquitecturas de Software (ARSW)** de la Escuela Colombiana de Ingeniería Julio Garavito.
+Es una aplicación para realizar subastas. Allí el usuario podrá ofertar artículos y pujar para conseguirlos. 
 
 
+## Valores agregados y diferenciadores de la aplicación 
+La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son un factor diferenciador de SaleIt con respecto a la mayoría de páginas de subastas.
 
+## Despliegue en Heroku
+ 
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)]()
  
  ## Calidad del código
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/5430bb4ffa9947c9b7a02fa442496563)](https://www.codacy.com/gh/ARSW-Team-2020-2/SaleIt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020-2/SaleIt&amp;utm_campaign=Badge_Grade)
@@ -19,17 +30,11 @@ SaleIt es una aplicación web realizada como proyecto para la materia **Arquitec
  
  [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/ARSW-Team-2020-2/SaleIt)
  
- ## Despliegue en Heroku
- 
- [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)]()
+
  
 
  
-## Descripción de la aplicación
 
-
-
-## Valores agregados y diferenciadores de la aplicación 
 
 
 # Arquitectura y diseño detallado de la aplicación
@@ -172,13 +177,15 @@ Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agra
 
 ## Diagrama de clases
 
+## Diagrama E-R
+
 
 ## Diagrama de componentes
 
 
 
 
-# Requerimientos no funcionales
+
 
 
 
