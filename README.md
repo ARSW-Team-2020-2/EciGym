@@ -163,10 +163,19 @@ Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agra
 * Se debe mostrar con claridad una lista de artículos marcados como favoritos.
 
 
-
-
-
 ## Mockups
+
+* Página de inicio (principal)
+
+![Principal](img/MockUp_1.png)
+
+* Página visualizando algún objeto
+
+![Principal](img/MockUp_2.png)
+
+* Página de resultados de una búsqueda
+
+![Principal](img/MockUp_3.png)
 
 
 
