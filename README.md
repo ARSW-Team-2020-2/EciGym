@@ -20,9 +20,9 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
 ![Principal](img/CasosDeUso.png)
 ## _Historias de usuario_
 
-### _1.	COMO Usuario QUIERO Iniciar Sesión PARA PODER autenticarme ante el sistema satisfactoriamente._
+### _1.	COMO Usuario QUIERO Autenticarme PARA PODER ingresar al sistema satisfactoriamente._
  **_Criterios de aceptación:_**
-* _Se debe poder iniciar y cerrar sesión._
+* _Se debe poder tener control sobre el inicio y cierre de sesión._
 *	_Se debe usar una fuente de datos básica para autenticar al usuario._
 
 ### _2.	COMO Usuario QUIERO Registrarme PARA PODER realizar las diferentes labores que me permita el sistema dependiendo del rol con el que esté registrado._
@@ -66,7 +66,7 @@ _Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agr
  * _Se debe mostrar las categorías más populares._
  * _Se debe mostrar las categorías "Para ti" (las preferidas del usuario)._
 
-### _7. COMO Usuario QUIERO Consultar una categoría PARA PODER ver los artículos correspondientes a ésta._
+### _7. COMO Usuario QUIERO Consultar una categoría específica PARA PODER ver los artículos correspondientes a ésta._
  * _Se debe mostrar una lista de artículos disponibles correspondiente a la categoría seleccionada._
 
 ### _8. COMO Usuario QUIERO Ver un artículo en específico PARA PODER conocer los detalles de este._
@@ -115,7 +115,7 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
 **_Criterios de aceptación:_**
  * _Se debe mostrar con claridad una lista de los artículos marcados como favoritos por el usuario._
 
-## Mockups
+## _Mockups_
 
  * _Página de inicio. (principal)_
 ![Principal](img/MockUp_1.png)
@@ -126,11 +126,11 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
  * _Página de resultados de una búsqueda._
 ![Principal](img/MockUp_3.png)
 
-## Diagrama de clases
+## _Diagrama de clases_
 ![Principal](img/DiagramaDeClases.png)
-## Diagrama E-R
+## _Diagrama E-R_
 ![Principal](img/EntidadRelacion.png)
-## Diagrama de componentes
+## _Diagrama de componentes_
 ![Principal](img/DiagramaDeComponentes.png)
 
 
