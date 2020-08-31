@@ -131,7 +131,7 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
 ## _Diagrama E-R_
 ![Principal](img/EntidadRelacion.png)
 ## _Diagrama de componentes_
-![Principal](img/DiagramaDeComponentes.png)
+![Principal](img/componentes.png)
 
 
 
