@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependency/* edu.eci.arsw.saleit.SaleItApplication
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar
