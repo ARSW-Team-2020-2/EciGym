@@ -1,24 +1,29 @@
 package edu.eci.arsw.saleit.model;
 
-public class Articulo {
-    
-    private int id;
-    private int idAuction;
+import javax.persistence.*;
+
+@Entity
+@Table(name="articulo")
+public class Article {
+
+    @Id
+    private long id;
+    private long idAuction;
     private String name;
-    private String use;
+    private String uso;
     private String description;
-    private int minPrice;
+    private long minPrice;
     private String dimensions;
     private String location;
     private String image;
-    private int idCategory;
+    private long idCategory;
     private boolean isActive;
 
-    public Articulo(int id, int idAuction, String name, String use, String description, int minPrice, String dimensions, String location, String image, int idCategory) {
+    public Article(long id, long idAuction, String name, String uso, String description, long minPrice, String dimensions, String location, String image, long idCategory) {
         this.id = id;
         this.idAuction = idAuction;
         this.name = name;
-        this.use = use;
+        this.uso = uso;
         this.description = description;
         this.minPrice = minPrice;
         this.dimensions = dimensions;
@@ -28,7 +33,9 @@ public class Articulo {
         this.isActive = false;
     }
 
-    public int getId() {
+    public Article() {}
+
+    public long getId() {
         return id;
     }
 
@@ -36,7 +43,7 @@ public class Articulo {
         this.id = id;
     }
 
-    public int getIdAuction() {
+    public long getIdAuction() {
         return idAuction;
     }
 
@@ -53,11 +60,11 @@ public class Articulo {
     }
 
     public String getUse() {
-        return use;
+        return uso;
     }
 
-    public void setUse(String use) {
-        this.use = use;
+    public void setUse(String uso) {
+        this.uso = uso;
     }
 
     public String getDescription() {
@@ -68,7 +75,7 @@ public class Articulo {
         this.description = description;
     }
 
-    public int getMinPrice() {
+    public long getMinPrice() {
         return minPrice;
     }
 
@@ -100,7 +107,7 @@ public class Articulo {
         this.image = image;
     }
 
-    public int getIdCategory() {
+    public long getIdCategory() {
         return idCategory;
     }
 
@@ -120,11 +127,11 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return "Articulo{" + 
+        return "Article{" +
                 "id=" + id + 
                 ", idAuction=" + idAuction + 
                 ", name=" + name + 
-                ", use=" + use + 
+                ", use=" + uso +
                 ", description=" + description + 
                 ", minPrice=" + minPrice + 
                 ", dimensions=" + dimensions + 

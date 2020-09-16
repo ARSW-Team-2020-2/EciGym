@@ -1,6 +1,6 @@
 package edu.eci.arsw.saleit.model;
 
-public enum Rol {
+public enum Role {
 
     COMPRADOR, VENDEDOR
 }
