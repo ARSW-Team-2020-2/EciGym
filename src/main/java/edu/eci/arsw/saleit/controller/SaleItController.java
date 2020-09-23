@@ -19,15 +19,14 @@ public class SaleItController {
     private SaleItServices saleItServices;
 
     @GetMapping
-    public ResponseEntity<?> getPrimes()
-    {
+    public ResponseEntity<?> getPrimes() {
         return new ResponseEntity<>("Listo", HttpStatus.ACCEPTED);
     }
 
     @PostMapping
-    public ResponseEntity<?> addUser(@RequestBody User user)
-    {
+    public ResponseEntity<?> addUser(@RequestBody User user) {
         try {
+            System.out.println(user);
             saleItServices.addUser(user);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (SaleItException e) {

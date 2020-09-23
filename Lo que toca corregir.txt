@@ -1,0 +1,12 @@
+Quitar rol
+
+Poner tipoDocumento como Enum
+
+Crear constructor sin parametros innecesarios
+
+Revisar relacion Usuario-Subasta (Deben ser 2 relaciones aparte de 1..*)
+
+Falta en el diagrama de clases la relación entre usuario y artículo
+
+Cambiar tipo Date por TimeStamp (porque coge la hora). Si usamos Date las subastas deben durar
+mínimo 1 día

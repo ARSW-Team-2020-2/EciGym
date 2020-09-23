@@ -7,25 +7,40 @@ import javax.persistence.*;
 @Table(name="usuario")
 public class User {
 
-    private long id;
+    @Column(name="id")
+    private long numeroDeCuenta;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="document")
     private String document;
-    private String documenttype;
+
+    @Column(name="documenttype")
+    private String documentType;
+
+    @Column(name="phone")
     private String phone;
+
     @Id
     private String email;
+
+    @Column(name="password")
     private String password;
+
     @Enumerated(EnumType.STRING)
     private Role rol;
+
     @OneToMany
     private List<Article> favorites;
+
     @OneToMany
     private List<Auction> auctions;
 
-    public User(long id, String document, String documenttype, String name, String phone, String email, String password, Role rol, List<Article> favorites, List<Auction> auctions) {
-        this.id = id;
+    public User(long numeroDeCuenta, String document, String documenttype, String name, String phone, String email, String password, Role rol, List<Article> favorites, List<Auction> auctions) {
+        this.numeroDeCuenta = numeroDeCuenta;
         this.document = document;
-        this.documenttype = documenttype;
+        this.documentType = documenttype;
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -91,12 +106,12 @@ public class User {
         this.auctions = auctions;
     }
 
-    public long getId() {
-        return id;
+    public long getNumeroDeCuenta() {
+        return numeroDeCuenta;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNumeroDeCuenta(int numeroDeCuenta) {
+        this.numeroDeCuenta = numeroDeCuenta;
     }
 
     public Role getRol() {
@@ -124,11 +139,11 @@ public class User {
     }
 
     public String getDocumentType() {
-        return documenttype;
+        return documentType;
     }
 
     public void setDocumentType(String documenttype) {
-        this.documenttype = documenttype;
+        this.documentType = documenttype;
     }
 
     public String getPassword() {
@@ -160,11 +175,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id &&
+        return numeroDeCuenta == user.numeroDeCuenta &&
                 rol == user.rol &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(document, user.document) &&
-                Objects.equals(documenttype, user.documenttype) &&
+                Objects.equals(documentType, user.documentType) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(favorites, user.favorites);
@@ -172,17 +187,17 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, rol, name, document, documenttype, password, email, favorites);
+        return Objects.hash(numeroDeCuenta, rol, name, document, documentType, password, email, favorites);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + numeroDeCuenta +
                 ", rol=" + rol +
                 ", name='" + name + '\'' +
                 ", document='" + document + '\'' +
-                ", documentType='" + documenttype + '\'' +
+                ", documentType='" + documentType + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", favorites=" + favorites + '\'' +
