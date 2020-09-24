@@ -14,9 +14,13 @@ ALTER TABLE Categoria ADD CONSTRAINT categoria_unica UNIQUE(nombre);
 
 CREATE TABLE IF NOT EXISTS Articulo (id SERIAL PRIMARY KEY, idauction INTEGER REFERENCES Subasta(id), name VARCHAR(50) NOT NULL, uso VARCHAR(5) NOT NULL, description VARCHAR(600), minprice BIGINT NOT NULL, dimensions VARCHAR(20), location VARCHAR(30) NOT NULL, image VARCHAR(20) NOT NULL, idcategory INTEGER REFERENCES Categoria(id));
 
-CREATE TABLE IF NOT EXISTS Subastas (usuarioid BIGINT, subastaid BIGINT);
+CREATE TABLE IF NOT EXISTS Subastas (usuarioid VARCHAR(50), subastaid BIGINT);
 
 ALTER TABLE Subastas ADD CONSTRAINT pk_subastas PRIMARY KEY(usuarioid, subastaid);
+
+ALTER TABLE Subastas ADD CONSTRAINT fk_subastas_subasta FOREIGN KEY (usuarioid) REFERENCES Usuario(email);
+
+ALTER TABLE Subastas ADD CONSTRAINT fk_subastas_usuario FOREIGN KEY (subastaid) REFERENCES Subasta(id);
 
 
 Poblar:
