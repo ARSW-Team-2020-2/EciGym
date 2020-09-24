@@ -2,6 +2,7 @@ package edu.eci.arsw.saleit.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name="puja")
@@ -12,9 +13,9 @@ public class Bid {
     @OneToOne
     private User usuario;
     private long amount;
-    private Date fecha;
+    private Timestamp fecha;
 
-    public Bid(long id, User usuario, long amount, Date fecha) {
+    public Bid(long id, User usuario, long amount, Timestamp fecha) {
         this.id = id;
         this.usuario = usuario;
         this.amount = amount;
@@ -47,11 +48,11 @@ public class Bid {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return fecha;
     }
 
-    public void setDate(Date fecha) {
+    public void setDate(Timestamp fecha) {
         this.fecha = fecha;
     }
 

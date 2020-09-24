@@ -56,7 +56,7 @@ public class Auction {
         this.initDate = initDate;
     }
 
-    public Date getFinDate() {
+    public Timestamp getFinDate() {
         return finDate;
     }
 
