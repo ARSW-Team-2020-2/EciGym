@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Article {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
     @Column(name="idauction")

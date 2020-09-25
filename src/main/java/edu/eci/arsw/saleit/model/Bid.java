@@ -9,10 +9,11 @@ import java.sql.Timestamp;
 public class Bid {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
     @OneToOne
-    @Column(name="usuario")
+    //@Column(name="usuario")
     private User usuario;
 
     @Column(name="fecha")

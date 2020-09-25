@@ -9,6 +9,7 @@ import java.util.List;
 public class Auction {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
     @OneToMany

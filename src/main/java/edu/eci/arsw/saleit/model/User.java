@@ -7,7 +7,8 @@ import javax.persistence.*;
 @Table(name="usuario")
 public class User {
 
-    @Column(name="id")
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long numeroDeCuenta;
 
     @Column(name="name")
@@ -23,7 +24,7 @@ public class User {
     @Column(name="phone")
     private String phone;
 
-    @Id
+    @Column(name="email")
     private String email;
 
     @Column(name="password")
@@ -45,6 +46,16 @@ public class User {
         this.password = password;
         this.favorites = favorites;
         this.auctions = auctions;
+    }
+
+
+    public User(String name, String document, DocumentType documentType, String phone, String email, String password) {
+        this.name = name;
+        this.document = document;
+        this.documentType = documentType;
+        this.phone = phone;
+        this.email = email;
+        this.password = password;
     }
 
     public User() {}

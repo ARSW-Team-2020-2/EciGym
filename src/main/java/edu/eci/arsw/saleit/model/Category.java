@@ -8,6 +8,7 @@ import java.util.List;
 public class Category {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
 
     @Column(name="nombre")
