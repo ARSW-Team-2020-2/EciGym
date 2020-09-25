@@ -9,7 +9,10 @@ public class Category {
 
     @Id
     private long id;
+
+    @Column(name="nombre")
     private String nombre;
+
     @OneToMany
     private List<Article> articles;
 

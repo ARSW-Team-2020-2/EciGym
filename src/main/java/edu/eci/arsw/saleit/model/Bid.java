@@ -10,10 +10,16 @@ public class Bid {
 
     @Id
     private long id;
+
     @OneToOne
+    @Column(name="usuario")
     private User usuario;
-    private long amount;
+
+    @Column(name="fecha")
     private Timestamp fecha;
+
+    @Column(name="amount")
+    private long amount;
 
     public Bid(long id, User usuario, long amount, Timestamp fecha) {
         this.id = id;

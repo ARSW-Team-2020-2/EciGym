@@ -2,7 +2,6 @@ package edu.eci.arsw.saleit.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,10 +10,16 @@ public class Auction {
 
     @Id
     private long id;
+
     @OneToMany
     private List<User> usuarios;
+
+    @Column(name="initdate")
     private Timestamp initDate;
+
+    @Column(name="findate")
     private Timestamp finDate;
+
     @OneToMany
     private List<Bid> bids;
 

@@ -1,6 +1,8 @@
-package edu.eci.arsw.saleit.persistence;
+package edu.eci.arsw.saleit.persistence.impl;
 
 import edu.eci.arsw.saleit.model.User;
+import edu.eci.arsw.saleit.persistence.SaleItPersistence;
+import edu.eci.arsw.saleit.persistence.SaleItPersistenceException;
 import edu.eci.arsw.saleit.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -18,7 +18,7 @@ public class User {
 
     @Column(name="documenttype")
     @Enumerated(EnumType.STRING)
-    private TipoDocumento documentType;
+    private DocumentType documentType;
 
     @Column(name="phone")
     private String phone;
@@ -35,7 +35,7 @@ public class User {
     @OneToMany
     private List<Auction> auctions;
 
-    public User(long numeroDeCuenta, String document, TipoDocumento documenttype, String name, String phone, String email, String password, List<Article> favorites, List<Auction> auctions) {
+    public User(long numeroDeCuenta, String document, DocumentType documenttype, String name, String phone, String email, String password, List<Article> favorites, List<Auction> auctions) {
         this.numeroDeCuenta = numeroDeCuenta;
         this.document = document;
         this.documentType = documenttype;
@@ -127,11 +127,11 @@ public class User {
         this.document = document;
     }
 
-    public TipoDocumento getDocumentType() {
+    public DocumentType getDocumentType() {
         return documentType;
     }
 
-    public void setDocumentType(TipoDocumento documenttype) {
+    public void setDocumentType(DocumentType documenttype) {
         this.documentType = documenttype;
     }
 

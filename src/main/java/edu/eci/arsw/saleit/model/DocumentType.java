@@ -1,6 +1,6 @@
 package edu.eci.arsw.saleit.model;
 
-public enum TipoDocumento {
+public enum DocumentType {
 
     CC, CE, NIT
 }

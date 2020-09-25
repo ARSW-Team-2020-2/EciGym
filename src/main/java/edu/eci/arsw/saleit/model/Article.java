@@ -8,15 +8,34 @@ public class Article {
 
     @Id
     private long id;
+
+    @Column(name="idauction")
     private long idAuction;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="uso")
     private String uso;
+
+    @Column(name="description")
     private String description;
+
+    @Column(name="minprice")
     private long minPrice;
+
+    @Column(name="dimensions")
     private String dimensions;
+
+    @Column(name="location")
     private String location;
-    private String image;
+
+    @Column(name="imagen")
+    private String imagen;
+
+    @Column(name="idcategory")
     private long idCategory;
+
     private boolean isActive;
 
     public Article(long id, long idAuction, String name, String uso, String description, long minPrice, String dimensions, String location, String image, long idCategory) {
@@ -28,7 +47,7 @@ public class Article {
         this.minPrice = minPrice;
         this.dimensions = dimensions;
         this.location = location;
-        this.image = image;
+        this.imagen = image;
         this.idCategory = idCategory;
         this.isActive = false;
     }
@@ -99,12 +118,12 @@ public class Article {
         this.location = location;
     }
 
-    public String getImage() {
-        return image;
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImagen(String image) {
+        this.imagen = image;
     }
 
     public long getIdCategory() {
@@ -136,7 +155,7 @@ public class Article {
                 ", minPrice=" + minPrice + 
                 ", dimensions=" + dimensions + 
                 ", location=" + location + 
-                ", image=" + image + 
+                ", image=" + imagen +
                 ", idCategory=" + idCategory + '}';
     }  
 }
