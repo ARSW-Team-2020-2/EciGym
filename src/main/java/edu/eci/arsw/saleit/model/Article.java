@@ -6,8 +6,7 @@ import javax.persistence.*;
 @Table(name="articulo")
 public class Article {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id    
     private long id;
 
     @Column(name="idauction")

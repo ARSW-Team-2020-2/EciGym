@@ -8,8 +8,7 @@ import java.util.List;
 @Table(name="subasta")
 public class Auction {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id    
     private long id;
 
     @OneToMany

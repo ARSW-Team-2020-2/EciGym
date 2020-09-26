@@ -8,8 +8,7 @@ import java.sql.Timestamp;
 @Table(name="puja")
 public class Bid {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id    
     private long id;
 
     @OneToOne

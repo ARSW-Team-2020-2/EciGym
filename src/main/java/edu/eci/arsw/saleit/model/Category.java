@@ -7,8 +7,7 @@ import java.util.List;
 @Table(name="categoria")
 public class Category {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id    
     private long id;
 
     @Column(name="nombre")
