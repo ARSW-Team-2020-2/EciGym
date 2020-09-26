@@ -1,7 +1,7 @@
 package edu.eci.arsw.saleit.controller;
 
-import edu.eci.arsw.saleit.model.User;
-import edu.eci.arsw.saleit.services.SaleItException;
+import edu.eci.arsw.saleit.model.Usuario;
+import edu.eci.arsw.saleit.services.SaleItServicesException;
 import edu.eci.arsw.saleit.services.SaleItServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +24,12 @@ public class SaleItController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addUser(@RequestBody User user) {
+    public ResponseEntity<?> addUser(@RequestBody Usuario user) {
         try {
             System.out.println(user);
             saleItServices.addUser(user);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (SaleItException e) {
+        } catch (SaleItServicesException e) {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }

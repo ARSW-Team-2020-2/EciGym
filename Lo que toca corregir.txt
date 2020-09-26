@@ -10,3 +10,6 @@ Falta en el diagrama de clases la relación entre usuario y artículo
 
 Cambiar tipo Date por TimeStamp (porque coge la hora). Si usamos Date las subastas deben durar
 mínimo 1 día
+
+
+Revisar imagen en la DB
