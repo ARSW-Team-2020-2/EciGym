@@ -12,9 +12,11 @@ CREATE TABLE IF NOT EXISTS Puja(id SERIAL PRIMARY KEY, monto INTEGER NOT NULL, f
 
 CREATE TABLE IF NOT EXISTS Categoria (id SERIAL PRIMARY KEY, nombre VARCHAR(60) NOT NULL);
 
-CREATE TABLE IF NOT EXISTS Articulo (id SERIAL PRIMARY KEY, nombre VARCHAR(50) NOT NULL, estadodeuso VARCHAR(5) NOT NULL, descripcion VARCHAR(600), preciominimo DOUBLE NOT NULL, dimensiones VARCHAR(20), ubicacion VARCHAR(30) NOT NULL, imagen VARCHAR(20) NOT NULL, usuario VARCHAR(50) REFERENCES Usuario(email), subasta INTEGER REFERENCES Subasta(id), categoria INTEGER REFERENCES Categoria(id));
+CREATE TABLE IF NOT EXISTS Articulo (id SERIAL PRIMARY KEY, nombre VARCHAR(50) NOT NULL, estadodeuso VARCHAR(5) NOT NULL, descripcion VARCHAR(600), preciominimo REAL NOT NULL, dimensiones VARCHAR(20), ubicacion VARCHAR(30) NOT NULL, imagen VARCHAR(20) NOT NULL, subasta INTEGER REFERENCES Subasta(id), categoria INTEGER REFERENCES Categoria(id));
 
+CREATE TABLE IF NOT EXISTS Favoritos  (emailusuario VARCHAR(50) REFERENCES Usuario(email), idarticulo INTEGER REFERENCES Articulo(id));
 
+ALTER TABLE Favoritos ADD CONSTRAINT PK_FAVORITOS PRIMARY KEY (emailusuario, idarticulo);
 
 Únicas:
 
@@ -78,12 +80,14 @@ EXECUTE PROCEDURE funcionFechaPuja();
 
 
 BORRAR TODO:
-
 DROP TABLE Articulo CASCADE;
 DROP TABLE Categoria CASCADE;
 DROP TABLE Subasta CASCADE;
 DROP TABLE Puja CASCADE;
 DROP TABLE Usuario CASCADE;
+DROP TABLE Participaciones CASCADE;
+DROP TABLE Favoritos CASCADE;
+
 DROP TABLE categoria_articles CASCADE;
 DROP TABLE subasta_bids CASCADE;
 DROP TABLE subasta_usuarios CASCADE;
