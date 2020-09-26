@@ -126,10 +126,8 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
  * _Página de resultados de una búsqueda._
 ![Principal](img/MockUp_3.png)
 
-## _Diagrama de clases_
-![Principal](img/DiagramaDeClases.png)
 
-## _Diagrama de clases detallado_
+## _Diagrama de clases 
 ![Principal](img/clases.png)
 
 ## _Diagrama E-R_
