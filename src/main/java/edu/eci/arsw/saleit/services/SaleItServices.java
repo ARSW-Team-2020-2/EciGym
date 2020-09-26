@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface SaleItServices {
 
-    public void addUser(Usuario user) throws SaleItServicesException;
+    void addUser(Usuario user) throws SaleItServicesException;
 }
