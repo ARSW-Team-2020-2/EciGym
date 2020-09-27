@@ -107,7 +107,7 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
  * _Se podrá buscar un artículo por su nombre en una barra de búsqueda._
  * _La búsqueda del artículo se hará en todas las categorías._
 
-### 12. COMO Usuario QUIERO Marcar como favorito un artículo PARA PODER añadirlo a mis favoritos._
+### _12. COMO Usuario QUIERO Marcar como favorito un artículo PARA PODER añadirlo a mis favoritos._
 **Criterios de aceptación:**
 * _Al momento de consultar o buscar un artículo debe existir la opción para marcar como favorito._
 
@@ -127,7 +127,7 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
 ![Principal](img/MockUp_3.png)
 
 
-## _Diagrama de clases 
+## _Diagrama de clases_
 ![Principal](img/clases.png)
 
 ## _Diagrama E-R_
