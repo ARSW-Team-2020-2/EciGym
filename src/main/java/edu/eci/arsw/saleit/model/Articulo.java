@@ -34,8 +34,6 @@ public class Articulo {
     @Column(name="imagen")
     private String imagen;
 
-    @Column(name="subasta")
-    private long subasta;
 
     @Column(name="categoria")
     private long categoria;
@@ -45,7 +43,7 @@ public class Articulo {
     private List<Favoritos> articulosFavoritos;
 
 
-    public Articulo(String nombre, String estadoDeUso, String descripcion, double precioMinimo, String dimensiones, String ubicacion, String imagen, long subasta, long categoria) {
+    public Articulo(String nombre, String estadoDeUso, String descripcion, double precioMinimo, String dimensiones, String ubicacion, String imagen, long categoria) {
         this.nombre = nombre;
         this.estadoDeUso = estadoDeUso;
         this.descripcion = descripcion;
@@ -53,7 +51,6 @@ public class Articulo {
         this.dimensiones = dimensiones;
         this.ubicacion = ubicacion;
         this.imagen = imagen;
-        this.subasta = subasta;
         this.categoria = categoria;
         this.articulosFavoritos = new ArrayList<>();
     }
@@ -125,14 +122,6 @@ public class Articulo {
         this.imagen = imagen;
     }
 
-    public long getSubasta() {
-        return subasta;
-    }
-
-    public void setSubasta(long subasta) {
-        this.subasta = subasta;
-    }
-
     public long getCategoria() {
         return categoria;
     }
@@ -156,7 +145,6 @@ public class Articulo {
         Articulo articulo = (Articulo) o;
         return id == articulo.id &&
                 precioMinimo == articulo.precioMinimo &&
-                subasta == articulo.subasta &&
                 categoria == articulo.categoria &&
                 Objects.equals(nombre, articulo.nombre) &&
                 Objects.equals(estadoDeUso, articulo.estadoDeUso) &&
@@ -169,7 +157,7 @@ public class Articulo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, estadoDeUso, descripcion, precioMinimo, dimensiones, ubicacion, imagen, subasta, categoria, articulosFavoritos);
+        return Objects.hash(id, nombre, estadoDeUso, descripcion, precioMinimo, dimensiones, ubicacion, imagen, categoria, articulosFavoritos);
     }
 
 
@@ -184,7 +172,6 @@ public class Articulo {
                 ", dimensiones='" + dimensiones + '\'' +
                 ", ubicacion='" + ubicacion + '\'' +
                 ", imagen='" + imagen + '\'' +
-                ", subasta=" + subasta +
                 ", categoria=" + categoria +
                 ", articulosFavoritos=" + articulosFavoritos +
                 '}';

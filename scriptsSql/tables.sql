@@ -2,7 +2,11 @@ Tablas:
 
 CREATE TABLE IF NOT EXISTS Usuario(email VARCHAR(50) PRIMARY KEY, password VARCHAR(20) NOT NULL, numerodecuenta INTEGER NOT NULL, nombre VARCHAR(50) NOT NULL, documento VARCHAR(50) NOT NULL, tipodedocumento VARCHAR(20) NOT NULL, telefono VARCHAR(50) NOT NULL);
 
-CREATE TABLE IF NOT EXISTS Subasta (id SERIAL PRIMARY KEY, fechainicio TIMESTAMP, fechafin TIMESTAMP NOT NULL, vendedor VARCHAR(50) REFERENCES Usuario(email));
+CREATE TABLE IF NOT EXISTS Categoria (id SERIAL PRIMARY KEY, nombre VARCHAR(60) NOT NULL);
+
+CREATE TABLE IF NOT EXISTS Articulo (id SERIAL PRIMARY KEY, nombre VARCHAR(50) NOT NULL, estadodeuso VARCHAR(5) NOT NULL, descripcion VARCHAR(600), preciominimo REAL NOT NULL, dimensiones VARCHAR(20), ubicacion VARCHAR(30) NOT NULL, imagen VARCHAR(20) NOT NULL, categoria INTEGER REFERENCES Categoria(id));
+
+CREATE TABLE IF NOT EXISTS Subasta (id SERIAL PRIMARY KEY, fechainicio TIMESTAMP, fechafin TIMESTAMP NOT NULL, vendedor VARCHAR(50) REFERENCES Usuario(email), articulo INTEGER REFERENCES Articulo(id));
 
 CREATE TABLE IF NOT EXISTS Participaciones (emailusuario VARCHAR(50) REFERENCES Usuario(email), idsubasta INTEGER REFERENCES Subasta(id));
 
@@ -10,20 +14,13 @@ ALTER TABLE Participaciones ADD CONSTRAINT PK_PARTICIPACIONES PRIMARY KEY (email
 
 CREATE TABLE IF NOT EXISTS Puja(id SERIAL PRIMARY KEY, monto INTEGER NOT NULL, fecha TIMESTAMP, usuario VARCHAR(50) REFERENCES Usuario(email), subasta INTEGER REFERENCES Subasta(id));
 
-CREATE TABLE IF NOT EXISTS Categoria (id SERIAL PRIMARY KEY, nombre VARCHAR(60) NOT NULL);
-
-CREATE TABLE IF NOT EXISTS Articulo (id SERIAL PRIMARY KEY, nombre VARCHAR(50) NOT NULL, estadodeuso VARCHAR(5) NOT NULL, descripcion VARCHAR(600), preciominimo REAL NOT NULL, dimensiones VARCHAR(20), ubicacion VARCHAR(30) NOT NULL, imagen VARCHAR(20) NOT NULL, subasta INTEGER REFERENCES Subasta(id), categoria INTEGER REFERENCES Categoria(id));
-
 CREATE TABLE IF NOT EXISTS Favoritos  (emailusuario VARCHAR(50) REFERENCES Usuario(email), idarticulo INTEGER REFERENCES Articulo(id));
 
 ALTER TABLE Favoritos ADD CONSTRAINT PK_FAVORITOS PRIMARY KEY (emailusuario, idarticulo);
 
-Únicas:
+ALTER TABLE Usuario ADD CONSTRAINT telefono_unico UNIQUE(telefono);
 
-ALTER TABLE Usuario ADD CONSTRAINT telefono_unico UNIQUE(phone);
 ALTER TABLE Categoria ADD CONSTRAINT categoria_unica UNIQUE(nombre);
-
-Poblar:
 
 
 Consultas:
@@ -41,11 +38,30 @@ ALTER TABLE Usuario ADD CONSTRAINT CK_Usuario_Clave CHECK (LENGTH(clave) > 8);
 
 ALTER TABLE Articulo ADD CONSTRAINT CK_Articulo_Uso CHECK (uso IN ('Usado', 'Nuevo'));
 
+Poblar:
 
-Posibles categorias:
-'Instrumentos musicales', 'Deportes', 'Tecnología', 'Libros', 'Ropa', 'Electrodomesticos', 'Juegos', 
-'Muebles', 'Juguetes', 'Hobbies y Coleccionables', 'Salud y Belleza', 'Hogar y Cocina', 'Accesorios', 
-'Mascotas', 'Bebes', 'Carros', 'Motos', 'Jardineria';   
+insert into Categoria(nombre) values('Instrumentos musicales');
+insert into Categoria(nombre) values('Deportes musicales');
+insert into Categoria(nombre) values('Tecnología');
+insert into Categoria(nombre) values('Libros');
+insert into Categoria(nombre) values('Ropa');
+insert into Categoria(nombre) values('Bebes');
+insert into Categoria(nombre) values('Electrodomesticos');
+insert into Categoria(nombre) values('Juegos');
+insert into Categoria(nombre) values('Muebles');
+insert into Categoria(nombre) values('Accesorios');
+insert into Categoria(nombre) values('Juguetes');
+insert into Categoria(nombre) values('Mascotas');
+insert into Categoria(nombre) values('Jardineria');
+insert into Categoria(nombre) values('Carros');
+insert into Categoria(nombre) values('Motos');
+insert into Categoria(nombre) values('Hobbies y Coleccionables');
+insert into Categoria(nombre) values('Salud y Belleza');
+insert into Categoria(nombre) values('Hogar y Cocina');
+insert into Categoria(nombre) values('Bebidas y Licores'); 
+
+
+insert into articulo(nombre, estadodeuso, descripcion, preciominimo, dimensiones, ubicacion, imagen, categoria) values('prueba', 'Usado', 'algoooo', 999, '340*360', 'bogota', 'url', 1); 
 
 
 Disparadores:

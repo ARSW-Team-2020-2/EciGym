@@ -20,6 +20,9 @@ public class Subasta {
     @Column(name="fechafin")
     private Timestamp fechaFin;
 
+    @Column(name="vendedor")
+    private String vendedor;
+
     @OneToMany
     @JoinColumn(name = "subasta")
     private List<Puja> pujas;
@@ -32,10 +35,11 @@ public class Subasta {
     @JoinColumn(name = "id")
     private Articulo articulo;
 
-    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, Articulo articulo) {
+    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, String vendedor, Articulo articulo) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.articulo = articulo;
+        this.vendedor = vendedor;
         this.pujas = new ArrayList<>();
         this.participaciones = new ArrayList<>();
     }
@@ -43,6 +47,13 @@ public class Subasta {
     public Subasta() {
     }
 
+    public String getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
+    }
     public long getId() {
         return id;
     }
@@ -99,6 +110,7 @@ public class Subasta {
         return id == subasta.id &&
                 Objects.equals(fechaInicio, subasta.fechaInicio) &&
                 Objects.equals(fechaFin, subasta.fechaFin) &&
+                Objects.equals(vendedor, subasta.vendedor) &&
                 Objects.equals(pujas, subasta.pujas) &&
                 Objects.equals(participaciones, subasta.participaciones) &&
                 Objects.equals(articulo, subasta.articulo);
@@ -106,7 +118,7 @@ public class Subasta {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fechaInicio, fechaFin, pujas, participaciones, articulo);
+        return Objects.hash(id, fechaInicio, fechaFin, vendedor, pujas, participaciones, articulo);
     }
 
     @Override
@@ -115,6 +127,7 @@ public class Subasta {
                 "id=" + id +
                 ", fechaInicio=" + fechaInicio +
                 ", fechaFin=" + fechaFin +
+                ", fechaFin=" + vendedor +
                 ", pujas=" + pujas +
                 ", participaciones=" + participaciones +
                 ", articulo=" + articulo +
