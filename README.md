@@ -30,7 +30,7 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
 ### _2.	COMO Usuario QUIERO Registrarme PARA PODER realizar las diferentes labores que me permita el sistema dependiendo del rol con el que esté registrado._
  **_Criterios de aceptación:_**
 *   _Se deben añadir los nuevos usuarios a la fuente de datos básica._
-*   _Es necesario que cada usuario tenga un nombre de usuario y correo únicos._
+*   _Es necesario que cada usuario tenga un correo único._
 *   _Al finalizar el registro, el usuario deberá elegir 3 categorías de su preferencia para que luego se muestren productos relacionados a éstas._
 
 ### _3.	COMO Usuario QUIERO Registrar un artículo PARA PODER venderlo al mejor postor._
