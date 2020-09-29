@@ -132,12 +132,20 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
 ## _Mockups_ 🎨
 
  * _Página de inicio. (principal)_
+ 
+ 
 ![Principal](img/MockUp_1.png)
 
+
  * _Página visualizando algún objeto._
+ 
+ 
 ![Principal](img/MockUp_2.png)
 
+
  * _Página de resultados de una búsqueda._
+ 
+ 
 ![Principal](img/MockUp_3.png)
 
 
