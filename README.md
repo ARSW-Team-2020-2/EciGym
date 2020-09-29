@@ -26,6 +26,7 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
  **_Criterios de aceptación:_**
 * _Se debe poder tener control sobre el inicio y cierre de sesión._
 *	_Se debe usar una fuente de datos básica para autenticar al usuario._
+* _Se debe avisarle al usuario en caso de que no se permita el inicio de sesión._
 
 ### _2.	COMO Usuario QUIERO registrarme PARA PODER realizar las diferentes labores que me permita el sistema dependiendo del rol con el que esté registrado._
  **_Criterios de aceptación:_**
@@ -50,8 +51,9 @@ _Un artículo es todo aquel elemento que es ofrecido por un usuario a los demás
     * _Fecha de vencimiento de la subasta._
     
 *   _El usuario vendedor debe proporcionar como mínimo el **nombre del artículo**, **foto del artículo**, **fecha de vencimiento**, **estado de uso**, **precio mínimo** y **ubicación** para poder registrarlo._
-*   _Una vez el artículo es registrado debe aparecer disponible para ser pujado por los demás usuarios de SaleIt._
-*   _No pueden existir identificadores internos iguales para los artículos._
+*  _Una vez el artículo es registrado debe aparecer disponible para ser pujado por los demás usuarios de SaleIt._
+*  _No pueden existir identificadores internos iguales para los artículos._
+* _Se debe avisarle al usuario en caso de que no se permita el registro._
 
 ### _4.	COMO Usuario QUIERO retirar un artículo que tengo ofertado PARA PODER dar de baja su subasta._
 _Cuando algún artículo ofrecido se quiere retirar, este se debe eliminar de su lista de articulos ofertados._
@@ -59,6 +61,7 @@ _Cuando algún artículo ofrecido se quiere retirar, este se debe eliminar de su
 
 **_Criterios de aceptación:_**  
   * _Al darse de baja un artículo, este no debe estar disponible para ser pujado._
+  * _Se debe confirmar por parte del usuario si esta seguro antes de eliminar el articulo._
 
 ### _5. COMO Usuario QUIERO consultar todos los artículos disponibles PARA PODER conocer todas las subastas actuales._
 _Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agradable todos los artículos disponibles._
@@ -115,6 +118,7 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
     * _Fecha de vencimiento de la subasta._
     
  * _El valor del identificador interno no es modificable por el usuario._
+ * _Se debe avisarle al usuario en caso de que haga alguna modificación no permitida._
 
 ### _11. COMO Usuario QUIERO buscar un artículo en especifico PARA PODER encontrar el artículo deseado._
 **_Criterios de aceptación:_**
@@ -131,6 +135,8 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
  
  ### _14. COMO Usuario QUIERO modificar mi perfil PARA PODER corregir o actualizar mi información personal._
  El usuario podrá modificar toda su información personal, menos su identificador interno y su correo debe seguir siendo único. 
+ 
+ 
 **_Criterios de aceptación:_**
  * _Se debe mostrar con claridad la posibilidad de editar la información del perfil del usuario y avisarle en caso de que haga alguna modificación no permitida._
 
