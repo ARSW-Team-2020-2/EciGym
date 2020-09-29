@@ -1,15 +1,11 @@
-Quitar rol
+Actualizar diagrama de componentes.
 
-Poner tipoDocumento como Enum
+Corregir el diagrama de despliegue. 
 
-Crear constructor sin parametros innecesarios
+Separar los casos de uso. Un diagrama para los más importantes, y otro para los de menos importancia.
 
-Revisar relacion Usuario-Subasta (Deben ser 2 relaciones aparte de 1..*)
+Pruebas de integración VS Pruebas unitarias.
 
-Falta en el diagrama de clases la relación entre usuario y artículo
-
-Cambiar tipo Date por TimeStamp (porque coge la hora). Si usamos Date las subastas deben durar
-mínimo 1 día
+Planeación de las sub-tareas en el Taiga.
 
 
-Revisar imagen en la DB
