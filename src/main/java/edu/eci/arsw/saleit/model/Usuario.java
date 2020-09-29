@@ -37,12 +37,15 @@ public class Usuario {
     private List<Puja> listaDePujas;
 
     @OneToMany
+    @JoinColumn(name = "vendedor")
+    private List<Subasta> subastasCreadas;
+
+
+    @OneToMany
     @JoinColumn(name = "emailusuario")
     private List<Favoritos> articulosFavoritos;
 
-    @OneToMany
-    @JoinColumn(name = "vendedor")
-    private List<Subasta> subastasCreadas;
+    //@OneToMany(fetch = FetchType.EAGER)
 
     @OneToMany
     @JoinColumn(name = "emailusuario")
