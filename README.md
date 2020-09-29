@@ -1,4 +1,4 @@
-# _Sale It_ 💰
+# _Sale It!_ 💰
 ![](https://github.com/ARSW-Team-2020-2/SaleIt/blob/master/img/logo.png)
 ## _Integrantes_ 💡
 *   _Juan Sebastián Frásica Galeano_
