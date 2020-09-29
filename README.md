@@ -1,24 +1,26 @@
-# _Sale It_
+# _Sale It_ 💰
 ![](https://github.com/ARSW-Team-2020-2/SaleIt/blob/master/img/logo.png)
-## _Integrantes_
+## _Integrantes_ 💡
 *   _Juan Sebastián Frásica Galeano_
 *   _Angie Daniela Ruiz Alfonso_
 *   _Juan Sebastián Díaz Salamanca_
-## _Descripción de la aplicación_
+## _Descripción de la aplicación_ 📖
 _SaleIt es una aplicación web realizada como proyecto para la materia **Arquitecturas de Software (ARSW)** de la Escuela Colombiana de Ingeniería Julio Garavito.
 Es una aplicación para realizar subastas. Allí el usuario podrá ofertar artículos y pujar para conseguirlos._
-## _Valores agregados y diferenciadores de la aplicación_
+## _Valores agregados y diferenciadores de la aplicación_ 📣
 _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son un factor diferenciador de SaleIt con respecto a la mayoría de páginas de subastas, además de la participación de forma aninima dentro de las subastas al momento de ofrecer una puja._
-## _Despliegue en Heroku_
+## _Despliegue en Heroku_ 🚀
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://saleitt.herokuapp.com/)
- ## _Calidad del código_
+ ## _Calidad del código_ 👨‍💻
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/5430bb4ffa9947c9b7a02fa442496563)](https://www.codacy.com/gh/ARSW-Team-2020-2/SaleIt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020-2/SaleIt&amp;utm_campaign=Badge_Grade)
- ## _Integración continua_
+ ## _Integración continua_ ✔️
  [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/ARSW-Team-2020-2/SaleIt)
-# _Arquitectura y diseño detallado de la aplicación_
-## _Diagrama de casos de uso_
+# _Arquitectura y diseño detallado de la aplicación_ 🔨
+## _Seguimiento de las historias de usuario del proyecto_ 📈
+[![](https://tree.taiga.io/support/images/icon-taiga-color.png?h=221ec64e)](https://tree.taiga.io/project/sebastianfrasic-ecigym/timeline)
+## _Diagrama de casos de uso_ 📋
 ![Principal](img/CasosDeUso.png)
-## _Historias de usuario_
+## _Historias de usuario_ 📌
 
 ### _1.	COMO Usuario QUIERO Autenticarme PARA PODER ingresar al sistema satisfactoriamente._
  **_Criterios de aceptación:_**
@@ -33,6 +35,8 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
 
 ### _3.	COMO Usuario QUIERO Registrar un artículo PARA PODER venderlo al mejor postor._
 _Un artículo es todo aquel elemento que es ofrecido por un usuario a los demás usuarios de SaleIt._
+
+
  **_Criterios de aceptación:_**
 * _La información básica de un artículo es:_
     * _Identificador interno._
@@ -51,11 +55,15 @@ _Un artículo es todo aquel elemento que es ofrecido por un usuario a los demás
 
 ### _4.	COMO Usuario QUIERO Retirar un artículo que tengo ofertado PARA PODER dar de baja su subasta._
 _Cuando algún artículo ofrecido se quiere retirar, este se debe eliminar de su lista de articulos ofertados._
+
+
 **_Criterios de aceptación:_**  
   * _Al darse de baja un artículo, este no debe estar disponible para ser pujado._
 
 ### _5. COMO Usuario QUIERO Consultar todos los artículos disponibles PARA PODER conocer todas las subastas actuales._
 _Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agradable todos los artículos disponibles._
+
+
 **_Criterios de aceptación:_**
  * _Al momento de realizar la consulta, de deben mostrar todos lo artículos que se encuentran activos en ese momento._
  * _Deben existir filtros que me permitan realizar una búsqueda mejor direccionada. Por categoría, precio y ubicación._
@@ -71,6 +79,8 @@ _Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agr
 
 ### _8. COMO Usuario QUIERO Ver un artículo en específico PARA PODER conocer los detalles de este._
 _Al seleccionar un artículo se debe poder ver más información de el._
+
+
 **_Criterios de aceptación:_**
 * _Se debe mostrar:_
     * _Nombre del artículo._
@@ -81,14 +91,18 @@ _Al seleccionar un artículo se debe poder ver más información de el._
     * _Ubicación del artículo._
     * _Una tabla con todas las pujas realizadas, indicando el id del pujador (para su anonimato), la fecha de la puja y el valor pujado._
 
-### _9. COMO Usuario QUIERO Realizar una puja PARA PODER ofertar por un artículo_
+### _9. COMO Usuario QUIERO Realizar una puja PARA PODER ofertar por un artículo._
 _Una vez un usuario decide el artículo que desea obtener, puede proceder a hacer su puja respectiva._
+
+
 **_Criterios de aceptación:_**
  * _El valor a pujar debe ser mayor o igual que la puja mínima._
  * _Si el usuario puja por un valor menor al mayor valor pujado, se le mostrará una sugerencia indicandole el minimo valor que debería pujar para ser aceptado._
  
  ### _10. COMO Usuario QUIERO Modificar un articulo que tengo ofertado PARA PODER realizar los cambios deseados sobre la información relacionada a este._
 _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agradable la información de sus articulos ofertados._
+
+
 **_Criterios de aceptación:_**
 * _Al momento de modificar el articulo, se debe poder modificar:_
     * _Nombre del artículo._
@@ -115,7 +129,7 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
 **_Criterios de aceptación:_**
  * _Se debe mostrar con claridad una lista de los artículos marcados como favoritos por el usuario._
 
-## _Mockups_
+## _Mockups_ 🎨
 
  * _Página de inicio. (principal)_
 ![Principal](img/MockUp_1.png)
@@ -127,12 +141,11 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
 ![Principal](img/MockUp_3.png)
 
 
-## _Diagrama de clases_
+## _Diagrama de clases_ 🔎
 ![Principal](img/clases.png)
-
-## _Diagrama E-R_
+## _Diagrama E-R_ 🔑
 ![Principal](img/EntidadRelacion.png)
-## _Diagrama de componentes_
+## _Diagrama de componentes_ 🔌
 ![Principal](img/componentes.png)
 
 
