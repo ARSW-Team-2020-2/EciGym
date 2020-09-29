@@ -11,7 +11,7 @@ public class Articulo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Column(name="nombre")
     private String nombre;
@@ -34,16 +34,15 @@ public class Articulo {
     @Column(name="imagen")
     private String imagen;
 
-
     @Column(name="categoria")
-    private long categoria;
+    private int categoria;
 
     @OneToMany
-    @JoinColumn(name = "emailusuario")
+    @JoinColumn(name = "idarticulo")
     private List<Favoritos> articulosFavoritos;
 
 
-    public Articulo(String nombre, String estadoDeUso, String descripcion, double precioMinimo, String dimensiones, String ubicacion, String imagen, long categoria) {
+    public Articulo(String nombre, String estadoDeUso, String descripcion, double precioMinimo, String dimensiones, String ubicacion, String imagen, int categoria) {
         this.nombre = nombre;
         this.estadoDeUso = estadoDeUso;
         this.descripcion = descripcion;
@@ -58,11 +57,11 @@ public class Articulo {
     public Articulo() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -126,7 +125,7 @@ public class Articulo {
         return categoria;
     }
 
-    public void setCategoria(long categoria) {
+    public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
 

@@ -8,34 +8,34 @@ import java.util.Objects;
 @Embeddable
 public class FavoritosPK implements Serializable {
 
-    @Column(name ="emailusuario")
-    private String emailUsuario;
+    @Column(name ="idusuario")
+    private int usuarioID;
 
     @Column(name ="idarticulo")
-    private long articuloID;
+    private int articuloID;
 
 
     public FavoritosPK() {
     }
 
-    public FavoritosPK(String emailUsuario, long articuloID) {
-        this.emailUsuario = emailUsuario;
+    public FavoritosPK(int usuarioID, int articuloID) {
+        this.usuarioID = usuarioID;
         this.articuloID = articuloID;
     }
 
-    public String getEmailUsuario() {
-        return emailUsuario;
+    public int getUsuarioID() {
+        return usuarioID;
     }
 
-    public void setEmailUsuario(String emailUsuario) {
-        this.emailUsuario = emailUsuario;
+    public void setUsuarioID(int emailUsuario) {
+        this.usuarioID = emailUsuario;
     }
 
-    public long getArticuloID() {
+    public int getArticuloID() {
         return articuloID;
     }
 
-    public void setArticuloID(long articuloID) {
+    public void setArticuloID(int articuloID) {
         this.articuloID = articuloID;
     }
 
@@ -45,18 +45,18 @@ public class FavoritosPK implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         FavoritosPK that = (FavoritosPK) o;
         return articuloID == that.articuloID &&
-                Objects.equals(emailUsuario, that.emailUsuario);
+                Objects.equals(usuarioID, that.usuarioID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(emailUsuario, articuloID);
+        return Objects.hash(usuarioID, articuloID);
     }
 
     @Override
     public String toString() {
         return "FavoritosPK{" +
-                "emailUsuario='" + emailUsuario + '\'' +
+                "emailUsuario='" + usuarioID + '\'' +
                 ", articuloID=" + articuloID +
                 '}';
     }

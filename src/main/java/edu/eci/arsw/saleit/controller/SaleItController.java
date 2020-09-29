@@ -1,5 +1,6 @@
 package edu.eci.arsw.saleit.controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.eci.arsw.saleit.model.Articulo;
 import edu.eci.arsw.saleit.model.Categoria;
 import edu.eci.arsw.saleit.model.Subasta;
@@ -48,7 +49,7 @@ public class SaleItController {
 
     //ARTICULOS
 
-    //no funciona ._.
+    //sirve
     @GetMapping("/articles")
     public ResponseEntity<?> getArticles() {
         try {
@@ -75,6 +76,7 @@ public class SaleItController {
 
     //no funciona ._.
     @GetMapping("/categories")
+    @JsonIgnore
     public ResponseEntity<?> getCategories() {
         try {
             return new ResponseEntity<>(saleItServices.getAllCategories(), HttpStatus.ACCEPTED);
@@ -111,7 +113,7 @@ public class SaleItController {
 
     //no lo pude probar
     @PostMapping("/auctions")
-    public ResponseEntity<?> addAuction(@RequestBody Subasta auction) {
+    public ResponseEntity<?> createAuction(@RequestBody Subasta auction) {
         try {
             saleItServices.addAuction(auction);
             return new ResponseEntity<>(HttpStatus.CREATED);

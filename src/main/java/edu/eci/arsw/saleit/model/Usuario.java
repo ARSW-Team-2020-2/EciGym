@@ -7,16 +7,15 @@ import javax.persistence.*;
 @Table(name = "usuario")
 public class Usuario {
 
-    public static long ID;
-
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column(name = "email")
     private String email;
 
     @Column(name = "password")
     private String password;
-
-    @Column(name = "numerodecuenta")
-    private long numeroDeCuenta;
 
     @Column(name = "nombre")
     private String nombre;
@@ -51,8 +50,6 @@ public class Usuario {
 
 
     public Usuario(String email, String password, String nombre, String documento, TipoDeDocumento tipoDeDocumento, String telefono) {
-        ID++;
-        this.numeroDeCuenta = 8787;
         this.email = email;
         this.password = password;
         this.nombre = nombre;
@@ -66,6 +63,14 @@ public class Usuario {
     }
 
     public Usuario() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -82,14 +87,6 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public long getNumeroDeCuenta() {
-        return numeroDeCuenta;
-    }
-
-    public void setNumeroDeCuenta(long numeroDeCuenta) {
-        this.numeroDeCuenta = numeroDeCuenta;
     }
 
     public String getNombre() {
@@ -161,7 +158,7 @@ public class Usuario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return numeroDeCuenta == usuario.numeroDeCuenta &&
+        return id == usuario.id &&
                 Objects.equals(email, usuario.email) &&
                 Objects.equals(password, usuario.password) &&
                 Objects.equals(nombre, usuario.nombre) &&
@@ -176,15 +173,15 @@ public class Usuario {
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, password, numeroDeCuenta, nombre, documento, tipoDeDocumento, telefono, listaDePujas, articulosFavoritos, subastasCreadas, participaciones);
+        return Objects.hash(id, email, password, nombre, documento, tipoDeDocumento, telefono, listaDePujas, articulosFavoritos, subastasCreadas, participaciones);
     }
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "email='" + email + '\'' +
+                "id=" + id +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", numeroDeCuenta=" + numeroDeCuenta +
                 ", nombre='" + nombre + '\'' +
                 ", documento='" + documento + '\'' +
                 ", tipoDeDocumento=" + tipoDeDocumento +
@@ -195,7 +192,4 @@ public class Usuario {
                 ", participaciones=" + participaciones +
                 '}';
     }
-
-
-
 }

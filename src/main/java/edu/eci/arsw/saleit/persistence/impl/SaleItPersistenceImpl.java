@@ -3,11 +3,12 @@ package edu.eci.arsw.saleit.persistence.impl;
 import edu.eci.arsw.saleit.model.*;
 import edu.eci.arsw.saleit.persistence.SaleItPersistence;
 import edu.eci.arsw.saleit.persistence.SaleItPersistenceException;
-import edu.eci.arsw.saleit.repo.ArticuloRepo;
-import edu.eci.arsw.saleit.repo.CategoriaRepo;
-import edu.eci.arsw.saleit.repo.SubastaRepo;
-import edu.eci.arsw.saleit.repo.UsuarioRepo;
+import edu.eci.arsw.saleit.persistence.repo.ArticuloRepo;
+import edu.eci.arsw.saleit.persistence.repo.CategoriaRepo;
+import edu.eci.arsw.saleit.persistence.repo.SubastaRepo;
+import edu.eci.arsw.saleit.persistence.repo.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,11 +30,6 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
 
     @Override
     public void addUser(Usuario user) throws SaleItPersistenceException {
-        if(userRepo.existsById(user.getEmail())){
-            throw new SaleItPersistenceException("Este correo ya existe, ingrese otro.");
-        }
-        CountNumberGenerate.increment();
-        user.setNumeroDeCuenta(CountNumberGenerate.getId());
         userRepo.save(user);
     }
 
@@ -58,12 +54,19 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         return auctionRepo.findAll();
     }
 
+//    public static final String VAR = "select id,nombre from articulo;";
+//    @Query(value = VAR, nativeQuery = true)
+
+
     @Override
     public List<Articulo> getAllArticles() throws SaleItPersistenceException {
         if(articleRepo.count() == 0){
             throw new SaleItPersistenceException("No existen articulos.");
         }
-        return articleRepo.findAll();
+        System.out.println("HOla");
+        List<Articulo> requests = articleRepo.findAll();
+        System.out.println(requests);
+        return requests;
     }
 
     @Override

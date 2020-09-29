@@ -1,22 +1,26 @@
 Tablas:
 
-CREATE TABLE IF NOT EXISTS Usuario(email VARCHAR(50) PRIMARY KEY, password VARCHAR(20) NOT NULL, numerodecuenta INTEGER NOT NULL, nombre VARCHAR(50) NOT NULL, documento VARCHAR(50) NOT NULL, tipodedocumento VARCHAR(20) NOT NULL, telefono VARCHAR(50) NOT NULL);
+CREATE TABLE IF NOT EXISTS Usuario(id SERIAL PRIMARY KEY, email VARCHAR(50) NOT NULL, password VARCHAR(20) NOT NULL, nombre VARCHAR(50) NOT NULL, documento VARCHAR(50) NOT NULL, tipodedocumento VARCHAR(20) NOT NULL, telefono VARCHAR(50) NOT NULL);
+
+CREATE TABLE IF NOT EXISTS Subasta (id SERIAL PRIMARY KEY, fechainicio TIMESTAMP, fechafin TIMESTAMP NOT NULL, vendedor INTEGER REFERENCES Usuario(id));
+
+CREATE TABLE IF NOT EXISTS Participaciones (idusuario INTEGER REFERENCES Usuario(id), idsubasta INTEGER REFERENCES Subasta(id));
+
+ALTER TABLE Participaciones ADD CONSTRAINT PK_PARTICIPACIONES PRIMARY KEY (idusuario, idsubasta);
+
+CREATE TABLE IF NOT EXISTS Puja(id SERIAL PRIMARY KEY, monto INTEGER NOT NULL, fecha TIMESTAMP, usuario INTEGER REFERENCES Usuario(id), subasta INTEGER REFERENCES Subasta(id));
 
 CREATE TABLE IF NOT EXISTS Categoria (id SERIAL PRIMARY KEY, nombre VARCHAR(60) NOT NULL);
 
-CREATE TABLE IF NOT EXISTS Articulo (id SERIAL PRIMARY KEY, nombre VARCHAR(50) NOT NULL, estadodeuso VARCHAR(5) NOT NULL, descripcion VARCHAR(600), preciominimo REAL NOT NULL, dimensiones VARCHAR(20), ubicacion VARCHAR(30) NOT NULL, imagen VARCHAR(20) NOT NULL, categoria INTEGER REFERENCES Categoria(id));
+CREATE TABLE IF NOT EXISTS Articulo (id SERIAL PRIMARY KEY, nombre VARCHAR(50) NOT NULL, estadodeuso VARCHAR(5) NOT NULL, descripcion VARCHAR(600), preciominimo NUMERIC NOT NULL, dimensiones VARCHAR(20), ubicacion VARCHAR(30) NOT NULL, imagen VARCHAR(20) NOT NULL, subasta INTEGER REFERENCES Subasta(id), categoria INTEGER REFERENCES Categoria(id));
 
-CREATE TABLE IF NOT EXISTS Subasta (id SERIAL PRIMARY KEY, fechainicio TIMESTAMP, fechafin TIMESTAMP NOT NULL, vendedor VARCHAR(50) REFERENCES Usuario(email), articulo INTEGER REFERENCES Articulo(id));
+CREATE TABLE IF NOT EXISTS Favoritos  (idusuario INTEGER REFERENCES Usuario(id), idarticulo INTEGER REFERENCES Articulo(id));
 
-CREATE TABLE IF NOT EXISTS Participaciones (emailusuario VARCHAR(50) REFERENCES Usuario(email), idsubasta INTEGER REFERENCES Subasta(id));
+ALTER TABLE Favoritos ADD CONSTRAINT PK_FAVORITOS PRIMARY KEY (idusuario, idarticulo);
 
-ALTER TABLE Participaciones ADD CONSTRAINT PK_PARTICIPACIONES PRIMARY KEY (emailusuario, idsubasta);
 
-CREATE TABLE IF NOT EXISTS Puja(id SERIAL PRIMARY KEY, monto INTEGER NOT NULL, fecha TIMESTAMP, usuario VARCHAR(50) REFERENCES Usuario(email), subasta INTEGER REFERENCES Subasta(id));
 
-CREATE TABLE IF NOT EXISTS Favoritos  (emailusuario VARCHAR(50) REFERENCES Usuario(email), idarticulo INTEGER REFERENCES Articulo(id));
-
-ALTER TABLE Favoritos ADD CONSTRAINT PK_FAVORITOS PRIMARY KEY (emailusuario, idarticulo);
+Únicas:
 
 ALTER TABLE Usuario ADD CONSTRAINT telefono_unico UNIQUE(telefono);
 

@@ -10,7 +10,7 @@ public class Puja {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Column(name="monto")
     private int monto;
@@ -26,11 +26,11 @@ public class Puja {
     public Puja() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -8,34 +8,34 @@ import java.util.Objects;
 @Embeddable
 public class ParticipacionesPK implements Serializable {
 
-    @Column(name ="emailusuario")
-    private String emailUsuario;
+    @Column(name ="idusuario")
+    private int usuarioID;
 
     @Column(name ="idsubasta")
-    private long subastaID;
+    private int subastaID;
 
 
     public ParticipacionesPK() {
     }
 
-    public ParticipacionesPK(String emailUsuario, long subastaID) {
-        this.emailUsuario = emailUsuario;
+    public ParticipacionesPK(int emailUsuario, int subastaID) {
+        this.usuarioID = emailUsuario;
         this.subastaID = subastaID;
     }
 
-    public String getEmailUsuario() {
-        return emailUsuario;
+    public int getUsuarioID() {
+        return usuarioID;
     }
 
-    public void setEmailUsuario(String emailUsuario) {
-        this.emailUsuario = emailUsuario;
+    public void setUsuarioID(int emailUsuario) {
+        this.usuarioID = emailUsuario;
     }
 
-    public long getSubastaID() {
+    public int getSubastaID() {
         return subastaID;
     }
 
-    public void setSubastaID(long subastaID) {
+    public void setSubastaID(int subastaID) {
         this.subastaID = subastaID;
     }
 
@@ -45,18 +45,18 @@ public class ParticipacionesPK implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         ParticipacionesPK that = (ParticipacionesPK) o;
         return subastaID == that.subastaID &&
-                Objects.equals(emailUsuario, that.emailUsuario);
+                Objects.equals(usuarioID, that.usuarioID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(emailUsuario, subastaID);
+        return Objects.hash(usuarioID, subastaID);
     }
 
     @Override
     public String toString() {
         return "ParticipacionesPK{" +
-                "emailUsuario='" + emailUsuario + '\'' +
+                "emailUsuario='" + usuarioID + '\'' +
                 ", subastaID=" + subastaID +
                 '}';
     }
