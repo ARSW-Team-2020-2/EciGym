@@ -34,8 +34,16 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
 *   _Es necesario que cada usuario tenga un correo único._
 *   _Al finalizar el registro, el usuario deberá elegir 3 categorías de su preferencia para que luego se muestren productos relacionados a éstas._
 
-### _3.	COMO Usuario QUIERO registrar un artículo PARA PODER venderlo al mejor postor._
-_Un artículo es todo aquel elemento que es ofrecido por un usuario a los demás usuarios de SaleIt._
+### _3. COMO Usuario QUIERO editar mi perfil PARA PODER corregir o actualizar mi información personal._
+ _El usuario podrá modificar toda su información personal, menos su identificador interno._
+ 
+ 
+**_Criterios de aceptación:_**
+ * _Se debe mostrar con claridad la posibilidad de editar la información del perfil del usuario y avisarle en caso de que haga alguna modificación no permitida._
+ * _El valor del identificador interno no es modificable por el usuario y el correo debe seguir siendo único._
+
+### _4.	COMO Usuario QUIERO crear una subasta PARA PODER vender un artículo al mejor postor._
+_Para registrar una subasta, se requiere su fecha de inicio, su fecha de fin y el articulo a ofertar. Un artículo es todo aquel elemento que es ofrecido por un usuario a los demás usuarios de SaleIt._
 
 
  **_Criterios de aceptación:_**
@@ -55,15 +63,51 @@ _Un artículo es todo aquel elemento que es ofrecido por un usuario a los demás
 *  _No pueden existir identificadores internos iguales para los artículos._
 * _Se debe avisarle al usuario en caso de que no se permita el registro._
 
-### _4.	COMO Usuario QUIERO retirar un artículo que tengo ofertado PARA PODER dar de baja su subasta._
-_Cuando algún artículo ofrecido se quiere retirar, este se debe eliminar de su lista de articulos ofertados._
+### _5.	COMO Usuario QUIERO modificar una subasta que tengo ofertada PARA PODER realizar los cambios deseados sobre la información relacionada a esta._
+_Los usuarios del sistema necesitan poder modificar de una forma sencilla y agradable la información de sus subastas ofertadas._
+
+
+**_Criterios de aceptación:_**
+
+* _Al momento de modificar la información de la subasta, solo se podrá modificar su fecha de fin y la información del artículo ofrecido. Del artículo se debe poder modificar:_
+    * _Nombre del artículo._
+    * _Detalles del artículo. (Marca, peso, modelo, material)_
+    * _Precio mínimo._
+    * _Estado de uso. (nuevo o usado)_
+    * _Dimensiones._
+    * _Fotografía real del artículo._
+    * _Ubicación del producto._
+
+    
+ * _El valor del identificador interno de la subasta y del articulo no es modificable por el usuario._
+ * _El valor de la fecha de vencimiento de la subasta es modificable por el usuario._
+ * _La fecha de inicio no puede ser modificable por el usuario._
+ * _Se debe avisarle al usuario en caso de que haga alguna modificación no permitida._
+ 
+### _6. COMO Usuario QUIERO eliminar una subasta que tengo creada PARA PODER retirarla._
+_Cuando alguna subasta ofrecida se quiere retirar, esta se debe eliminar de su lista de subastas creadas._
 
 
 **_Criterios de aceptación:_**  
-  * _Al darse de baja un artículo, este no debe estar disponible para ser pujado._
-  * _Se debe confirmar por parte del usuario si esta seguro antes de eliminar el articulo._
+  * _Al darse de baja una subasta, esta ya no estará disponible para ser pujada._
+  * _Se debe confirmar por parte del usuario si esta seguro antes de eliminar la subasta._
 
-### _5. COMO Usuario QUIERO consultar todos los artículos disponibles PARA PODER conocer todas las subastas actuales._
+### _7. COMO Usuario QUIERO consultar todas mis subastas creadas PARA PODER tener información sobre el estado de mis subastas._
+  * _Se debe mostrar una lista de las subastas que tiene el usuario ofertadas._
+
+### _8. COMO Usuario QUIERO consultar todas las subastas en las que he participado PARA PODER ver mi historial de participaciones._
+  * _Se debe mostrar una lista de las subastas en las que el usuario ha participado._
+
+### _9. COMO Usuario QUIERO realizar una puja PARA PODER ofertar por un artículo._
+_Una vez un usuario decide el artículo que desea obtener, puede proceder a hacer su puja respectiva._
+
+
+**_Criterios de aceptación:_**
+ * _El valor a pujar debe ser mayor o igual que la puja mínima._
+ * _Si el usuario puja por un valor menor al mayor valor pujado, se le mostrará una sugerencia indicandole el minimo valor que debería pujar para ser aceptado._
+ 
+
+### 10. COMO Usuario QUIERO consultar todos los artículos disponibles PARA PODER conocer todas las subastas actuales._
 _Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agradable todos los artículos disponibles._
 
 
@@ -72,15 +116,7 @@ _Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agr
  * _Deben existir filtros que me permitan realizar una búsqueda mejor direccionada. Por categoría, precio y ubicación._
  * _El usuario podrá ver las ofertas que se cierran pronto (En las próximas 24 horas)._
 
-### _6. COMO Usuario QUIERO consultar todas las categorías PARA PODER conocer cuales existen._
- * _Se debe mostrar todas las diferentes categorías para los productos existentes._
- * _Se debe mostrar las categorías más populares._
- * _Se debe mostrar las categorías "Para ti" (las preferidas del usuario)._
-
-### _7. COMO Usuario QUIERO consultar una categoría específica PARA PODER ver los artículos correspondientes a ésta._
- * _Se debe mostrar una lista de artículos disponibles correspondiente a la categoría seleccionada._
-
-### _8. COMO Usuario QUIERO ver un artículo en específico PARA PODER conocer los detalles de este._
+### _11. COMO Usuario QUIERO ver un artículo en específico PARA PODER conocer los detalles de este._
 _Al seleccionar un artículo se debe poder ver más información de el._
 
 
@@ -94,51 +130,26 @@ _Al seleccionar un artículo se debe poder ver más información de el._
     * _Ubicación del artículo._
     * _Una tabla con todas las pujas realizadas, indicando el id del pujador (para su anonimato), la fecha de la puja y el valor pujado._
 
-### _9. COMO Usuario QUIERO realizar una puja PARA PODER ofertar por un artículo._
-_Una vez un usuario decide el artículo que desea obtener, puede proceder a hacer su puja respectiva._
-
-
-**_Criterios de aceptación:_**
- * _El valor a pujar debe ser mayor o igual que la puja mínima._
- * _Si el usuario puja por un valor menor al mayor valor pujado, se le mostrará una sugerencia indicandole el minimo valor que debería pujar para ser aceptado._
- 
- ### _10. COMO Usuario QUIERO modificar un articulo que tengo ofertado PARA PODER realizar los cambios deseados sobre la información relacionada a este._
-_Los usuarios del sistema necesitan poder modificar de una forma sencilla y agradable la información de sus articulos ofertados._
-
-
-**_Criterios de aceptación:_**
-* _Al momento de modificar el articulo, se debe poder modificar:_
-    * _Nombre del artículo._
-    * _Detalles del artículo. (Marca, peso, modelo, material)_
-    * _Precio mínimo._
-    * _Estado de uso. (nuevo o usado)_
-    * _Dimensiones._
-    * _Fotografía real del artículo._
-    * _Ubicación del producto._
-    * _Fecha de vencimiento de la subasta._
-    
- * _El valor del identificador interno no es modificable por el usuario._
- * _Se debe avisarle al usuario en caso de que haga alguna modificación no permitida._
-
-### _11. COMO Usuario QUIERO buscar un artículo en especifico PARA PODER encontrar el artículo deseado._
+### _12. COMO Usuario QUIERO buscar un artículo en especifico PARA PODER encontrar el artículo deseado._
 **_Criterios de aceptación:_**
  * _Se podrá buscar un artículo por su nombre en una barra de búsqueda._
  * _La búsqueda del artículo se hará en todas las categorías._
 
-### _12. COMO Usuario QUIERO marcar como favorito un artículo PARA PODER añadirlo a mis favoritos._
+### _13. COMO Usuario QUIERO marcar como favorito un artículo PARA PODER añadirlo a mi lista de favoritos._
 **Criterios de aceptación:**
 * _Al momento de consultar o buscar un artículo debe existir la opción para marcar como favorito._
 
-### _13. COMO Usuario QUIERO ver mi lista de favoritos PARA PODER consultar qué artículos me han gustado._
+### _14. COMO Usuario QUIERO consultar mi lista de favoritos PARA PODER ver qué artículos me han gustado._
 **_Criterios de aceptación:_**
  * _Se debe mostrar con claridad una lista de los artículos marcados como favoritos por el usuario._
  
- ### _14. COMO Usuario QUIERO modificar mi perfil PARA PODER corregir o actualizar mi información personal._
- El usuario podrá modificar toda su información personal, menos su identificador interno y su correo debe seguir siendo único. 
- 
- 
-**_Criterios de aceptación:_**
- * _Se debe mostrar con claridad la posibilidad de editar la información del perfil del usuario y avisarle en caso de que haga alguna modificación no permitida._
+### _15. COMO Usuario QUIERO consultar todas las categorías PARA PODER conocer cuales existen._
+ * _Se debe mostrar todas las diferentes categorías para los productos existentes._
+ * _Se debe mostrar las categorías más populares._
+ * _Se debe mostrar las categorías "Para ti" (las preferidas del usuario)._
+
+### _16. COMO Usuario QUIERO consultar una categoría específica PARA PODER ver los artículos correspondientes a ésta._
+ * _Se debe mostrar una lista de artículos disponibles correspondiente a la categoría seleccionada._
 
 ## _Mockups_ 🎨
 
