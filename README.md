@@ -20,18 +20,26 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
 [![](https://tree.taiga.io/support/images/icon-taiga-color.png?h=221ec64e)](https://tree.taiga.io/project/sebastianfrasic-ecigym/timeline)
 ## _Diagrama de casos de uso_ 📋
  **_Autenticación:_**
+ 
+ 
 ![Principal](img/casosdeuso1.PNG)
 
 
  **_Subastas:_**
+ 
+ 
 ![Principal](img/casosdeuso2.PNG)
 
 
  **_Artículos:_**
+ 
+ 
 ![Principal](img/casosdeuso3.PNG)
 
 
  **_Categorias:_**
+ 
+ 
 ![Principal](img/casosdeuso4.PNG)
 ## _Historias de usuario_ 📌
 
