@@ -19,7 +19,16 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
 ## _Seguimiento de las historias de usuario del proyecto_ 📈
 [![](https://tree.taiga.io/support/images/icon-taiga-color.png?h=221ec64e)](https://tree.taiga.io/project/sebastianfrasic-ecigym/timeline)
 ## _Diagrama de casos de uso_ 📋
-![Principal](img/CasosDeUso.png)
+![Principal](img/casodeuso1.PNG)
+
+
+![Principal](img/casodeuso2.PNG)
+
+
+![Principal](img/casodeuso3.PNG)
+
+
+![Principal](img/casodeuso4.PNG)
 ## _Historias de usuario_ 📌
 
 ### _1.	COMO Usuario QUIERO autenticarme PARA PODER ingresar al sistema satisfactoriamente._
@@ -107,7 +116,7 @@ _Una vez un usuario decide el artículo que desea obtener, puede proceder a hace
  * _Si el usuario puja por un valor menor al mayor valor pujado, se le mostrará una sugerencia indicandole el minimo valor que debería pujar para ser aceptado._
  
 
-### 10. COMO Usuario QUIERO consultar todos los artículos disponibles PARA PODER conocer todas las subastas actuales._
+### _10. COMO Usuario QUIERO consultar todos los artículos disponibles PARA PODER conocer todas las subastas actuales._
 _Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agradable todos los artículos disponibles._
 
 
@@ -169,14 +178,14 @@ _Al seleccionar un artículo se debe poder ver más información de el._
  
  
 ![Principal](img/MockUp_3.png)
-
-
 ## _Diagrama de clases_ 🔎
 ![Principal](img/clases.png)
 ## _Diagrama E-R_ 🔑
 ![Principal](img/EntidadRelacion.png)
 ## _Diagrama de componentes_ 🔌
 ![Principal](img/diagramacomponentes.PNG)
+## _Diagrama de despliegue_ 
+![Principal](img/diagramadespliegue.PNG)
 
 
 
