@@ -19,16 +19,16 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
 ## _Seguimiento de las historias de usuario del proyecto_ 📈
 [![](https://tree.taiga.io/support/images/icon-taiga-color.png?h=221ec64e)](https://tree.taiga.io/project/sebastianfrasic-ecigym/timeline)
 ## _Diagrama de casos de uso_ 📋
-![Principal](img/casodeuso1.PNG)
+![Principal](img/casosdeuso1.PNG)
 
 
-![Principal](img/casodeuso2.PNG)
+![Principal](img/casosdeuso2.PNG)
 
 
-![Principal](img/casodeuso3.PNG)
+![Principal](img/casosdeuso3.PNG)
 
 
-![Principal](img/casodeuso4.PNG)
+![Principal](img/casosdeuso4.PNG)
 ## _Historias de usuario_ 📌
 
 ### _1.	COMO Usuario QUIERO autenticarme PARA PODER ingresar al sistema satisfactoriamente._
