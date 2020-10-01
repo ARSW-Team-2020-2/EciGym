@@ -49,7 +49,7 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
 *	_Se debe usar una fuente de datos básica para autenticar al usuario._
 * _Se debe avisarle al usuario en caso de que no se permita el inicio de sesión._
 
-### _2.	COMO Usuario QUIERO registrarme PARA PODER realizar las diferentes labores que me permita el sistema dependiendo del rol con el que esté registrado._
+### _2.	COMO Usuario QUIERO registrarme PARA PODER realizar las diferentes labores que me permita el sistema._
  **_Criterios de aceptación:_**
 *   _Se deben añadir los nuevos usuarios a la fuente de datos básica._
 *   _Es necesario que cada usuario tenga un correo único._
