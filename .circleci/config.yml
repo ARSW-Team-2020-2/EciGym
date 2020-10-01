@@ -7,9 +7,3 @@ workflows:
   maven_test:
     jobs:
       - maven/test # checkout, build, test, and upload test result
-      
-      steps:
-      - unset CI
-      - npm run build
-
-
