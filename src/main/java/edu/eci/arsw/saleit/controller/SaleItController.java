@@ -74,7 +74,7 @@ public class SaleItController {
 
     //CATEGORIAS
 
-    //no funciona ._.
+    //Funciona
     @GetMapping("/categories")
     @JsonIgnore
     public ResponseEntity<?> getCategories() {
@@ -86,7 +86,7 @@ public class SaleItController {
         }
     }
 
-    //no funciona ._.
+    //No he mirado
     @PostMapping("/categories")
     public ResponseEntity<?> addCategory(@RequestBody Categoria category) {
         try {
