@@ -6,7 +6,7 @@ class Slider extends Component {
         return (
             <div id="slider" className="slider-big">
                 <h1>SaleIt: Subastas online de artículos únicos</h1>
-                <a value="nombre" href="#" className="btn-white">Descubre</a>
+                <a value="nombre" href="algo" className="btn-white">Descubre</a>
             </div>
         );
     }
