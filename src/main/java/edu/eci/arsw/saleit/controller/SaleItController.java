@@ -24,7 +24,7 @@ public class SaleItController {
 
     //USUARIOS
 
-    //sirve
+    //Funciona
     @GetMapping("/users")
     public ResponseEntity<?> getUsers() {
         try {
@@ -35,7 +35,7 @@ public class SaleItController {
         }
     }
 
-    //sirve
+    //Funciona
     @PostMapping("/users")
     public ResponseEntity<?> addUser(@RequestBody Usuario user) {
         try {
@@ -46,10 +46,32 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
+    
+    //Funciona
+    @GetMapping("/users/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable int id) {
+        try {
+            return new ResponseEntity<>(saleItServices.getUserById(id), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    //Funciona
+    @GetMapping("/users/{id}/fav")
+    public ResponseEntity<?> getFavoriteArticlesByUser(@PathVariable int id) {
+        try {
+            return new ResponseEntity<>(saleItServices.getFavoriteArticlesByUser(id), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 
     //ARTICULOS
 
-    //sirve
+    //Funciona
     @GetMapping("/articles")
     public ResponseEntity<?> getArticles() {
         try {
@@ -60,7 +82,7 @@ public class SaleItController {
         }
     }
 
-    //sirve
+    //Funciona
     @PostMapping("/articles")
     public ResponseEntity<?> addArticle(@RequestBody Articulo article) {
         try {
@@ -71,6 +93,17 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
+    
+    //Funciona
+    @GetMapping("/articles/{id}")
+    public ResponseEntity<?> getArticleById(@PathVariable int id) {
+        try {
+            return new ResponseEntity<>(saleItServices.getArticleById(id), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }   
 
     //CATEGORIAS
 
@@ -86,7 +119,7 @@ public class SaleItController {
         }
     }
 
-    //No he mirado
+    //Funciona
     @PostMapping("/categories")
     public ResponseEntity<?> addCategory(@RequestBody Categoria category) {
         try {
@@ -97,10 +130,23 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
+    
+    //Funciona
+    @GetMapping("/categories/{id}")
+    @JsonIgnore
+    public ResponseEntity<?> getCategorieById(@PathVariable int id) {
+        try {
+            return new ResponseEntity<>(saleItServices.getCategoryById(id), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }  
+    
 
     //SUBASTAS
 
-    //no lo pude probar
+    //Funciona
     @GetMapping("/auctions")
     public ResponseEntity<?> getAuctions() {
         try {
@@ -111,7 +157,7 @@ public class SaleItController {
         }
     }
 
-    //no lo pude probar
+    //Funciona
     @PostMapping("/auctions")
     public ResponseEntity<?> createAuction(@RequestBody Subasta auction) {
         try {
@@ -122,6 +168,21 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
+    
+    //Funciona
+    @GetMapping("/auctions/{user}")
+    public ResponseEntity<?> getOwnAuctionsByUser(@PathVariable int user) {
+        try {
+            return new ResponseEntity<>(saleItServices.getOwnAuctionsByUser(user), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    
+    //PUJAS
+    
 
 
 }

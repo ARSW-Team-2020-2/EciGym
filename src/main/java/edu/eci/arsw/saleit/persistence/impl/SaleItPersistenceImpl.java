@@ -12,6 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SaleItPersistenceImpl implements SaleItPersistence {
@@ -86,6 +87,51 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     public void addCategory(Categoria category) throws SaleItPersistenceException {
         categoryRepo.save(category);
     }
-
-
+    
+    @Override
+    public Optional<Articulo> getArticleById (int id) throws SaleItPersistenceException {
+        return articleRepo.findById(id);
+    }
+    
+    @Override
+    public Optional<Usuario> getUserById (int id) throws SaleItPersistenceException {
+        return userRepo.findById(id);
+    }
+    
+    @Override
+    public void createAuction(Subasta auction) throws SaleItPersistenceException {
+        auctionRepo.save(auction);                
+    }
+    
+    @Override
+    public Optional<Categoria> getCategoryById(int id) throws SaleItPersistenceException{
+        return categoryRepo.findById(id);
+    }
+    
+    @Override
+    public List<Subasta> getOwnAuctionsByUser(int id) throws SaleItPersistenceException {
+        Usuario user = (getUserById(id)).get();
+        List<Subasta> myAuctions = user.getSubastasCreadas();
+        if(myAuctions.isEmpty()){
+            throw new SaleItPersistenceException("No existen subastas creadas por este usuario.");
+        }
+        return myAuctions;                 
+    }
+    
+    @Override
+    public void addArticleAsFavorite(int userId, int articleId) throws SaleItPersistenceException {
+        Usuario user = (getUserById(userId)).get();
+        Articulo article = (getArticleById(articleId)).get();
+        user.addArticuloFavorito(article);                
+    }
+    
+    @Override
+    public List<Articulo> getFavoriteArticlesByUser(int userId) throws SaleItPersistenceException {
+        Usuario user = (getUserById(userId)).get();
+        List<Articulo> myFavoriteArticles = user.getArticulosFavoritos();
+        if(myFavoriteArticles.isEmpty()){
+            throw new SaleItPersistenceException("No hay artículos favoritos para este usuario.");
+        }
+        return myFavoriteArticles;
+    }
 }

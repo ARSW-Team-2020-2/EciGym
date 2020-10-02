@@ -7,6 +7,7 @@ import edu.eci.arsw.saleit.model.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface SaleItServices {
@@ -26,4 +27,18 @@ public interface SaleItServices {
     List<Categoria> getAllCategories() throws SaleItServicesException;
 
     void addCategory(Categoria category) throws SaleItServicesException;
+    
+    Optional<Articulo> getArticleById (int id) throws SaleItServicesException;
+    
+    Optional<Usuario> getUserById (int id) throws SaleItServicesException;
+    
+    void createAuction(Subasta auction) throws SaleItServicesException;
+    
+    Optional<Categoria> getCategoryById (int id) throws SaleItServicesException;
+    
+    List<Subasta> getOwnAuctionsByUser(int id) throws SaleItServicesException;
+    
+    void addArticleAsFavorite(int user, int article) throws SaleItServicesException;
+    
+    List<Articulo> getFavoriteArticlesByUser(int userId) throws SaleItServicesException;
 }

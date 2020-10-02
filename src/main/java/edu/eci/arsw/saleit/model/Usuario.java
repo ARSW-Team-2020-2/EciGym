@@ -43,7 +43,7 @@ public class Usuario {
 
     @OneToMany
     @JoinColumn(name = "emailusuario")
-    private List<Favoritos> articulosFavoritos;
+    private List<Articulo> articulosFavoritos;
 
     //@OneToMany(fetch = FetchType.EAGER)
 
@@ -132,11 +132,15 @@ public class Usuario {
         this.listaDePujas = listaDePujas;
     }
 
-    public List<Favoritos> getArticulosFavoritos() {
+    public List<Articulo> getArticulosFavoritos() {
         return articulosFavoritos;
     }
+    
+    public void addArticuloFavorito(Articulo articulo){
+        this.articulosFavoritos.add(articulo);
+    }
 
-    public void setArticulosFavoritos(List<Favoritos> articulosFavoritos) {
+    public void setArticulosFavoritos(List<Articulo> articulosFavoritos) {
         this.articulosFavoritos = articulosFavoritos;
     }
 

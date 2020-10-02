@@ -21,7 +21,7 @@ public class Subasta {
     private Timestamp fechaFin;
 
     @Column(name="vendedor")
-    private String vendedor;
+    private int vendedor;
 
     @OneToMany
     @JoinColumn(name = "subasta")
@@ -35,7 +35,7 @@ public class Subasta {
     @JoinColumn(name = "id")
     private Articulo articulo;
 
-    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, String vendedor, Articulo articulo) {
+    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, int vendedor, Articulo articulo) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.articulo = articulo;
@@ -47,11 +47,11 @@ public class Subasta {
     public Subasta() {
     }
 
-    public String getVendedor() {
+    public int getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(String vendedor) {
+    public void setVendedor(int vendedor) {
         this.vendedor = vendedor;
     }
     public int getId() {
