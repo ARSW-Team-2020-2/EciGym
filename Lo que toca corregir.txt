@@ -6,6 +6,7 @@ Separar los casos de uso. Un diagrama para los más importantes, y otro para los
 
 Pruebas de integración VS Pruebas unitarias.
 
+
 Planeación de las sub-tareas en el Taiga.
 
 
