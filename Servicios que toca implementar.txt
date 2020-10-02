@@ -1,42 +1,37 @@
-getArticleByID
-
-getUserByID or getUserByEmail
-
-getAuctionsOfAUser 
-	(Las que estoy participando y otra las que he creado)
+getAuctionsOfAUser (Las que estoy participando)
 
 makeBid(Usuario usuario, Puja puja)
-
-createAuction
 
 getBidsByAuction 
 
 getBidsByUser (Solo las del propio usuario)
 
-addArticleAsFavorite(Articulo articulo, Usuario us)
-
-getMyFavoriteArticles (Solo las del propio usuario)
-
-getArticlesByCategory(Category cat)
-
 getArticleOfAnAuction()
 
-getAuctionsByName()
-
 getAuctionsByCategory()
-
-getAllAuctions()*
-
-
-
-
-
-
 
 Es posible eliminar la tabla participaciones ya que con la Puja se sabe si alguien participó. La clase de puja me dice implicitamente la participacion, pero
 habría que eliminar los repetidos.
 
-
-
 Cifrar password
+
+***TERMINADOS(para probar si se necesita)***
+
+getArticleById
+
+getUserById
+
+getCategoryById
+
+createAuction
+
+getAllAuctions()
+
+getOwnAuctionsByUser -> Subastas que yo como usuario creé
+
+addArticleAsFavorite(int user, int article)
+
+getFavoriteArticlesByUser (Solo las del propio usuario)
+
+
 
