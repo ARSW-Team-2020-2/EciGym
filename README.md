@@ -5,8 +5,8 @@
 *   _Angie Daniela Ruiz Alfonso_
 *   _Juan Sebastián Díaz Salamanca_
 ## _Descripción de la aplicación_ 📖
-_SaleIt es una aplicación web realizada como proyecto para la materia **Arquitecturas de Software (ARSW)** de la Escuela Colombiana de Ingeniería Julio Garavito.
-Es una aplicación para realizar subastas. Allí el usuario podrá ofertar artículos y pujar para conseguirlos._
+_SaleIt es una aplicación web realizada como proyecto para la asignatura **Arquitecturas de Software (ARSW)** de la Escuela Colombiana de Ingeniería Julio Garavito.
+Somos una aplicación para realizar subastas de forma online donde podrás ofertar artículos y podrás pujar para conseguir otros._
 ## _Valores agregados y diferenciadores de la aplicación_ 📣
 _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son un factor diferenciador de SaleIt con respecto a la mayoría de páginas de subastas, además de la participación de forma aninima dentro de las subastas al momento de ofrecer una puja._
 ## _Despliegue en Heroku_ 🚀
