@@ -204,4 +204,25 @@ public class SaleItController {
         }
     }
 
+    @GetMapping("/auctions/{auction}/bids")
+    public ResponseEntity<?> getBidsOfAnAuction(@PathVariable int auction) {
+        try {
+            return new ResponseEntity<>(saleItServices.getBidsByAuction(auction), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/auctions/users/{user}") //En las que estoy participando
+    public ResponseEntity<?> getAuctionsOfAUser(@PathVariable int user) {
+        try {
+            return new ResponseEntity<>(saleItServices.getAuctionsOfAnUser(user), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 }

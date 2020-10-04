@@ -1,5 +1,7 @@
 package edu.eci.arsw.saleit.model;
 
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -18,6 +20,9 @@ public class Puja {
 
     @Column(name="fecha")
     private Timestamp fecha;
+
+    @Column(name="subasta")
+    private int subasta;
 
     public Puja(int monto) {
         this.monto = monto;
@@ -50,6 +55,14 @@ public class Puja {
         this.fecha = new Timestamp(new Date().getTime());
     }
 
+    public int getSubasta() {
+        return subasta;
+    }
+
+    public void setSubasta(int subasta) {
+        this.subasta = subasta;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,12 +70,13 @@ public class Puja {
         Puja puja = (Puja) o;
         return id == puja.id &&
                 monto == puja.monto &&
+                subasta == puja.subasta &&
                 Objects.equals(fecha, puja.fecha);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, monto, fecha);
+        return Objects.hash(id, monto, fecha, subasta);
     }
 
     @Override
@@ -71,6 +85,7 @@ public class Puja {
                 "id=" + id +
                 ", monto=" + monto +
                 ", fecha=" + fecha +
+                ", subasta=" + subasta +
                 '}';
     }
 }

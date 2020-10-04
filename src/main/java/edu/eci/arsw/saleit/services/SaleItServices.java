@@ -24,18 +24,22 @@ public interface SaleItServices {
     List<Categoria> getAllCategories() throws SaleItServicesException;
 
     void addCategory(Categoria category) throws SaleItServicesException;
-    
-    Optional<Articulo> getArticleById (int id) throws SaleItServicesException;
-    
-    Usuario getUserById (int id) throws SaleItServicesException;
-    
-    Optional<Categoria> getCategoryById (int id) throws SaleItServicesException;
-    
+
+    Optional<Articulo> getArticleById(int id) throws SaleItServicesException;
+
+    Usuario getUserById(int id) throws SaleItServicesException;
+
+    Optional<Categoria> getCategoryById(int id) throws SaleItServicesException;
+
     List<Subasta> getOwnAuctionsByUser(int id) throws SaleItServicesException;
-    
+
     void addArticleAsFavorite(int user, Articulo article) throws SaleItServicesException;
-    
+
     List<Articulo> getFavoriteArticlesOfAnUser(int userId) throws SaleItServicesException;
 
     void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItServicesException;
+
+    List<Puja> getBidsByAuction(Integer subasta) throws SaleItServicesException;
+
+    List<Subasta> getAuctionsOfAnUser(int user) throws SaleItServicesException;
 }

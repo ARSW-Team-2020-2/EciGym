@@ -47,14 +47,10 @@ public class Usuario {
 
 
     @OneToMany
-    @JoinColumn(name = "emailusuario")
+    @JoinColumn(name = "idusuario")
     private List<Articulo> articulosFavoritos;
 
     //@OneToMany(fetch = FetchType.EAGER)
-
-    @OneToMany
-    @JoinColumn(name = "emailusuario")
-    private List<Participaciones> participaciones;
 
 
     public Usuario(String email, String password, String nombre, String documento, TipoDeDocumento tipoDeDocumento, String telefono) {
@@ -67,7 +63,6 @@ public class Usuario {
         this.listaDePujas = new ArrayList<>();
         this.articulosFavoritos = new ArrayList<>();
         this.subastasCreadas = new ArrayList<>();
-        this.participaciones = new ArrayList<>();
     }
 
     public Usuario() {
@@ -157,13 +152,6 @@ public class Usuario {
         this.subastasCreadas = subastasCreadas;
     }
 
-    public List<Participaciones> getParticipaciones() {
-        return participaciones;
-    }
-
-    public void setParticipaciones(List<Participaciones> participaciones) {
-        this.participaciones = participaciones;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -179,13 +167,12 @@ public class Usuario {
                 Objects.equals(telefono, usuario.telefono) &&
                 Objects.equals(listaDePujas, usuario.listaDePujas) &&
                 Objects.equals(articulosFavoritos, usuario.articulosFavoritos) &&
-                Objects.equals(subastasCreadas, usuario.subastasCreadas) &&
-                Objects.equals(participaciones, usuario.participaciones);
+                Objects.equals(subastasCreadas, usuario.subastasCreadas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, nombre, documento, tipoDeDocumento, telefono, listaDePujas, articulosFavoritos, subastasCreadas, participaciones);
+        return Objects.hash(id, email, password, nombre, documento, tipoDeDocumento, telefono, listaDePujas, articulosFavoritos, subastasCreadas);
     }
 
     @Override
@@ -201,7 +188,6 @@ public class Usuario {
                 ", listaDePujas=" + listaDePujas +
                 ", articulosFavoritos=" + articulosFavoritos +
                 ", subastasCreadas=" + subastasCreadas +
-                ", participaciones=" + participaciones +
                 '}';
     }
 }

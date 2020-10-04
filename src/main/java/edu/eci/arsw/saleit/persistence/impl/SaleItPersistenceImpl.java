@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -34,8 +35,6 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     @Autowired
     private PujaRepo pujaRepo;
 
-    @Autowired
-    private ParticipacionesRepo participacionesRepo;
 
     @Override
     public void addUser(Usuario user) throws SaleItPersistenceException {
@@ -182,6 +181,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         return subasta;
     }
 
+
     @Override
     public void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItPersistenceException {
         Usuario user = getUserById(usuario);
@@ -190,15 +190,43 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             throw new SaleItPersistenceException("Debe ingresar un monto");
         }
         double montoMinimo = subasta1.getArticulo().getPrecioMinimo();
-        if (puja.getMonto() < montoMinimo){
+        if (puja.getMonto() < montoMinimo) {
             throw new SaleItPersistenceException("El monto mínimo a ofertar es de " + montoMinimo);
         }
         puja.setFecha();
+        puja.setSubasta(subasta1.getId());
         user.getListaDePujas().add(puja);
         subasta1.getPujas().add(puja);
         pujaRepo.save(puja);
         userRepo.save(user);
         auctionRepo.save(subasta1);
+    }
+
+    @Override
+    public List<Puja> getBidsByAuction(Integer subasta) throws SaleItPersistenceException {
+        Subasta subasta1 = getAuctionByID(subasta);
+        List<Puja> pujas = subasta1.getPujas();
+        if (pujas.isEmpty()) {
+            throw new SaleItPersistenceException("No hay pujas para esta subasta");
+        }
+        return pujas;
+    }
+
+    @Override
+    public List<Subasta> getAuctionsOfAnUser(int usuario) throws SaleItPersistenceException {
+        Usuario user = getUserById(usuario);
+        List<Puja> listaDePujas = pujaRepo.getBidsOfAnAuction(user.getId());
+        if (listaDePujas.isEmpty()) {
+            throw new SaleItPersistenceException("Este usuario no ha participado en ninguna subasta");
+        }
+        List<Subasta> listaDeSubastas = new ArrayList<>();
+        for (Puja puja : listaDePujas) {
+            Subasta subasta = getAuctionByID(puja.getSubasta());
+            if (!listaDeSubastas.contains(subasta)) {
+                listaDeSubastas.add(subasta);
+            }
+        }
+        return listaDeSubastas;
     }
 
 

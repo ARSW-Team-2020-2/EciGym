@@ -31,10 +31,6 @@ public class Subasta {
     @JoinColumn(name = "subasta")
     private List<Puja> pujas;
 
-    @OneToMany
-    @JoinColumn(name = "idsubasta")
-    private List<Participaciones> participaciones;
-
     @OneToOne
     @JoinColumn(name = "articulo")
     private Articulo articulo;
@@ -45,7 +41,6 @@ public class Subasta {
         this.articulo = articulo;
         this.vendedor = vendedor;
         this.pujas = new ArrayList<>();
-        this.participaciones = new ArrayList<>();
     }
 
     public Subasta() {
@@ -90,14 +85,6 @@ public class Subasta {
         this.pujas = pujas;
     }
 
-    public List<Participaciones> getParticipaciones() {
-        return participaciones;
-    }
-
-    public void setParticipaciones(List<Participaciones> participaciones) {
-        this.participaciones = participaciones;
-    }
-
     public Articulo getArticulo() {
         return articulo;
     }
@@ -116,13 +103,12 @@ public class Subasta {
                 Objects.equals(fechaFin, subasta.fechaFin) &&
                 Objects.equals(vendedor, subasta.vendedor) &&
                 Objects.equals(pujas, subasta.pujas) &&
-                Objects.equals(participaciones, subasta.participaciones) &&
                 Objects.equals(articulo, subasta.articulo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fechaInicio, fechaFin, vendedor, pujas, participaciones, articulo);
+        return Objects.hash(id, fechaInicio, fechaFin, vendedor, pujas, articulo);
     }
 
     @Override
@@ -133,7 +119,6 @@ public class Subasta {
                 ", fechaFin=" + fechaFin +
                 ", fechaFin=" + vendedor +
                 ", pujas=" + pujas +
-                ", participaciones=" + participaciones +
                 ", articulo=" + articulo +
                 '}';
     }

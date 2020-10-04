@@ -1,10 +1,4 @@
-getAuctionsOfAUser (Las que estoy participando)
-
-makeBid(Usuario usuario, Puja puja)
-
-getBidsByAuction 
-
-getBidsByUser (Solo las del propio usuario)
+getBidsOfAnUser (Solo las del propio usuario)
 
 getArticleOfAnAuction()
 
@@ -33,5 +27,9 @@ addArticleAsFavorite(int user, int article)
 
 getFavoriteArticlesByUser (Solo las del propio usuario)
 
+makeBid(Usuario usuario, Puja puja)
 
+getAuctionsOfAUser (Las que estoy participando)
+
+getBidsByAuction 
 

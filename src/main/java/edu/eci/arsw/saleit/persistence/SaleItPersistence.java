@@ -23,22 +23,24 @@ public interface SaleItPersistence {
 
     List<Categoria> getAllCategories() throws SaleItPersistenceException;
 
-    void addCategory (Categoria category) throws SaleItPersistenceException;
-    
-    Optional<Articulo> getArticleById (int id) throws SaleItPersistenceException;
-    
-    Usuario getUserById (int id) throws SaleItPersistenceException;
-    
+    void addCategory(Categoria category) throws SaleItPersistenceException;
+
+    Optional<Articulo> getArticleById(int id) throws SaleItPersistenceException;
+
+    Usuario getUserById(int id) throws SaleItPersistenceException;
+
     Optional<Categoria> getCategoryById(int id) throws SaleItPersistenceException;
-    
+
     List<Subasta> getOwnAuctionsByUser(int id) throws SaleItPersistenceException;
-    
+
     void addArticleAsFavorite(int user, Articulo article) throws SaleItPersistenceException;
-    
+
     List<Articulo> getFavoriteArticlesOfAnUser(int user) throws SaleItPersistenceException;
 
     void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItPersistenceException;
 
     Subasta getAuctionByID(int id) throws SaleItPersistenceException;
 
+    List<Puja> getBidsByAuction(Integer subasta) throws SaleItPersistenceException;
+    List<Subasta> getAuctionsOfAnUser(int user) throws SaleItPersistenceException;
 }

@@ -152,4 +152,22 @@ public class SaleItServicesImpl implements SaleItServices {
             throw new SaleItServicesException(e.getMessage(), e);
         }
     }
+
+    @Override
+    public List<Puja> getBidsByAuction(Integer subasta) throws SaleItServicesException {
+        try {
+            return saleItPersistence.getBidsByAuction(subasta);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public List<Subasta> getAuctionsOfAnUser(int user) throws SaleItServicesException {
+        try {
+            return saleItPersistence.getAuctionsOfAnUser(user);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
 }
