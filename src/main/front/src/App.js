@@ -1,26 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div className="container">
+          <a className="navbar-brand" href="index.html">Saleit <span>Subastas</span></a>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="oi oi-menu"> </span> Menu
+			</button>
+
+          <div className="collapse navbar-collapse" id="ftco-nav">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item active"><a href="inicio" className="nav-link">Inicio</a></li>
+              <li className="nav-item"><a href="acercadenosotros" className="nav-link">Acerca de Nosotros</a></li>
+              <li className="nav-item"><a href="categorias" className="nav-link">Categorías</a></li>
+              <li className="nav-item"><a href="registro" className="nav-link">Regístrate</a></li>
+              <li className="nav-item"><a href="ingreso" className="nav-link">Ingresa</a></li>
+              <li className="nav-item"><a href="informacion" className="nav-link">Información de Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <Home> </Home>
     </div>
   );
 }
 
+function Home() {
+  return (
+
+      <div className="overlay home-background justify-content-center">
+        <div className="row align-items-center">
+          <div className="col-md-12">
+            <div className="text w-100 mt-5 text-center">
+            <div className="heading-section mt-5 mb-4">
+              <span><h2 className="mb-4 color-white">Saleit</h2></span>
+              <h2 className="mb-4 color-white">Tu mejor opción</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  );
+}
 export default App;
+
+
