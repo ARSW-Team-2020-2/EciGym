@@ -24,7 +24,7 @@ public class SaleItController {
 
     //USUARIOS
 
-    //Funciona
+    //Funciona x2
     @GetMapping("/users")
     public ResponseEntity<?> getUsers() {
         try {
@@ -35,7 +35,7 @@ public class SaleItController {
         }
     }
 
-    //Funciona
+    //Funciona x2
     @PostMapping("/users")
     public ResponseEntity<?> addUser(@RequestBody Usuario user) {
         try {
@@ -46,8 +46,8 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
-    
-    //Funciona
+
+    //Funciona x2
     @GetMapping("/users/{id}")
     public ResponseEntity<?> getUserById(@PathVariable int id) {
         try {
@@ -57,21 +57,11 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
-    
-    //Funciona
-    @GetMapping("/users/{id}/fav")
-    public ResponseEntity<?> getFavoriteArticlesByUser(@PathVariable int id) {
-        try {
-            return new ResponseEntity<>(saleItServices.getFavoriteArticlesByUser(id), HttpStatus.ACCEPTED);
-        } catch (SaleItServicesException e) {
-            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
-    }
+
 
     //ARTICULOS
 
-    //Funciona
+    //Funciona* x2
     @GetMapping("/articles")
     public ResponseEntity<?> getArticles() {
         try {
@@ -82,18 +72,18 @@ public class SaleItController {
         }
     }
 
-    //Funciona
-    @PostMapping("/articles")
-    public ResponseEntity<?> addArticle(@RequestBody Articulo article) {
-        try {
-            saleItServices.addArticle(article);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (SaleItServicesException e) {
-            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        }
-    }
-    
+//    //Funciona
+//    @PostMapping("/articles")
+//    public ResponseEntity<?> addArticle(@RequestBody Articulo article) {
+//        try {
+//            saleItServices.addArticle(article);
+//            return new ResponseEntity<>(HttpStatus.CREATED);
+//        } catch (SaleItServicesException e) {
+//            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+//        }
+//    } NO TIENE SENTIDO DEJAR ESTO PORQUE AL CREAR UNA SUBASTA SE CREA UN ARTICULO
+
     //Funciona
     @GetMapping("/articles/{id}")
     public ResponseEntity<?> getArticleById(@PathVariable int id) {
@@ -103,7 +93,7 @@ public class SaleItController {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
-    }   
+    }
 
     //CATEGORIAS
 
@@ -119,7 +109,7 @@ public class SaleItController {
         }
     }
 
-    //Funciona
+    //Funciona x2*
     @PostMapping("/categories")
     public ResponseEntity<?> addCategory(@RequestBody Categoria category) {
         try {
@@ -130,23 +120,23 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
-    
-    //Funciona
+
+    //Funciona x2
     @GetMapping("/categories/{id}")
     @JsonIgnore
-    public ResponseEntity<?> getCategorieById(@PathVariable int id) {
+    public ResponseEntity<?> getCategoryById(@PathVariable int id) {
         try {
             return new ResponseEntity<>(saleItServices.getCategoryById(id), HttpStatus.ACCEPTED);
         } catch (SaleItServicesException e) {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
-    }  
-    
+    }
+
 
     //SUBASTAS
 
-    //Funciona
+    //Funciona x2
     @GetMapping("/auctions")
     public ResponseEntity<?> getAuctions() {
         try {
@@ -157,19 +147,20 @@ public class SaleItController {
         }
     }
 
-    //Funciona
-    @PostMapping("/auctions")
-    public ResponseEntity<?> createAuction(@RequestBody Subasta auction) {
+    //Funciona x2
+    @PostMapping("/users/{id}/auctions")
+    public ResponseEntity<?> createAuction(@RequestBody Subasta auction, @PathVariable Integer id) {
         try {
-            saleItServices.addAuction(auction);
+            saleItServices.addAuction(auction, id);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (SaleItServicesException e) {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
-    
-    //Funciona
+
+
+    //Funciona x2
     @GetMapping("/auctions/{user}")
     public ResponseEntity<?> getOwnAuctionsByUser(@PathVariable int user) {
         try {
@@ -179,10 +170,32 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
-    
-    
+
+    //Funciona x2
+    @PostMapping("/users/{usuario}/fav")
+    public ResponseEntity<?> addArticleAsFavorite(@RequestBody Articulo articulo, @PathVariable int usuario) {
+        try {
+            saleItServices.addArticleAsFavorite(usuario, articulo);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+    }
+
+
+    //Funciona x2
+    @GetMapping("/users/{id}/fav")
+    public ResponseEntity<?> getFavoriteArticlesOfAnUser(@PathVariable int id) {
+        try {
+            return new ResponseEntity<>(saleItServices.getFavoriteArticlesOfAnUser(id), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
     //PUJAS
-    
 
 
 }

@@ -1,5 +1,7 @@
 package edu.eci.arsw.saleit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Categoria {
 
     @OneToMany
     @JoinColumn(name = "categoria")
+    @JsonIgnore
     private List<Articulo> articulos;
 
     public Categoria(String nombre) {

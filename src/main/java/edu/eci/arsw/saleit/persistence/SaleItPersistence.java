@@ -16,7 +16,7 @@ public interface SaleItPersistence {
 
     List<Usuario> getAllUsers() throws SaleItPersistenceException;
 
-    void addAuction(Subasta auction) throws SaleItPersistenceException;
+    void addAuction(Subasta auction, Integer id) throws SaleItPersistenceException;
 
     List<Subasta> getAllAuctions() throws SaleItPersistenceException;
 
@@ -30,15 +30,13 @@ public interface SaleItPersistence {
     
     Optional<Articulo> getArticleById (int id) throws SaleItPersistenceException;
     
-    Optional<Usuario> getUserById (int id) throws SaleItPersistenceException;
-    
-    void createAuction(Subasta auction) throws SaleItPersistenceException;
+    Usuario getUserById (int id) throws SaleItPersistenceException;
     
     Optional<Categoria> getCategoryById(int id) throws SaleItPersistenceException;
     
     List<Subasta> getOwnAuctionsByUser(int id) throws SaleItPersistenceException;
     
-    void addArticleAsFavorite(int user, int article) throws SaleItPersistenceException;
+    void addArticleAsFavorite(int user, Articulo article) throws SaleItPersistenceException;
     
-    List<Articulo> getFavoriteArticlesByUser(int user) throws SaleItPersistenceException;
+    List<Articulo> getFavoriteArticlesOfAnUser(int user) throws SaleItPersistenceException;
 }

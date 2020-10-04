@@ -1,5 +1,7 @@
 package edu.eci.arsw.saleit.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -20,8 +22,10 @@ public class Subasta {
     @Column(name="fechafin")
     private Timestamp fechaFin;
 
-    @Column(name="vendedor")
-    private int vendedor;
+    @ManyToOne
+    @JoinColumn(name="vendedor")
+    @JsonBackReference
+    private Usuario vendedor;
 
     @OneToMany
     @JoinColumn(name = "subasta")
@@ -32,10 +36,10 @@ public class Subasta {
     private List<Participaciones> participaciones;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "articulo")
     private Articulo articulo;
 
-    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, int vendedor, Articulo articulo) {
+    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, Usuario vendedor, Articulo articulo) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.articulo = articulo;
@@ -47,11 +51,11 @@ public class Subasta {
     public Subasta() {
     }
 
-    public int getVendedor() {
+    public Usuario getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(int vendedor) {
+    public void setVendedor(Usuario vendedor) {
         this.vendedor = vendedor;
     }
     public int getId() {

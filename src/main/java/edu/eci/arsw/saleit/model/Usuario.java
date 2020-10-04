@@ -1,5 +1,8 @@
 package edu.eci.arsw.saleit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.*;
 import javax.persistence.*;
 
@@ -15,6 +18,7 @@ public class Usuario {
     private String email;
 
     @Column(name = "password")
+    //@JsonIgnore //Por seguridad no hay que mostrar la contraseña en el JSON
     private String password;
 
     @Column(name = "nombre")
@@ -36,8 +40,9 @@ public class Usuario {
     @JoinColumn(name = "usuario")
     private List<Puja> listaDePujas;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "vendedor")
+    @JsonManagedReference
     private List<Subasta> subastasCreadas;
 
 

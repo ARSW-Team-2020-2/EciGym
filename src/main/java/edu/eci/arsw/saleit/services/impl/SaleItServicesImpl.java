@@ -39,9 +39,9 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public void addAuction(Subasta auction) throws SaleItServicesException {
+    public void addAuction(Subasta auction, Integer id) throws SaleItServicesException {
         try {
-            saleItPersistence.addAuction(auction);
+            saleItPersistence.addAuction(auction, id);
         } catch (SaleItPersistenceException e) {
             throw new SaleItServicesException(e.getMessage(), e);
         }
@@ -102,7 +102,7 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public Optional<Usuario> getUserById(int id) throws SaleItServicesException {
+    public Usuario getUserById(int id) throws SaleItServicesException {
         try {
             return saleItPersistence.getUserById(id);
         } catch (SaleItPersistenceException e) {
@@ -110,14 +110,6 @@ public class SaleItServicesImpl implements SaleItServices {
         }
     }
 
-    @Override
-    public void createAuction(Subasta auction) throws SaleItServicesException {
-        try {
-            saleItPersistence.createAuction(auction);
-        } catch (SaleItPersistenceException e) {
-            throw new SaleItServicesException(e.getMessage(), e);
-        }
-    }
 
     @Override
     public Optional<Categoria> getCategoryById(int id) throws SaleItServicesException {
@@ -138,7 +130,7 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public void addArticleAsFavorite(int user, int article) throws SaleItServicesException {
+    public void addArticleAsFavorite(int user, Articulo article) throws SaleItServicesException {
         try {
             saleItPersistence.addArticleAsFavorite(user, article);
         } catch (SaleItPersistenceException e) {
@@ -147,9 +139,9 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public List<Articulo> getFavoriteArticlesByUser(int user) throws SaleItServicesException {
+    public List<Articulo> getFavoriteArticlesOfAnUser(int user) throws SaleItServicesException {
         try {
-            return saleItPersistence.getFavoriteArticlesByUser(user);
+            return saleItPersistence.getFavoriteArticlesOfAnUser(user);
         } catch (SaleItPersistenceException e) {
             throw new SaleItServicesException(e.getMessage(), e);
         }

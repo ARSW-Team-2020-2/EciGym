@@ -16,7 +16,7 @@ public interface SaleItServices {
 
     List<Usuario> getAllUsers() throws SaleItServicesException;
 
-    void addAuction(Subasta auction) throws SaleItServicesException;
+    void addAuction(Subasta auction, Integer id) throws SaleItServicesException;
 
     List<Subasta> getAllAuctions() throws SaleItServicesException;
 
@@ -30,15 +30,13 @@ public interface SaleItServices {
     
     Optional<Articulo> getArticleById (int id) throws SaleItServicesException;
     
-    Optional<Usuario> getUserById (int id) throws SaleItServicesException;
-    
-    void createAuction(Subasta auction) throws SaleItServicesException;
+    Usuario getUserById (int id) throws SaleItServicesException;
     
     Optional<Categoria> getCategoryById (int id) throws SaleItServicesException;
     
     List<Subasta> getOwnAuctionsByUser(int id) throws SaleItServicesException;
     
-    void addArticleAsFavorite(int user, int article) throws SaleItServicesException;
+    void addArticleAsFavorite(int user, Articulo article) throws SaleItServicesException;
     
-    List<Articulo> getFavoriteArticlesByUser(int userId) throws SaleItServicesException;
+    List<Articulo> getFavoriteArticlesOfAnUser(int userId) throws SaleItServicesException;
 }

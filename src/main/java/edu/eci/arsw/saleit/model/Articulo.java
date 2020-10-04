@@ -1,44 +1,47 @@
 package edu.eci.arsw.saleit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name="articulo")
+@Table(name = "articulo")
 public class Articulo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(name="estadodeuso")
+    @Column(name = "estadodeuso")
     private String estadoDeUso;
 
-    @Column(name="descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
 
-    @Column(name="preciominimo")
+    @Column(name = "preciominimo")
     private double precioMinimo;
 
-    @Column(name="dimensiones")
+    @Column(name = "dimensiones")
     private String dimensiones;
 
-    @Column(name="ubicacion")
+    @Column(name = "ubicacion")
     private String ubicacion;
 
-    @Column(name="imagen")
+    @Column(name = "imagen")
     private String imagen;
 
-    @Column(name="categoria")
+    @Column(name = "categoria")
     private int categoria;
 
     @OneToMany
     @JoinColumn(name = "idarticulo")
+    @JsonIgnore
     private List<Favoritos> articulosFavoritos;
 
 
@@ -52,6 +55,10 @@ public class Articulo {
         this.imagen = imagen;
         this.categoria = categoria;
         this.articulosFavoritos = new ArrayList<>();
+    }
+
+    public Articulo(int id) {
+        this.id = id;
     }
 
     public Articulo() {

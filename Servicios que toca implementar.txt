@@ -8,7 +8,7 @@ getBidsByUser (Solo las del propio usuario)
 
 getArticleOfAnAuction()
 
-getAuctionsByCategory()
+getArticlesByCategory()
 
 Es posible eliminar la tabla participaciones ya que con la Puja se sabe si alguien participó. La clase de puja me dice implicitamente la participacion, pero
 habría que eliminar los repetidos.
