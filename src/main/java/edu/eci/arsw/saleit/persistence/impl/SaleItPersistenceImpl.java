@@ -32,11 +32,14 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     private FavoritosRepo favoritosRepo;
 
     @Autowired
+    private PujaRepo pujaRepo;
+
+    @Autowired
     private ParticipacionesRepo participacionesRepo;
 
     @Override
     public void addUser(Usuario user) throws SaleItPersistenceException {
-        if(user == null){
+        if (user == null) {
             throw new SaleItPersistenceException("El usuario no puede ser nulo.");
         }
         userRepo.save(user);
@@ -166,4 +169,37 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         }
         return myFavoriteArticles;
     }
+
+    @Override
+    public Subasta getAuctionByID(int id) throws SaleItPersistenceException {
+        Subasta subasta = null;
+        if (auctionRepo.existsById(id)) {
+            subasta = auctionRepo.findById(id).get();
+        }
+        if (subasta == null) {
+            throw new SaleItPersistenceException("La subasta con ese ID no existe");
+        }
+        return subasta;
+    }
+
+    @Override
+    public void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItPersistenceException {
+        Usuario user = getUserById(usuario);
+        Subasta subasta1 = getAuctionByID(subasta);
+        if (puja == null) {
+            throw new SaleItPersistenceException("Debe ingresar un monto");
+        }
+        double montoMinimo = subasta1.getArticulo().getPrecioMinimo();
+        if (puja.getMonto() < montoMinimo){
+            throw new SaleItPersistenceException("El monto mínimo a ofertar es de " + montoMinimo);
+        }
+        puja.setFecha();
+        user.getListaDePujas().add(puja);
+        subasta1.getPujas().add(puja);
+        pujaRepo.save(puja);
+        userRepo.save(user);
+        auctionRepo.save(subasta1);
+    }
+
+
 }

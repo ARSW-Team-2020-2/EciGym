@@ -1,10 +1,7 @@
 package edu.eci.arsw.saleit.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import edu.eci.arsw.saleit.model.Articulo;
-import edu.eci.arsw.saleit.model.Categoria;
-import edu.eci.arsw.saleit.model.Subasta;
-import edu.eci.arsw.saleit.model.Usuario;
+import edu.eci.arsw.saleit.model.*;
 import edu.eci.arsw.saleit.services.SaleItServicesException;
 import edu.eci.arsw.saleit.services.SaleItServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,7 +158,7 @@ public class SaleItController {
 
 
     //Funciona x2
-    @GetMapping("/auctions/{user}")
+    @GetMapping("/users/{user}/auctions")
     public ResponseEntity<?> getOwnAuctionsByUser(@PathVariable int user) {
         try {
             return new ResponseEntity<>(saleItServices.getOwnAuctionsByUser(user), HttpStatus.ACCEPTED);
@@ -196,6 +193,15 @@ public class SaleItController {
     }
 
     //PUJAS
-
+    @PostMapping("/users/{usuario}/{subasta}")
+    public ResponseEntity<?> makeABid(@RequestBody Puja puja, @PathVariable Integer usuario, @PathVariable Integer subasta) {
+        try {
+            saleItServices.makeABid(puja, usuario, subasta);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+    }
 
 }

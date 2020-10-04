@@ -1,9 +1,6 @@
 package edu.eci.arsw.saleit.services;
 
-import edu.eci.arsw.saleit.model.Articulo;
-import edu.eci.arsw.saleit.model.Categoria;
-import edu.eci.arsw.saleit.model.Subasta;
-import edu.eci.arsw.saleit.model.Usuario;
+import edu.eci.arsw.saleit.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,4 +36,6 @@ public interface SaleItServices {
     void addArticleAsFavorite(int user, Articulo article) throws SaleItServicesException;
     
     List<Articulo> getFavoriteArticlesOfAnUser(int userId) throws SaleItServicesException;
+
+    void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItServicesException;
 }

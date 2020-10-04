@@ -1,9 +1,6 @@
 package edu.eci.arsw.saleit.persistence;
 
-import edu.eci.arsw.saleit.model.Articulo;
-import edu.eci.arsw.saleit.model.Categoria;
-import edu.eci.arsw.saleit.model.Subasta;
-import edu.eci.arsw.saleit.model.Usuario;
+import edu.eci.arsw.saleit.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,4 +36,9 @@ public interface SaleItPersistence {
     void addArticleAsFavorite(int user, Articulo article) throws SaleItPersistenceException;
     
     List<Articulo> getFavoriteArticlesOfAnUser(int user) throws SaleItPersistenceException;
+
+    void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItPersistenceException;
+
+    Subasta getAuctionByID(int id) throws SaleItPersistenceException;
+
 }

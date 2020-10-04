@@ -2,6 +2,7 @@ package edu.eci.arsw.saleit.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -18,9 +19,8 @@ public class Puja {
     @Column(name="fecha")
     private Timestamp fecha;
 
-    public Puja(int monto, Timestamp fecha) {
+    public Puja(int monto) {
         this.monto = monto;
-        this.fecha = fecha;
     }
 
     public Puja() {
@@ -46,8 +46,8 @@ public class Puja {
         return fecha;
     }
 
-    public void setFecha(Timestamp fecha) {
-        this.fecha = fecha;
+    public void setFecha() {
+        this.fecha = new Timestamp(new Date().getTime());
     }
 
     @Override

@@ -1,9 +1,6 @@
 package edu.eci.arsw.saleit.services.impl;
 
-import edu.eci.arsw.saleit.model.Articulo;
-import edu.eci.arsw.saleit.model.Categoria;
-import edu.eci.arsw.saleit.model.Subasta;
-import edu.eci.arsw.saleit.model.Usuario;
+import edu.eci.arsw.saleit.model.*;
 import edu.eci.arsw.saleit.persistence.SaleItPersistence;
 import edu.eci.arsw.saleit.persistence.SaleItPersistenceException;
 import edu.eci.arsw.saleit.services.SaleItServicesException;
@@ -142,6 +139,15 @@ public class SaleItServicesImpl implements SaleItServices {
     public List<Articulo> getFavoriteArticlesOfAnUser(int user) throws SaleItServicesException {
         try {
             return saleItPersistence.getFavoriteArticlesOfAnUser(user);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItServicesException {
+        try {
+            saleItPersistence.makeABid(puja, usuario, subasta);
         } catch (SaleItPersistenceException e) {
             throw new SaleItServicesException(e.getMessage(), e);
         }
