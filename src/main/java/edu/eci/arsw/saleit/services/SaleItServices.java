@@ -4,15 +4,36 @@ import edu.eci.arsw.saleit.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public interface SaleItServices {
 
+    /**
+     * Registra un usuario en la DB
+     *
+     * @param user Usuario que se ingresa
+     * @throws SaleItServicesException
+     */
     void addUser(Usuario user) throws SaleItServicesException;
 
+
+    /**
+     * Trae todos los usuarios registrados
+     *
+     * @return
+     * @throws SaleItServicesException
+     */
     List<Usuario> getAllUsers() throws SaleItServicesException;
 
+
+    /**
+     * El usuario crea una subasta
+     *
+     * @param auction
+     * @param id
+     * @throws SaleItServicesException
+     */
     void addAuction(Subasta auction, Integer id) throws SaleItServicesException;
 
     List<Subasta> getAllAuctions() throws SaleItServicesException;
@@ -25,21 +46,27 @@ public interface SaleItServices {
 
     void addCategory(Categoria category) throws SaleItServicesException;
 
-    Optional<Articulo> getArticleById(int id) throws SaleItServicesException;
+    Articulo getArticleById(int id) throws SaleItServicesException;
 
     Usuario getUserById(int id) throws SaleItServicesException;
 
-    Optional<Categoria> getCategoryById(int id) throws SaleItServicesException;
+    Categoria getCategoryById(int id) throws SaleItServicesException;
 
-    List<Subasta> getOwnAuctionsByUser(int id) throws SaleItServicesException;
+    List<Subasta> getOwnAuctionsOfAnUser(int id) throws SaleItServicesException;
 
     void addArticleAsFavorite(int user, Articulo article) throws SaleItServicesException;
 
     List<Articulo> getFavoriteArticlesOfAnUser(int userId) throws SaleItServicesException;
 
-    void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItServicesException;
+    void makeABid(Puja puja, int usuario, int subasta) throws SaleItServicesException;
 
-    List<Puja> getBidsByAuction(Integer subasta) throws SaleItServicesException;
+    List<Puja> getBidsOfAnAuction(int subasta) throws SaleItServicesException;
 
     List<Subasta> getAuctionsOfAnUser(int user) throws SaleItServicesException;
+
+    List<Puja> getBidsOfAnUser(int user) throws SaleItServicesException;
+
+    Articulo getArticleOfAnAuction(int auction) throws SaleItServicesException;
+
+    List<Articulo> getArticlesByCategory(int category) throws SaleItServicesException;
 }

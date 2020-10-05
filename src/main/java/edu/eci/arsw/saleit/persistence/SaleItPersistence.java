@@ -4,7 +4,6 @@ import edu.eci.arsw.saleit.model.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface SaleItPersistence {
@@ -25,22 +24,29 @@ public interface SaleItPersistence {
 
     void addCategory(Categoria category) throws SaleItPersistenceException;
 
-    Optional<Articulo> getArticleById(int id) throws SaleItPersistenceException;
+    Articulo getArticleById(int id) throws SaleItPersistenceException;
 
     Usuario getUserById(int id) throws SaleItPersistenceException;
 
-    Optional<Categoria> getCategoryById(int id) throws SaleItPersistenceException;
+    Categoria getCategoryById(int id) throws SaleItPersistenceException;
 
-    List<Subasta> getOwnAuctionsByUser(int id) throws SaleItPersistenceException;
+    List<Subasta> getOwnAuctionsOfAnUser(int id) throws SaleItPersistenceException;
 
     void addArticleAsFavorite(int user, Articulo article) throws SaleItPersistenceException;
 
     List<Articulo> getFavoriteArticlesOfAnUser(int user) throws SaleItPersistenceException;
 
-    void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItPersistenceException;
+    void makeABid(Puja puja, int usuario, int subasta) throws SaleItPersistenceException;
 
     Subasta getAuctionByID(int id) throws SaleItPersistenceException;
 
-    List<Puja> getBidsByAuction(Integer subasta) throws SaleItPersistenceException;
+    List<Puja> getBidsByAuction(int subasta) throws SaleItPersistenceException;
+
     List<Subasta> getAuctionsOfAnUser(int user) throws SaleItPersistenceException;
+
+    List<Puja> getBidsOfAnUser(int user) throws SaleItPersistenceException;
+
+    Articulo getArticleOfAnAuction(int auction) throws SaleItPersistenceException;
+
+    List<Articulo> getArticlesByCategory(int category) throws SaleItPersistenceException;
 }

@@ -146,7 +146,7 @@ public class SaleItController {
 
     //Funciona x2
     @PostMapping("/users/{id}/auctions")
-    public ResponseEntity<?> createAuction(@RequestBody Subasta auction, @PathVariable Integer id) {
+    public ResponseEntity<?> createAuction(@RequestBody Subasta auction, @PathVariable int id) {
         try {
             saleItServices.addAuction(auction, id);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -159,9 +159,9 @@ public class SaleItController {
 
     //Funciona x2
     @GetMapping("/users/{user}/auctions")
-    public ResponseEntity<?> getOwnAuctionsByUser(@PathVariable int user) {
+    public ResponseEntity<?> getOwnAuctionsOfAnUser(@PathVariable int user) {
         try {
-            return new ResponseEntity<>(saleItServices.getOwnAuctionsByUser(user), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(saleItServices.getOwnAuctionsOfAnUser(user), HttpStatus.ACCEPTED);
         } catch (SaleItServicesException e) {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
@@ -194,7 +194,7 @@ public class SaleItController {
 
     //PUJAS
     @PostMapping("/users/{usuario}/{subasta}")
-    public ResponseEntity<?> makeABid(@RequestBody Puja puja, @PathVariable Integer usuario, @PathVariable Integer subasta) {
+    public ResponseEntity<?> makeABid(@RequestBody Puja puja, @PathVariable int usuario, @PathVariable int subasta) {
         try {
             saleItServices.makeABid(puja, usuario, subasta);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -207,7 +207,7 @@ public class SaleItController {
     @GetMapping("/auctions/{auction}/bids")
     public ResponseEntity<?> getBidsOfAnAuction(@PathVariable int auction) {
         try {
-            return new ResponseEntity<>(saleItServices.getBidsByAuction(auction), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(saleItServices.getBidsOfAnAuction(auction), HttpStatus.ACCEPTED);
         } catch (SaleItServicesException e) {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
@@ -218,6 +218,36 @@ public class SaleItController {
     public ResponseEntity<?> getAuctionsOfAUser(@PathVariable int user) {
         try {
             return new ResponseEntity<>(saleItServices.getAuctionsOfAnUser(user), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/users/{user}/bids")
+    public ResponseEntity<?> getBidsOfAnUser(@PathVariable int user) {
+        try {
+            return new ResponseEntity<>(saleItServices.getBidsOfAnUser(user), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/auctions/{auction}/articles")
+    public ResponseEntity<?> getArticleOfAnAuction(@PathVariable int auction) {
+        try {
+            return new ResponseEntity<>(saleItServices.getArticleOfAnAuction(auction), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/categories/{category}/articles")
+    public ResponseEntity<?> getArticlesByCategory(@PathVariable int category) {
+        try {
+            return new ResponseEntity<>(saleItServices.getArticlesByCategory(category), HttpStatus.ACCEPTED);
         } catch (SaleItServicesException e) {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

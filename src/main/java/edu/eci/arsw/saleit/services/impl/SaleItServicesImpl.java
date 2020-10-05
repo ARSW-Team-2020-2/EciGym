@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class SaleItServicesImpl implements SaleItServices {
@@ -90,7 +90,7 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public Optional<Articulo> getArticleById(int id) throws SaleItServicesException {
+    public Articulo getArticleById(int id) throws SaleItServicesException {
         try {
             return saleItPersistence.getArticleById(id);
         } catch (SaleItPersistenceException e) {
@@ -109,7 +109,7 @@ public class SaleItServicesImpl implements SaleItServices {
 
 
     @Override
-    public Optional<Categoria> getCategoryById(int id) throws SaleItServicesException {
+    public Categoria getCategoryById(int id) throws SaleItServicesException {
         try {
             return saleItPersistence.getCategoryById(id);
         } catch (SaleItPersistenceException e) {
@@ -118,9 +118,9 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public List<Subasta> getOwnAuctionsByUser(int id) throws SaleItServicesException {
+    public List<Subasta> getOwnAuctionsOfAnUser(int id) throws SaleItServicesException {
         try {
-            return saleItPersistence.getOwnAuctionsByUser(id);
+            return saleItPersistence.getOwnAuctionsOfAnUser(id);
         } catch (SaleItPersistenceException e) {
             throw new SaleItServicesException(e.getMessage(), e);
         }
@@ -145,7 +145,7 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItServicesException {
+    public void makeABid(Puja puja, int usuario, int subasta) throws SaleItServicesException {
         try {
             saleItPersistence.makeABid(puja, usuario, subasta);
         } catch (SaleItPersistenceException e) {
@@ -154,7 +154,7 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public List<Puja> getBidsByAuction(Integer subasta) throws SaleItServicesException {
+    public List<Puja> getBidsOfAnAuction(int subasta) throws SaleItServicesException {
         try {
             return saleItPersistence.getBidsByAuction(subasta);
         } catch (SaleItPersistenceException e) {
@@ -166,6 +166,33 @@ public class SaleItServicesImpl implements SaleItServices {
     public List<Subasta> getAuctionsOfAnUser(int user) throws SaleItServicesException {
         try {
             return saleItPersistence.getAuctionsOfAnUser(user);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public List<Puja> getBidsOfAnUser(int user) throws SaleItServicesException {
+        try {
+            return saleItPersistence.getBidsOfAnUser(user);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public Articulo getArticleOfAnAuction(int auction) throws SaleItServicesException {
+        try {
+            return saleItPersistence.getArticleOfAnAuction(auction);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public List<Articulo> getArticlesByCategory(int category) throws SaleItServicesException {
+        try {
+            return saleItPersistence.getArticlesByCategory(category);
         } catch (SaleItPersistenceException e) {
             throw new SaleItServicesException(e.getMessage(), e);
         }

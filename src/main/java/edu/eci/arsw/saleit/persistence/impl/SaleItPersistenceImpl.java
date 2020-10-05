@@ -5,14 +5,12 @@ import edu.eci.arsw.saleit.persistence.SaleItPersistence;
 import edu.eci.arsw.saleit.persistence.SaleItPersistenceException;
 import edu.eci.arsw.saleit.persistence.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SaleItPersistenceImpl implements SaleItPersistence {
@@ -81,10 +79,6 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         return auctionRepo.findAll();
     }
 
-//    public static final String VAR = "select id,nombre from articulo;";
-//    @Query(value = VAR, nativeQuery = true)
-
-
     @Override
     public List<Articulo> getAllArticles() throws SaleItPersistenceException {
         if (articleRepo.count() == 0) {
@@ -112,8 +106,8 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     }
 
     @Override
-    public Optional<Articulo> getArticleById(int id) throws SaleItPersistenceException {
-        return articleRepo.findById(id);
+    public Articulo getArticleById(int id) throws SaleItPersistenceException {
+        return articleRepo.findById(id).get();
     }
 
     @Override
@@ -129,12 +123,19 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     }
 
     @Override
-    public Optional<Categoria> getCategoryById(int id) throws SaleItPersistenceException {
-        return categoryRepo.findById(id);
+    public Categoria getCategoryById(int id) throws SaleItPersistenceException {
+        Categoria categoria = null;
+        if (categoryRepo.existsById(id)) {
+            categoria = categoryRepo.findById(id).get();
+        }
+        if (categoria == null) {
+            throw new SaleItPersistenceException("La categoría con ese ID no existe");
+        }
+        return categoria;
     }
 
     @Override
-    public List<Subasta> getOwnAuctionsByUser(int id) throws SaleItPersistenceException {
+    public List<Subasta> getOwnAuctionsOfAnUser(int id) throws SaleItPersistenceException {
         Usuario user = getUserById(id);
         List<Subasta> myAuctions = user.getSubastasCreadas();
         if (myAuctions.isEmpty()) {
@@ -183,7 +184,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
 
 
     @Override
-    public void makeABid(Puja puja, Integer usuario, Integer subasta) throws SaleItPersistenceException {
+    public void makeABid(Puja puja, int usuario, int subasta) throws SaleItPersistenceException {
         Usuario user = getUserById(usuario);
         Subasta subasta1 = getAuctionByID(subasta);
         if (puja == null) {
@@ -203,7 +204,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     }
 
     @Override
-    public List<Puja> getBidsByAuction(Integer subasta) throws SaleItPersistenceException {
+    public List<Puja> getBidsByAuction(int subasta) throws SaleItPersistenceException {
         Subasta subasta1 = getAuctionByID(subasta);
         List<Puja> pujas = subasta1.getPujas();
         if (pujas.isEmpty()) {
@@ -227,6 +228,32 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             }
         }
         return listaDeSubastas;
+    }
+
+    @Override
+    public List<Puja> getBidsOfAnUser(int user) throws SaleItPersistenceException {
+        Usuario usuario = getUserById(user);
+        List<Puja> pujas = usuario.getListaDePujas();
+        if (pujas.isEmpty()) {
+            throw new SaleItPersistenceException("Este usuario no hay realizado ninguna puja");
+        }
+        return pujas;
+    }
+
+    @Override
+    public Articulo getArticleOfAnAuction(int auction) throws SaleItPersistenceException {
+        Articulo articulo;
+        Subasta subasta = getAuctionByID(auction);
+        articulo = subasta.getArticulo();
+        return articulo;
+    }
+
+    @Override
+    public List<Articulo> getArticlesByCategory(int category) throws SaleItPersistenceException {
+        List<Articulo> articulos;
+        Categoria categoria = getCategoryById(category);
+        articulos = categoria.getArticulos();
+        return articulos;
     }
 
 
