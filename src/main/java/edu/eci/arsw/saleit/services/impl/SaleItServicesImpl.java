@@ -7,6 +7,7 @@ import edu.eci.arsw.saleit.services.SaleItServicesException;
 import edu.eci.arsw.saleit.services.SaleItServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -98,6 +99,7 @@ public class SaleItServicesImpl implements SaleItServices {
         }
     }
 
+    @Transactional
     @Override
     public Usuario getUserById(int id) throws SaleItServicesException {
         try {
@@ -175,6 +177,15 @@ public class SaleItServicesImpl implements SaleItServices {
     public List<Puja> getBidsOfAnUser(int user) throws SaleItServicesException {
         try {
             return saleItPersistence.getBidsOfAnUser(user);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public Subasta getAuctionByID(int id) throws SaleItServicesException {
+        try {
+            return saleItPersistence.getAuctionByID(id);
         } catch (SaleItPersistenceException e) {
             throw new SaleItServicesException(e.getMessage(), e);
         }

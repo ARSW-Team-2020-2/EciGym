@@ -66,6 +66,8 @@ public interface SaleItServices {
 
     List<Puja> getBidsOfAnUser(int user) throws SaleItServicesException;
 
+    Subasta getAuctionByID(int id) throws SaleItServicesException;
+
     Articulo getArticleOfAnAuction(int auction) throws SaleItServicesException;
 
     List<Articulo> getArticlesByCategory(int category) throws SaleItServicesException;

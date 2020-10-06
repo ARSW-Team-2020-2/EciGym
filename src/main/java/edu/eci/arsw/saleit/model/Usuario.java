@@ -36,7 +36,7 @@ public class Usuario {
 
 
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario")
     private List<Puja> listaDePujas;
 
@@ -50,7 +50,7 @@ public class Usuario {
     @JoinColumn(name = "idusuario")
     private List<Articulo> articulosFavoritos;
 
-    //@OneToMany(fetch = FetchType.EAGER)
+
 
 
     public Usuario(String email, String password, String nombre, String documento, TipoDeDocumento tipoDeDocumento, String telefono) {

@@ -7,6 +7,7 @@ import edu.eci.arsw.saleit.persistence.repo.*;
 import edu.eci.arsw.saleit.services.SaleItServicesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -118,6 +119,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         return articulo;
     }
 
+    @Transactional
     @Override
     public Usuario getUserById(int id) throws SaleItPersistenceException {
         Usuario usuario = null;
