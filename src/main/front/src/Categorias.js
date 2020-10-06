@@ -2,7 +2,7 @@ import React from 'react';
 
 function Categorias() {
     return (
-        <div>
+        <section id="categorias">
             <div className="heading-section mt-5 mb-4">
                 <div className="pl-lg-3 ml-md-5">
                     <span className="subheading">Nuestras</span>
@@ -12,7 +12,7 @@ function Categorias() {
             <div className="col-sm-12 wrap-about py-5">
                 <div className="row pb-5 pb-md-0">
                     <div className="col-md-12 col-lg-12">
-                        <div className="pl-lg-3 ml-md-6">
+                        <div className="pl-lg-4 ml-md-5">
                         </div>
                         <div className="row">
                             <div className="img">
@@ -111,7 +111,7 @@ function Categorias() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
     );
 }

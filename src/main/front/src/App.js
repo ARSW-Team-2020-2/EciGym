@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   return (
-    <div>
+    <div id="inicio" >
       <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div className="container">
           <a className="navbar-brand" href="index.html">Saleit <span>Subastas</span></a>
@@ -12,12 +12,11 @@ function App() {
 
           <div className="collapse navbar-collapse" id="ftco-nav">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active"><a href="inicio" className="nav-link">Inicio</a></li>
-              <li className="nav-item"><a href="acercadenosotros" className="nav-link">Acerca de Nosotros</a></li>
-              <li className="nav-item"><a href="categorias" className="nav-link">Categorías</a></li>
-              <li className="nav-item"><a href="registro" className="nav-link">Regístrate</a></li>
-              <li className="nav-item"><a href="ingreso" className="nav-link">Ingresa</a></li>
-              <li className="nav-item"><a href="informacion" className="nav-link">Información de Contacto</a></li>
+              <li className="nav-item"><a href="#inicio" className="nav-link">Inicio</a></li>
+              <li className="nav-item"><a href="#acerca" className="nav-link">Acerca de Nosotros</a></li>
+              <li className="nav-item"><a href="#categorias" className="nav-link">Categorías</a></li>
+              <li className="nav-item"><a href="#autenticacion" className="nav-link">Ingreso/Registro</a></li>
+              <li className="nav-item"><a href="#informacion" className="nav-link">Información de Contacto</a></li>
             </ul>
           </div>
         </div>

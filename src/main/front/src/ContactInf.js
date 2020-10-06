@@ -4,7 +4,7 @@ function ContactInf() {
 
     return (
             
-            <div className="container">
+            <div id="informacion" className="container">
                 <div className="row d-flex contact-info">
                     <div className="w-100"> </div>
                     <div className="col-md-6 d-flex">
