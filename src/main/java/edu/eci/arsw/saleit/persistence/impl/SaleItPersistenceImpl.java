@@ -108,7 +108,14 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
 
     @Override
     public Articulo getArticleById(int id) throws SaleItPersistenceException {
-        return articleRepo.findById(id).get();
+        Articulo articulo = null;
+        if (articleRepo.existsById(id)) {
+            articulo = articleRepo.findById(id).get();
+        }
+        if (articulo == null) {
+            throw new SaleItPersistenceException("El articulo con ese ID no existe");
+        }
+        return articulo;
     }
 
     @Override
