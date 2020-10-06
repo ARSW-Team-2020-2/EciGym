@@ -1,12 +1,4 @@
-Actualizar diagrama de componentes.
-
+Actualizar diagrama de componentes, sub-dividirlo más.
 Corregir el diagrama de despliegue. 
-
-Separar los casos de uso. Un diagrama para los más importantes, y otro para los de menos importancia.
-
-Pruebas de integración VS Pruebas unitarias.
-
-
-Planeación de las sub-tareas en el Taiga.
 
 
