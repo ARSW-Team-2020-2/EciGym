@@ -1,5 +1,7 @@
 package edu.eci.arsw.saleit.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;

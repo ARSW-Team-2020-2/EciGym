@@ -1,6 +1,7 @@
 package edu.eci.arsw.saleit.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -9,23 +10,23 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name="subasta")
+@Table(name = "subasta")
 public class Subasta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name="fechainicio")
+    @Column(name = "fechainicio")
     private Timestamp fechaInicio;
 
-    @Column(name="fechafin")
+    @Column(name = "fechafin")
     private Timestamp fechaFin;
 
-    @ManyToOne
-    @JoinColumn(name="vendedor")
+
+    @Column(name = "vendedor")
     @JsonBackReference
-    private Usuario vendedor;
+    private int vendedor;
 
     @OneToMany
     @JoinColumn(name = "subasta")
@@ -35,7 +36,7 @@ public class Subasta {
     @JoinColumn(name = "articulo")
     private Articulo articulo;
 
-    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, Usuario vendedor, Articulo articulo) {
+    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, int vendedor, Articulo articulo) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.articulo = articulo;
@@ -46,13 +47,30 @@ public class Subasta {
     public Subasta() {
     }
 
-    public Usuario getVendedor() {
+
+    public void updateArticle(Articulo art) throws SaleItException {
+        if ((articulo.getId() != art.getId()) || (articulo.getArticulosFavoritos() != art.getArticulosFavoritos() && art.getArticulosFavoritos() != null)) {
+            throw new SaleItException("No se puede modificar el ID ni la lista de favoritos");
+
+        }
+        articulo.setNombre(art.getNombre());
+        articulo.setEstadoDeUso(art.getEstadoDeUso());
+        articulo.setPrecioMinimo(art.getPrecioMinimo());
+        articulo.setDimensiones(art.getDimensiones());
+        articulo.setUbicacion(art.getUbicacion());
+        articulo.setDescripcion(art.getDescripcion());
+        articulo.setImagen(art.getImagen());
+        articulo.setCategoria(art.getCategoria());
+    }
+
+    public int getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(Usuario vendedor) {
+    public void setVendedor(int vendedor) {
         this.vendedor = vendedor;
     }
+
     public int getId() {
         return id;
     }
@@ -122,4 +140,6 @@ public class Subasta {
                 ", articulo=" + articulo +
                 '}';
     }
+
+
 }

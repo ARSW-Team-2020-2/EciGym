@@ -21,7 +21,6 @@ public class SaleItController {
 
     //USUARIOS
 
-    //Funciona x2
     @GetMapping("/users")
     public ResponseEntity<?> getUsers() {
         try {
@@ -32,7 +31,7 @@ public class SaleItController {
         }
     }
 
-    //Funciona x2
+
     @PostMapping("/users")
     public ResponseEntity<?> addUser(@RequestBody Usuario user) {
         try {
@@ -135,7 +134,7 @@ public class SaleItController {
 
     //Funciona x2
     @GetMapping("/auctions")
-    public ResponseEntity<?> getAuctions() {
+    public ResponseEntity<?> getAllAuctions() {
         try {
             return new ResponseEntity<>(saleItServices.getAllAuctions(), HttpStatus.ACCEPTED);
         } catch (SaleItServicesException e) {
@@ -153,6 +152,21 @@ public class SaleItController {
         } catch (SaleItServicesException e) {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+    }
+
+    @PutMapping("/users/{id}/auctions")
+    public ResponseEntity<?> modifySubasta(@RequestBody Subasta auction, @PathVariable int id) {
+        try {
+            saleItServices.modifyAuction(auction, id);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (SaleItServicesException ex) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, null, ex);
+            if (ex.getMessage().equals("La subasta con ese ID no existe")) {
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+            }
         }
     }
 

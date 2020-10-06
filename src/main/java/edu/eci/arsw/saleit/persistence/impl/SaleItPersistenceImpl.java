@@ -4,6 +4,7 @@ import edu.eci.arsw.saleit.model.*;
 import edu.eci.arsw.saleit.persistence.SaleItPersistence;
 import edu.eci.arsw.saleit.persistence.SaleItPersistenceException;
 import edu.eci.arsw.saleit.persistence.repo.*;
+import edu.eci.arsw.saleit.services.SaleItServicesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,7 +67,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             throw new SaleItPersistenceException("Una subasta no puede iniciar después de su fecha de finalización");
         }
         usuario.getSubastasCreadas().add(auction);
-        auction.setVendedor(usuario);
+        auction.setVendedor(usuario.getId());
         articleRepo.save(auction.getArticulo());
         userRepo.save(usuario);
     }
@@ -254,6 +255,36 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         Categoria categoria = getCategoryById(category);
         articulos = categoria.getArticulos();
         return articulos;
+    }
+
+    @Override
+    public void modifyAuction(Subasta auction, int id) throws SaleItPersistenceException {
+        if (auction == null) {
+            throw new SaleItPersistenceException("La subasta no puede ser nula");
+        }
+        Articulo articulo = auction.getArticulo();
+        if (articulo == null) {
+            throw new SaleItPersistenceException("El artículo de la subasta no puede ser nulo");
+        }
+        getUserById(id);
+        Subasta subasta = getAuctionByID(auction.getId());
+        if (id != subasta.getVendedor()) {
+            throw new SaleItPersistenceException("Solo el vendedor de la subasta puede modificarla");
+        }
+
+        getCategoryById(articulo.getCategoria());
+        if (!subasta.getFechaInicio().equals(auction.getFechaInicio())) {
+            throw new SaleItPersistenceException("La fecha de inicio no se puede modificar! Solamente se puede cambiar la fecha de finalización");
+        }
+        try {
+            subasta.updateArticle(articulo);
+
+        } catch (SaleItException e) {
+            throw new SaleItPersistenceException(e.getMessage(), e);
+        }
+        subasta.setFechaFin(auction.getFechaFin());
+        articleRepo.save(subasta.getArticulo());
+        auctionRepo.save(subasta);
     }
 
 

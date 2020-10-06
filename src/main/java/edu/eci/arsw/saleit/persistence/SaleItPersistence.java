@@ -49,4 +49,6 @@ public interface SaleItPersistence {
     Articulo getArticleOfAnAuction(int auction) throws SaleItPersistenceException;
 
     List<Articulo> getArticlesByCategory(int category) throws SaleItPersistenceException;
+
+    void modifyAuction(Subasta auction, int id) throws SaleItPersistenceException;
 }

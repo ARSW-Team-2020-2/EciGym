@@ -69,4 +69,6 @@ public interface SaleItServices {
     Articulo getArticleOfAnAuction(int auction) throws SaleItServicesException;
 
     List<Articulo> getArticlesByCategory(int category) throws SaleItServicesException;
+
+    void modifyAuction(Subasta auction, int id) throws SaleItServicesException;
 }

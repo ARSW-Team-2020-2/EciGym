@@ -160,14 +160,10 @@ public class Usuario {
         Usuario usuario = (Usuario) o;
         return id == usuario.id &&
                 Objects.equals(email, usuario.email) &&
-                Objects.equals(password, usuario.password) &&
                 Objects.equals(nombre, usuario.nombre) &&
                 Objects.equals(documento, usuario.documento) &&
                 tipoDeDocumento == usuario.tipoDeDocumento &&
-                Objects.equals(telefono, usuario.telefono) &&
-                Objects.equals(listaDePujas, usuario.listaDePujas) &&
-                Objects.equals(articulosFavoritos, usuario.articulosFavoritos) &&
-                Objects.equals(subastasCreadas, usuario.subastasCreadas);
+                Objects.equals(telefono, usuario.telefono);
     }
 
     @Override

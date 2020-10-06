@@ -128,7 +128,7 @@ public class Articulo {
         this.imagen = imagen;
     }
 
-    public long getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
