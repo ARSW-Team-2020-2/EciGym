@@ -33,7 +33,7 @@ public class SaleItController {
     }
 
 
-    @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/users")
     public ResponseEntity<?> addUser(@RequestBody Usuario user) {
         try {
             saleItServices.addUser(user);
@@ -146,7 +146,7 @@ public class SaleItController {
     }
 
     @PutMapping("/users/{id}/auctions")
-    public ResponseEntity<?> modifySubasta(@RequestBody Subasta auction, @PathVariable int id) {
+    public ResponseEntity<?> modifyAuction(@RequestBody Subasta auction, @PathVariable int id) {
         try {
             saleItServices.modifyAuction(auction, id);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -157,6 +157,22 @@ public class SaleItController {
             } else {
                 return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
             }
+        }
+    }
+
+    @DeleteMapping("/users/{id}/auctions/{auction}")
+    public ResponseEntity<?> deleteAuction(@PathVariable int auction, @PathVariable int id) {
+        try {
+            saleItServices.deleteAuction(auction, id);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException ex) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, null, ex);
+            if (ex.getMessage().equals("Solo el vendedor de la subasta puede eliminarla")) {
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+            } else {
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+            }
+
         }
     }
 

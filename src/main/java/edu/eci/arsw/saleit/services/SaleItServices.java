@@ -73,4 +73,6 @@ public interface SaleItServices {
     List<Articulo> getArticlesByCategory(int category) throws SaleItServicesException;
 
     void modifyAuction(Subasta auction, int id) throws SaleItServicesException;
+
+    void deleteAuction(int auction, int id) throws SaleItServicesException;
 }

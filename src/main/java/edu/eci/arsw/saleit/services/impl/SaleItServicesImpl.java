@@ -217,4 +217,13 @@ public class SaleItServicesImpl implements SaleItServices {
             throw new SaleItServicesException(e.getMessage(), e);
         }
     }
+
+    @Override
+    public void deleteAuction(int auction, int id) throws SaleItServicesException {
+        try {
+            saleItPersistence.deleteAuction(auction, id);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
 }
