@@ -10,7 +10,6 @@ import Categorias from './Categorias';
 
 ReactDOM.render(
   <React.StrictMode>
-
     <App />
     <About />
     <Categorias />

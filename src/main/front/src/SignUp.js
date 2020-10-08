@@ -12,27 +12,22 @@ function SignUp() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <input type="name" className="form-control" placeholder="Nombre"></input>
+                                        <input type="name" className="form-control" placeholder="Nombre" required></input>
                                     </div>
                                 </div>
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <input type="email" className="form-control" placeholder="Correo"></input>
+                                        <input type="email" className="form-control" placeholder="Correo" required></input>
                                     </div>
                                 </div>
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <input type="text" className="form-control" placeholder="Teléfono"></input>
+                                        <input type="text" className="form-control" placeholder="Teléfono" required></input>
                                     </div>
                                 </div>
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <input type="password" className="form-control" placeholder="Contraseña"></input>
-                                    </div>
-                                </div>
-                                <div className="col-md-12">
-                                    <div className="form-group">
-                                        <input type="password" className="form-control" placeholder="Confirme su contraseña"></input>
+                                        <input type="password" className="form-control" placeholder="Contraseña" required></input>
                                     </div>
                                 </div>
 
@@ -41,7 +36,7 @@ function SignUp() {
                                         <div className="form-field">
                                             <div className="select-wrap">
                                                 <div className="icon"><span className="fa fa-chevron-down"></span></div>
-                                                <select name="" id="" className="form-control">
+                                                <select id="tipoDocumento" className="form-control" required>
                                                     <option value="" className="option-color">Tipo de Documento</option>
                                                     <option value="" className="option-color">CC</option>
                                                     <option value="" className="option-color">CE</option>

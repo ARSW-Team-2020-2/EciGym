@@ -11,12 +11,12 @@ function SignIn() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <input type="name" className="form-control" placeholder="Nombre"></input>
+                                        <input type="name" className="form-control" placeholder="Nombre" required></input>
                                     </div>
                                 </div>
                                 <div className="col-md-12">
                                     <div className="form-group">
-                                        <input type="password" className="form-control" placeholder="Contraseña"></input>
+                                        <input type="password" className="form-control" placeholder="Contraseña" required></input>
                                     </div>
                                 </div>
 
