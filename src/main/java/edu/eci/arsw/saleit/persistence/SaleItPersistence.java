@@ -12,7 +12,7 @@ public interface SaleItPersistence {
 
     List<Usuario> getAllUsers() throws SaleItPersistenceException;
 
-    void addAuction(Subasta auction, Integer id) throws SaleItPersistenceException;
+    void addAuction(Subasta auction, int id) throws SaleItPersistenceException;
 
     List<Subasta> getAllAuctions() throws SaleItPersistenceException;
 

@@ -6,6 +6,7 @@ import edu.eci.arsw.saleit.services.SaleItServicesException;
 import edu.eci.arsw.saleit.services.SaleItServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class SaleItController {
     }
 
 
-    @PostMapping("/users")
+    @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addUser(@RequestBody Usuario user) {
         try {
             saleItServices.addUser(user);
@@ -68,17 +69,6 @@ public class SaleItController {
         }
     }
 
-//    //Funciona
-//    @PostMapping("/articles")
-//    public ResponseEntity<?> addArticle(@RequestBody Articulo article) {
-//        try {
-//            saleItServices.addArticle(article);
-//            return new ResponseEntity<>(HttpStatus.CREATED);
-//        } catch (SaleItServicesException e) {
-//            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
-//            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-//        }
-//    } NO TIENE SENTIDO DEJAR ESTO PORQUE AL CREAR UNA SUBASTA SE CREA UN ARTICULO
 
     //Funciona
     @GetMapping("/articles/{id}")

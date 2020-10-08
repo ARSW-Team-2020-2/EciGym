@@ -1,5 +1,5 @@
 package edu.eci.arsw.saleit.model;
 
 public enum TipoDeDocumento {
-    CC, CE, IT
+    CC, CE, TI
 }

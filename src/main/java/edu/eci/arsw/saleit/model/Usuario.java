@@ -42,7 +42,6 @@ public class Usuario {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "vendedor")
-    @JsonManagedReference
     private List<Subasta> subastasCreadas;
 
 

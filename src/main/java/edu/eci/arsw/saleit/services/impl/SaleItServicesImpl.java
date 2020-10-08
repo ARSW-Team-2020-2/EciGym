@@ -37,7 +37,7 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public void addAuction(Subasta auction, Integer id) throws SaleItServicesException {
+    public void addAuction(Subasta auction, int id) throws SaleItServicesException {
         try {
             saleItPersistence.addAuction(auction, id);
         } catch (SaleItPersistenceException e) {

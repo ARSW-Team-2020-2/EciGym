@@ -34,7 +34,7 @@ public interface SaleItServices {
      * @param id
      * @throws SaleItServicesException
      */
-    void addAuction(Subasta auction, Integer id) throws SaleItServicesException;
+    void addAuction(Subasta auction, int id) throws SaleItServicesException;
 
     List<Subasta> getAllAuctions() throws SaleItServicesException;
 

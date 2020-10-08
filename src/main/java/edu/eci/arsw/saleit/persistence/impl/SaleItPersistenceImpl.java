@@ -53,7 +53,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     }
 
     @Override
-    public void addAuction(Subasta auction, Integer id) throws SaleItPersistenceException {
+    public void addAuction(Subasta auction, int id) throws SaleItPersistenceException {
         if (auction == null) {
             throw new SaleItPersistenceException("La subasta no puede ser nula");
         }

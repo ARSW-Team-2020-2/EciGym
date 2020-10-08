@@ -25,7 +25,6 @@ public class Subasta {
 
 
     @Column(name = "vendedor")
-    @JsonBackReference
     private int vendedor;
 
     @OneToMany
@@ -49,6 +48,8 @@ public class Subasta {
 
 
     public void updateArticle(Articulo art) throws SaleItException {
+        System.out.println(articulo.getArticulosFavoritos());
+        System.out.println(art.getArticulosFavoritos());
         if ((articulo.getId() != art.getId()) || (articulo.getArticulosFavoritos() != art.getArticulosFavoritos() && art.getArticulosFavoritos() != null)) {
             throw new SaleItException("No se puede modificar el ID ni la lista de favoritos");
 
