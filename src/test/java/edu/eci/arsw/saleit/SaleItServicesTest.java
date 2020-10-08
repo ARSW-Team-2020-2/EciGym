@@ -59,5 +59,19 @@ public class SaleItServicesTest {
         return usuario;
     }
 
+    private Subasta addAuction(int userID) {
+        Articulo articulo = new Articulo("Tenis Adidas", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", 10);
+        long actualTime = System.currentTimeMillis();
+        Timestamp fechaInicio = new Timestamp(actualTime + 100000);
+        Timestamp fechaFin = new Timestamp(actualTime + 2000000);
+        Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
+        try {
+            saleItServices.addAuction(subasta, userID);
+        } catch (SaleItServicesException e) {
+            fail("No debio fallar al crear la subasta");
+        }
+        return subasta;
+    }
+
 
 }
