@@ -43,6 +43,13 @@ public class Subasta {
         this.pujas = new ArrayList<>();
     }
 
+    public Subasta(Timestamp fechaInicio, Timestamp fechaFin, Articulo articulo) {
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.articulo = articulo;
+        this.pujas = new ArrayList<>();
+    }
+
     public Subasta() {
     }
 
@@ -130,17 +137,16 @@ public class Subasta {
         return Objects.hash(id, fechaInicio, fechaFin, vendedor, pujas, articulo);
     }
 
+
     @Override
     public String toString() {
         return "Subasta{" +
                 "id=" + id +
                 ", fechaInicio=" + fechaInicio +
                 ", fechaFin=" + fechaFin +
-                ", fechaFin=" + vendedor +
+                ", vendedor=" + vendedor +
                 ", pujas=" + pujas +
                 ", articulo=" + articulo +
                 '}';
     }
-
-
 }
