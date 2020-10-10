@@ -34,7 +34,7 @@ public class SaleItTest {
 
     @Test
     public void shouldGetAuctionById() throws SaleItServicesException {
-        Subasta s = saleItServices.getAuctionByID(38);
+        Subasta s = saleItServices.getAuctionById(38);
         Timestamp timestamp = s.getFechaFin();
         assertEquals(timestamp.toString(), "2020-10-13 10:30:30.0");
     }
@@ -55,7 +55,7 @@ public class SaleItTest {
 
     @Test
     public void shouldGetArticleOfAnAuction() throws SaleItServicesException {
-        Subasta s = saleItServices.getAuctionByID(38);
+        Subasta s = saleItServices.getAuctionById(38);
         Articulo a = s.getArticulo();
         String nombre = a.getNombre();
         assertEquals(nombre, "Moto AKT");
@@ -66,7 +66,7 @@ public class SaleItTest {
     @Test
     public void shouldNotGetNonExistentAuction() {
         try {
-            saleItServices.getAuctionByID(666);
+            saleItServices.getAuctionById(666);
         } catch (SaleItServicesException e) {
             assertTrue(true);
         }
