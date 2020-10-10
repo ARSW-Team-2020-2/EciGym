@@ -183,9 +183,9 @@ public class SaleItServicesImpl implements SaleItServices {
     }
 
     @Override
-    public Subasta getAuctionByID(int id) throws SaleItServicesException {
+    public Subasta getAuctionById(int id) throws SaleItServicesException {
         try {
-            return saleItPersistence.getAuctionByID(id);
+            return saleItPersistence.getAuctionById(id);
         } catch (SaleItPersistenceException e) {
             throw new SaleItServicesException(e.getMessage(), e);
         }

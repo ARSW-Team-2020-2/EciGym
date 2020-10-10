@@ -52,6 +52,7 @@ public class Subasta {
 
     public Subasta() {
     }
+    
 
 
     public void updateArticle(Articulo art) throws SaleItException {

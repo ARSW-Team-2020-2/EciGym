@@ -31,7 +31,7 @@ public class Categoria {
     public Categoria() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

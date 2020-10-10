@@ -38,7 +38,7 @@ public interface SaleItPersistence {
 
     void makeABid(Puja puja, int usuario, int subasta) throws SaleItPersistenceException;
 
-    Subasta getAuctionByID(int id) throws SaleItPersistenceException;
+    Subasta getAuctionById(int id) throws SaleItPersistenceException;
 
     List<Puja> getBidsByAuction(int subasta) throws SaleItPersistenceException;
 

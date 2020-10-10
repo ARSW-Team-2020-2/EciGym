@@ -71,6 +71,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         auction.setVendedor(usuario.getId());
         articleRepo.save(auction.getArticulo());
         userRepo.save(usuario);
+        auctionRepo.save(auction);
     }
 
     @Override
@@ -181,7 +182,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     }
 
     @Override
-    public Subasta getAuctionByID(int id) throws SaleItPersistenceException {
+    public Subasta getAuctionById(int id) throws SaleItPersistenceException {
         Subasta subasta = null;
         if (auctionRepo.existsById(id)) {
             subasta = auctionRepo.findById(id).get();
@@ -196,7 +197,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     @Override
     public void makeABid(Puja puja, int usuario, int subasta) throws SaleItPersistenceException {
         Usuario user = getUserById(usuario);
-        Subasta subasta1 = getAuctionByID(subasta);
+        Subasta subasta1 = getAuctionById(subasta);
         if (puja == null) {
             throw new SaleItPersistenceException("Debe ingresar un monto");
         }
@@ -215,7 +216,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
 
     @Override
     public List<Puja> getBidsByAuction(int subasta) throws SaleItPersistenceException {
-        Subasta subasta1 = getAuctionByID(subasta);
+        Subasta subasta1 = getAuctionById(subasta);
         List<Puja> pujas = subasta1.getPujas();
         if (pujas.isEmpty()) {
             throw new SaleItPersistenceException("No hay pujas para esta subasta");
@@ -232,7 +233,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         }
         List<Subasta> listaDeSubastas = new ArrayList<>();
         for (Puja puja : listaDePujas) {
-            Subasta subasta = getAuctionByID(puja.getSubasta());
+            Subasta subasta = getAuctionById(puja.getSubasta());
             if (!listaDeSubastas.contains(subasta)) {
                 listaDeSubastas.add(subasta);
             }
@@ -253,7 +254,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     @Override
     public Articulo getArticleOfAnAuction(int auction) throws SaleItPersistenceException {
         Articulo articulo;
-        Subasta subasta = getAuctionByID(auction);
+        Subasta subasta = getAuctionById(auction);
         articulo = subasta.getArticulo();
         return articulo;
     }
@@ -276,7 +277,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             throw new SaleItPersistenceException("El artículo de la subasta no puede ser nulo");
         }
         getUserById(id);
-        Subasta subasta = getAuctionByID(auction.getId());
+        Subasta subasta = getAuctionById(auction.getId());
         if (id != subasta.getVendedor()) {
             throw new SaleItPersistenceException("Solo el vendedor de la subasta puede modificarla");
         }
@@ -298,7 +299,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
 
     @Override
     public void deleteAuction(int auction, int id) throws SaleItPersistenceException {
-        Subasta subasta = getAuctionByID(auction);
+        Subasta subasta = getAuctionById(auction);
         Usuario usuario = getUserById(id);
         if (subasta.getVendedor() != usuario.getId()) {
             throw new SaleItPersistenceException("Solo el vendedor de la subasta puede eliminarla");
