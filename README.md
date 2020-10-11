@@ -186,7 +186,7 @@ _Al seleccionar un artículo se debe poder ver más información de el._
 ![Principal](img/MockUp_2.png)
 
 
- * _Página de resultados de una búsqueda._
+ * _Página de resultados de una búsqueda ._
  
  
 ![Principal](img/MockUp_3.png)
