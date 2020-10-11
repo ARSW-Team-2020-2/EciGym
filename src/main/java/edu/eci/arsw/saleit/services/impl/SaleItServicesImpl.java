@@ -226,4 +226,13 @@ public class SaleItServicesImpl implements SaleItServices {
             throw new SaleItServicesException(e.getMessage(), e);
         }
     }
+
+    @Override
+    public Usuario getUserByEmail(String email) throws SaleItServicesException {
+        try {
+            return saleItPersistence.getUserByEmail(email);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
 }

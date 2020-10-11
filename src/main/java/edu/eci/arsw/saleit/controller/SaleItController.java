@@ -45,11 +45,21 @@ public class SaleItController {
         }
     }
 
-    //Funciona x2
+
     @GetMapping("/users/{id}")
     public ResponseEntity<?> getUserById(@PathVariable int id) {
         try {
             return new ResponseEntity<>(saleItServices.getUserById(id), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/users/email/{email}")
+    public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
+        try {
+            return new ResponseEntity<>(saleItServices.getUserByEmail(email), HttpStatus.ACCEPTED);
         } catch (SaleItServicesException e) {
             Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +19,9 @@ import java.util.List;
 
 @Service
 public class SaleItPersistenceImpl implements SaleItPersistence {
+
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Autowired
     private UsuarioRepo userRepo;
@@ -305,6 +311,18 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             throw new SaleItPersistenceException("Solo el vendedor de la subasta puede eliminarla");
         }
         auctionRepo.delete(subasta);
+    }
+
+
+    @Override
+    public Usuario getUserByEmail(String email) throws SaleItPersistenceException {
+        Query query = entityManager.createNativeQuery("select * from usuario where email=?", Usuario.class);
+        query.setParameter(1, email);
+        if (query.getResultList().size() == 0) {
+
+            throw new SaleItPersistenceException("El usuario con ese email no existe");
+        }
+        return (Usuario) query.getSingleResult();
     }
 
 
