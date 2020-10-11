@@ -1,4 +1,4 @@
 Actualizar diagrama de componentes, sub-dividirlo más.
-Corregir el diagrama de despliegue. 
+Corregir el diagrama de despliegue. front esta aparte.
 
 
