@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/home")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SaleItController {
 
     @Autowired
