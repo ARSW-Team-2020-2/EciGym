@@ -17,7 +17,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -34,7 +33,77 @@ public class SaleItServicesTest {
 
     @Autowired
     private SaleItServices saleItServices;
-
+    
+    @Transactional
+    @Test
+    public void shouldGetAllUsers() throws SaleItServicesException {
+        Usuario usuario = new Usuario("test@mail.com", "111", "Diego", "1112681478", TipoDeDocumento.CC, "3338759414");
+        saleItServices.addUser(usuario);
+        Usuario usuario1 = new Usuario("test1@mail.com", "222", "John", "1222681478", TipoDeDocumento.CC, "3228759414");
+        saleItServices.addUser(usuario1);
+        Usuario usuario2 = new Usuario("test2@mail.com", "333", "Laura", "1332681478", TipoDeDocumento.CC, "3118759414");
+        saleItServices.addUser(usuario2);
+        List<Usuario> users = saleItServices.getAllUsers();
+        if(users.isEmpty()){
+            fail("Falló, no obtuvo los usuarios");
+        }
+    }
+    
+    @Transactional
+    @Test
+    public void shouldGetAllAuctions() throws SaleItServicesException {
+        Categoria categoria = new Categoria("Test");
+        saleItServices.addCategory(categoria);
+        Articulo articulo = new Articulo("Tenis Adidas", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        saleItServices.addArticle(articulo);
+        Usuario usuario = new Usuario("test@mail.com", "123", "Diego", "1002681478", TipoDeDocumento.CC, "3158759414");
+        saleItServices.addUser(usuario);
+        Timestamp fechaInicio = Timestamp.valueOf("2020-10-13 10:30:30.0"); Timestamp fechaFin = Timestamp.valueOf("2020-10-14 10:30:30.0");
+        Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
+        saleItServices.addAuction(subasta, usuario.getId());
+        Articulo articulo1 = new Articulo("Tenis Nike", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        saleItServices.addArticle(articulo1);
+        Subasta subasta1 = new Subasta(fechaInicio, fechaFin, articulo1);
+        saleItServices.addAuction(subasta1, usuario.getId());
+        List<Subasta> auctions = saleItServices.getAllAuctions();
+        if(auctions.isEmpty()){
+            fail("Falló, no obtuvo las subastas");
+        }
+        
+    }
+    
+    @Transactional
+    @Test
+    public void shouldGetAllCategories() throws SaleItServicesException {
+        Categoria categoria = new Categoria("CatPrueba");
+        saleItServices.addCategory(categoria);
+        Categoria categoria1 = new Categoria("CatPrueba1");
+        saleItServices.addCategory(categoria1);
+        Categoria categoria2 = new Categoria("CatPrueba2");
+        saleItServices.addCategory(categoria2);
+        List<Categoria> categories = saleItServices.getAllCategories();
+        if(categories.isEmpty()){
+            fail("Falló, no obtuvo las categorías");
+        }
+    }
+    
+    @Transactional
+    @Test
+    public void shouldGetAllArticles() throws SaleItServicesException {
+        Categoria categoria = new Categoria("CatPrueba");
+        saleItServices.addCategory(categoria);
+        Articulo articulo = new Articulo("Tenis Nike", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        saleItServices.addArticle(articulo);
+        Articulo articulo1 = new Articulo("Tenis Adidas", "Nuevo", "Zapatos", 2500000, "15*60", "Bogota", "url", categoria.getId());
+        saleItServices.addArticle(articulo1);
+        Articulo articulo2 = new Articulo("Tenis Rebook", "Nuevo", "Zapatos", 2500000, "15*60", "Medellin", "url", categoria.getId());
+        saleItServices.addArticle(articulo2);
+        List<Articulo> articles = saleItServices.getAllArticles();
+        if(articles.isEmpty()){
+            fail("Falló, no obtuvo los artículos");
+        }
+    }
+    
     @Transactional
     @Test
     public void shouldAddAnUser() throws SaleItServicesException {
@@ -53,8 +122,7 @@ public class SaleItServicesTest {
         saleItServices.addArticle(articulo);
         Usuario usuario = new Usuario("test@mail.com", "123", "Diego", "1002681478", TipoDeDocumento.CC, "3158759414");
         saleItServices.addUser(usuario);
-        Timestamp fechaInicio = Timestamp.valueOf("2020-10-13 10:30:30.0");
-        Timestamp fechaFin = Timestamp.valueOf("2020-10-14 10:30:30.0");
+        Timestamp fechaInicio = Timestamp.valueOf("2020-10-13 10:30:30.0"); Timestamp fechaFin = Timestamp.valueOf("2020-10-14 10:30:30.0");
         Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
         saleItServices.addAuction(subasta, usuario.getId());
         assertEquals(subasta, saleItServices.getAuctionById(subasta.getId()));
