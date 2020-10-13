@@ -33,8 +33,6 @@ public class Articulo {
     @Column(name = "ubicacion")
     private String ubicacion;
 
-    @Column(name = "imagen")
-    private String imagen;
 
     @Column(name = "categoria")
     private int categoria;
@@ -45,14 +43,13 @@ public class Articulo {
     private List<Favoritos> articulosFavoritos;
 
 
-    public Articulo(String nombre, String estadoDeUso, String descripcion, double precioMinimo, String dimensiones, String ubicacion, String imagen, int categoria) {
+    public Articulo(String nombre, String estadoDeUso, String descripcion, double precioMinimo, String dimensiones, String ubicacion, int categoria) {
         this.nombre = nombre;
         this.estadoDeUso = estadoDeUso;
         this.descripcion = descripcion;
         this.precioMinimo = precioMinimo;
         this.dimensiones = dimensiones;
         this.ubicacion = ubicacion;
-        this.imagen = imagen;
         this.categoria = categoria;
         this.articulosFavoritos = new ArrayList<>();
     }
@@ -120,14 +117,6 @@ public class Articulo {
         this.ubicacion = ubicacion;
     }
 
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
     public int getCategoria() {
         return categoria;
     }
@@ -157,13 +146,12 @@ public class Articulo {
                 Objects.equals(descripcion, articulo.descripcion) &&
                 Objects.equals(dimensiones, articulo.dimensiones) &&
                 Objects.equals(ubicacion, articulo.ubicacion) &&
-                Objects.equals(imagen, articulo.imagen) &&
                 Objects.equals(articulosFavoritos, articulo.articulosFavoritos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, estadoDeUso, descripcion, precioMinimo, dimensiones, ubicacion, imagen, categoria, articulosFavoritos);
+        return Objects.hash(id, nombre, estadoDeUso, descripcion, precioMinimo, dimensiones, ubicacion, categoria, articulosFavoritos);
     }
 
 
@@ -177,7 +165,6 @@ public class Articulo {
                 ", precioMinimo=" + precioMinimo +
                 ", dimensiones='" + dimensiones + '\'' +
                 ", ubicacion='" + ubicacion + '\'' +
-                ", imagen='" + imagen + '\'' +
                 ", categoria=" + categoria +
                 ", articulosFavoritos=" + articulosFavoritos +
                 '}';

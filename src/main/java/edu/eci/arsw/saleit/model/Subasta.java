@@ -68,7 +68,6 @@ public class Subasta {
         articulo.setDimensiones(art.getDimensiones());
         articulo.setUbicacion(art.getUbicacion());
         articulo.setDescripcion(art.getDescripcion());
-        articulo.setImagen(art.getImagen());
         articulo.setCategoria(art.getCategoria());
     }
 

@@ -17,7 +17,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -49,12 +48,12 @@ public class SaleItServicesTest {
     public void shouldCreateAnAuction() throws SaleItServicesException {
         Categoria categoria = new Categoria("Test");
         saleItServices.addCategory(categoria);
-        Articulo articulo = new Articulo("Tenis Adidas", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        Articulo articulo = new Articulo("Tenis Adidas", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", categoria.getId());
         saleItServices.addArticle(articulo);
         Usuario usuario = new Usuario("test@mail.com", "123", "Diego", "1002681478", TipoDeDocumento.CC, "3158759414");
         saleItServices.addUser(usuario);
-        Timestamp fechaInicio = Timestamp.valueOf("2020-10-13 10:30:30.0");
-        Timestamp fechaFin = Timestamp.valueOf("2020-10-14 10:30:30.0");
+        Timestamp fechaInicio = Timestamp.valueOf("2022-10-13 10:30:30.0");
+        Timestamp fechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
         Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
         saleItServices.addAuction(subasta, usuario.getId());
         assertEquals(subasta, saleItServices.getAuctionById(subasta.getId()));
@@ -74,7 +73,7 @@ public class SaleItServicesTest {
     public void shouldCreateAnArticle() throws SaleItServicesException {
         Categoria categoria = new Categoria("CatPrueba");
         saleItServices.addCategory(categoria);
-        Articulo articulo = new Articulo("Tenis Nike", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        Articulo articulo = new Articulo("Tenis Nike", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", categoria.getId());
         saleItServices.addArticle(articulo);
         Articulo articulo1 = saleItServices.getArticleById(articulo.getId());
         assertEquals(articulo, articulo1);
@@ -85,7 +84,7 @@ public class SaleItServicesTest {
     public void shouldAddArticleAsFavorite() throws SaleItServicesException {
         Categoria categoria = new Categoria("CatPruebaFav");
         saleItServices.addCategory(categoria);
-        Articulo articulo = new Articulo("Tenis Random", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        Articulo articulo = new Articulo("Tenis Random", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", categoria.getId());
         saleItServices.addArticle(articulo);
         Usuario usuario = new Usuario("test2@mail.com", "123", "John", "1222681478", TipoDeDocumento.CC, "3148758419");
         saleItServices.addUser(usuario);
@@ -99,12 +98,12 @@ public class SaleItServicesTest {
     public void shouldAddOwnAuction() throws SaleItServicesException {
         Categoria categoria = new Categoria("CatPruebaAuc");
         saleItServices.addCategory(categoria);
-        Articulo articulo = new Articulo("Tenis Random2", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        Articulo articulo = new Articulo("Tenis Random2", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", categoria.getId());
         saleItServices.addArticle(articulo);
         Usuario usuario = new Usuario("test3@mail.com", "123", "Johnny", "8222981478", TipoDeDocumento.CC, "2148753419");
         saleItServices.addUser(usuario);
-        Timestamp fechaInicio = Timestamp.valueOf("2020-10-13 10:30:30.0");
-        Timestamp fechaFin = Timestamp.valueOf("2020-10-14 10:30:30.0");
+        Timestamp fechaInicio = Timestamp.valueOf("2022-10-13 10:30:30.0");
+        Timestamp fechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
         Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
         saleItServices.addAuction(subasta, usuario.getId());
         List<Subasta> subs = usuario.getSubastasCreadas();
@@ -116,12 +115,12 @@ public class SaleItServicesTest {
     public void shouldGetArticleOfAnAuction() throws SaleItServicesException {
         Categoria categoria = new Categoria("CatPruebaArt");
         saleItServices.addCategory(categoria);
-        Articulo articulo = new Articulo("Tenis Random3", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        Articulo articulo = new Articulo("Tenis Random3", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", categoria.getId());
         saleItServices.addArticle(articulo);
         Usuario usuario = new Usuario("test4@mail.com", "123", "Johnnier", "8222981478", TipoDeDocumento.CC, "2148753419");
         saleItServices.addUser(usuario);
-        Timestamp fechaInicio = Timestamp.valueOf("2020-10-13 10:30:30.0");
-        Timestamp fechaFin = Timestamp.valueOf("2020-10-14 10:30:30.0");
+        Timestamp fechaInicio = Timestamp.valueOf("2022-10-13 10:30:30.0");
+        Timestamp fechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
         Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
         saleItServices.addAuction(subasta, usuario.getId());
         assertEquals(articulo, saleItServices.getArticleOfAnAuction(subasta.getId()));
@@ -132,12 +131,12 @@ public class SaleItServicesTest {
     public void shouldMakeABidAndGetBidsOfUser() throws SaleItServicesException {
         Categoria categoria = new Categoria("CatPruebaBid");
         saleItServices.addCategory(categoria);
-        Articulo articulo = new Articulo("Tenis Random4", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        Articulo articulo = new Articulo("Tenis Random4", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", categoria.getId());
         saleItServices.addArticle(articulo);
         Usuario usuario = new Usuario("test5@mail.com", "123", "Jose", "8222981478", TipoDeDocumento.CC, "2148753419");
         saleItServices.addUser(usuario);
-        Timestamp fechaInicio = Timestamp.valueOf("2020-10-13 10:30:30.0");
-        Timestamp fechaFin = Timestamp.valueOf("2020-10-14 10:30:30.0");
+        Timestamp fechaInicio = Timestamp.valueOf("2022-10-13 10:30:30.0");
+        Timestamp fechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
         Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
         saleItServices.addAuction(subasta, usuario.getId());
         Puja puja = new Puja(3500000);
@@ -151,12 +150,12 @@ public class SaleItServicesTest {
     public void shouldGetBidsOfAnAuction() throws SaleItServicesException {
         Categoria categoria = new Categoria("CatPruebaBidAuc");
         saleItServices.addCategory(categoria);
-        Articulo articulo = new Articulo("Tenis Random5", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", "url", categoria.getId());
+        Articulo articulo = new Articulo("Tenis Random5", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", categoria.getId());
         saleItServices.addArticle(articulo);
         Usuario usuario = new Usuario("test6@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
         saleItServices.addUser(usuario);
-        Timestamp fechaInicio = Timestamp.valueOf("2020-10-13 10:30:30.0");
-        Timestamp fechaFin = Timestamp.valueOf("2020-10-14 10:30:30.0");
+        Timestamp fechaInicio = Timestamp.valueOf("2022-10-13 10:30:30.0");
+        Timestamp fechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
         Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
         saleItServices.addAuction(subasta, usuario.getId());
         Puja puja = new Puja(3500000);
