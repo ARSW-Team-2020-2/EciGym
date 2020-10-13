@@ -10,7 +10,7 @@ Somos una aplicación para realizar subastas de forma online donde podrás ofert
 ## _Valores agregados y diferenciadores de la aplicación_ 📣
 _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son un factor diferenciador de SaleIt con respecto a la mayoría de páginas de subastas, además de la participación de forma anónima dentro de las subastas al momento de ofrecer una puja._
 ## _Despliegue en Heroku_ 🚀
-[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://saleitt.herokuapp.com)
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://sale-it-back.herokuapp.com/)
  ## _Calidad del código_ 👨‍💻
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/5430bb4ffa9947c9b7a02fa442496563)](https://www.codacy.com/gh/ARSW-Team-2020-2/SaleIt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020-2/SaleIt&amp;utm_campaign=Badge_Grade)
  ## _Integración continua_ ✔️
