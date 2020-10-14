@@ -67,9 +67,6 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             throw new SaleItPersistenceException("El artículo de la subasta no puede ser nulo");
         }
         Usuario usuario = getUserById(id);
-        if (auction.getFechaInicio().before(new Timestamp(new Date().getTime()))) {
-            throw new SaleItPersistenceException("La fecha de inicio de la subasta no puede ser antes de la fecha de actual");
-        }
         if (auction.getFechaInicio().after(auction.getFechaFin())) {
             throw new SaleItPersistenceException("Una subasta no puede iniciar después de su fecha de finalización");
         }
