@@ -54,17 +54,16 @@ insert into Categoria(nombre) values('Hogar y Cocina');
 insert into Categoria(nombre) values('Salud y Belleza');
 insert into Categoria(nombre) values('Bebidas y Licores');
 insert into Categoria(nombre) values('Carros y Motos');
-insert into Categoria(nombre) values('Bebés y Niños');
-insert into Categoria(nombre) values('Juegos y Juguetes');
+insert into Categoria(nombre) values('Sección Infantil');
 insert into Categoria(nombre) values('Muebles y Jardineria');
-insert into Categoria(nombre) values('Tecnología');
-insert into Categoria(nombre) values('Deportes');
+insert into Categoria(nombre) values('Sección de Tecnología');
+insert into Categoria(nombre) values('Sección Deportiva');
 insert into Categoria(nombre) values('Ropa y Accesorios');
 
 
 
 
-insert into articulo(nombre, estadodeuso, descripcion, preciominimo, dimensiones, ubicacion, imagen, categoria) values('prueba', 'Usado', 'algoooo', 999, '340*360', 'bogota', 'url', 1); 
+insert into articulo(nombre, estadodeuso, descripcion, preciominimo, dimensiones, ubicacion, categoria) values('prueba', 'Usado', 'algoooo', 999, '340*360', 'bogota', 1);
 
 
 Disparadores:
