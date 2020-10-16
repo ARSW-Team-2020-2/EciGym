@@ -307,6 +307,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         if (subasta.getVendedor() != usuario.getId()) {
             throw new SaleItPersistenceException("Solo el vendedor de la subasta puede eliminarla");
         }
+        articleRepo.delete(subasta.getArticulo());
         auctionRepo.delete(subasta);
     }
 
