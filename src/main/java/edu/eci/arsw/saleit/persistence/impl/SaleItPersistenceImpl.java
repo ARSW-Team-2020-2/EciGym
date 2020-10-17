@@ -304,11 +304,12 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     public void deleteAuction(int auction, int id) throws SaleItPersistenceException {
         Subasta subasta = getAuctionById(auction);
         Usuario usuario = getUserById(id);
+        Articulo articulo = getArticleOfAnAuction(auction);
         if (subasta.getVendedor() != usuario.getId()) {
             throw new SaleItPersistenceException("Solo el vendedor de la subasta puede eliminarla");
-        }
-        articleRepo.delete(subasta.getArticulo());
+        }        
         auctionRepo.delete(subasta);
+        articleRepo.delete(articulo);
     }
 
 
