@@ -143,6 +143,18 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
+    
+    //Funciona
+    @GetMapping("/auctions/{id}")
+    public ResponseEntity<?> getAuctionById(@PathVariable int id) {
+        try {
+            return new ResponseEntity<>(saleItServices.getAuctionById(id), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+    
 
     //Funciona x2
     @PostMapping("/users/{id}/auctions")
