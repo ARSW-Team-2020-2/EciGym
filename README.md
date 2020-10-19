@@ -143,14 +143,14 @@ _Al seleccionar un artículo se debe poder ver más información de el._
 **Criterios de aceptación:**
 * _Al momento de consultar o buscar un artículo debe existir la opción para marcar como favorito._
 
-### _14. COMO Usuario QUIERO consultar mi lista de favoritos PARA PODER ver qué artículos me han gustado._
+### _13. COMO Usuario QUIERO consultar mi lista de favoritos PARA PODER ver qué artículos me han gustado._
 **_Criterios de aceptación:_**
  * _Se debe mostrar con claridad una lista de los artículos marcados como favoritos por el usuario._
  
-### _15. COMO Usuario QUIERO consultar todas las categorías PARA PODER conocer cuales existen._
+### _14. COMO Usuario QUIERO consultar todas las categorías PARA PODER conocer cuales existen._
  * _Se debe mostrar todas las diferentes categorías para los productos existentes._
 
-### _16. COMO Usuario QUIERO consultar una categoría específica PARA PODER ver los artículos correspondientes a ésta._
+### _15. COMO Usuario QUIERO consultar una categoría específica PARA PODER ver los artículos correspondientes a ésta._
  * _Se debe mostrar una lista de artículos disponibles correspondiente a la categoría seleccionada._
 
 ## _Mockups_ 🎨
