@@ -1,8 +1,5 @@
 package edu.eci.arsw.saleit.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import java.util.*;
 import javax.persistence.*;
 

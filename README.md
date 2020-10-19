@@ -53,11 +53,9 @@ _La usabilidad y los temas relacionados con la Experiencia de Usuario (UX) son u
  **_Criterios de aceptación:_**
 *   _Se deben añadir los nuevos usuarios a la fuente de datos básica._
 *   _Es necesario que cada usuario tenga un correo único._
-*   _Al finalizar el registro, el usuario deberá elegir 3 categorías de su preferencia para que luego se muestren productos relacionados a éstas._
 
 ### _3. COMO Usuario QUIERO editar mi perfil PARA PODER corregir o actualizar mi información personal._
  _El usuario podrá modificar toda su información personal, menos su identificador interno._
- 
  
 **_Criterios de aceptación:_**
  * _Se debe mostrar con claridad la posibilidad de editar la información del perfil del usuario y avisarle en caso de que haga alguna modificación no permitida._
@@ -71,15 +69,14 @@ _Para registrar una subasta, se requiere su fecha de inicio, su fecha de fin y e
 * _La información básica de un artículo es:_
     * _Identificador interno._
     * _Nombre del artículo._
-    * _Detalles del artículo. (Marca, peso, modelo, material)_
+    * _Descripción_
     * _Precio mínimo._
     * _Estado de uso. (nuevo o usado)_
     * _Dimensiones._
-    * _Fotografía real del artículo._
     * _Ubicación del producto._
     * _Fecha de vencimiento de la subasta._
     
-*   _El usuario vendedor debe proporcionar como mínimo el **nombre del artículo**, **foto del artículo**, **fecha de vencimiento**, **estado de uso**, **precio mínimo** y **ubicación** para poder registrarlo._
+*   _El usuario vendedor debe proporcionar como mínimo el **nombre del artículo**, **fecha de vencimiento**, **estado de uso**, **precio mínimo** y **ubicación** para poder registrarlo._
 *  _Una vez el artículo es registrado debe aparecer disponible para ser pujado por los demás usuarios de SaleIt._
 *  _No pueden existir identificadores internos iguales para los artículos._
 * _Se debe avisarle al usuario en caso de que no se permita el registro._
@@ -96,22 +93,19 @@ _Los usuarios del sistema necesitan poder modificar de una forma sencilla y agra
     * _Precio mínimo._
     * _Estado de uso. (nuevo o usado)_
     * _Dimensiones._
-    * _Fotografía real del artículo._
     * _Ubicación del producto._
 
     
  * _El valor del identificador interno de la subasta y del articulo no es modificable por el usuario._
- * _El valor de la fecha de vencimiento de la subasta es modificable por el usuario._
  * _La fecha de inicio no puede ser modificable por el usuario._
  * _Se debe avisarle al usuario en caso de que haga alguna modificación no permitida._
  
 ### _6. COMO Usuario QUIERO eliminar una subasta que tengo creada PARA PODER retirarla._
 _Cuando alguna subasta ofrecida se quiere retirar, esta se debe eliminar de su lista de subastas creadas._
 
-
 **_Criterios de aceptación:_**  
   * _Al darse de baja una subasta, esta ya no estará disponible para ser pujada._
-  * _Se debe confirmar por parte del usuario si esta seguro antes de eliminar la subasta._
+
 
 ### _7. COMO Usuario QUIERO consultar todas mis subastas creadas PARA PODER tener información sobre el estado de mis subastas._
   * _Se debe mostrar una lista de las subastas que tiene el usuario ofertadas._
@@ -125,38 +119,27 @@ _Una vez un usuario decide el artículo que desea obtener, puede proceder a hace
 
 **_Criterios de aceptación:_**
  * _El valor a pujar debe ser mayor o igual que la puja mínima._
- * _Si el usuario puja por un valor menor al mayor valor pujado, se le mostrará una sugerencia indicandole el minimo valor que debería pujar para ser aceptado._
- 
-
-### _10. COMO Usuario QUIERO consultar todos los artículos disponibles PARA PODER conocer todas las subastas actuales._
-_Los usuarios del sistema necesitan poder visualizar de una forma sencilla y agradable todos los artículos disponibles._
 
 
-**_Criterios de aceptación:_**
- * _Al momento de realizar la consulta, de deben mostrar todos lo artículos que se encuentran activos en ese momento._
- * _Deben existir filtros que me permitan realizar una búsqueda mejor direccionada. Por categoría, precio y ubicación._
- * _El usuario podrá ver las ofertas que se cierran pronto (En las próximas 24 horas)._
 
-### _11. COMO Usuario QUIERO ver un artículo en específico PARA PODER conocer los detalles de este._
+### _10. COMO Usuario QUIERO ver un artículo en específico PARA PODER conocer los detalles de este._
 _Al seleccionar un artículo se debe poder ver más información de el._
 
 
 **_Criterios de aceptación:_**
 * _Se debe mostrar:_
     * _Nombre del artículo._
-    * _Foto del artículo._
-    * _Tiempo restante de la subasta._
+    * _Fecha de finalización de la subasta._
     * _Puja con mayor valor._
-    * _Siguiente puja mínima._
     * _Ubicación del artículo._
     * _Una tabla con todas las pujas realizadas, indicando el id del pujador (para su anonimato), la fecha de la puja y el valor pujado._
 
-### _12. COMO Usuario QUIERO buscar un artículo en especifico PARA PODER encontrar el artículo deseado._
+### _11. COMO Usuario QUIERO buscar un artículo en especifico PARA PODER encontrar el artículo deseado._
 **_Criterios de aceptación:_**
  * _Se podrá buscar un artículo por su nombre en una barra de búsqueda._
  * _La búsqueda del artículo se hará en todas las categorías._
 
-### _13. COMO Usuario QUIERO marcar como favorito un artículo PARA PODER añadirlo a mi lista de favoritos._
+### _12. COMO Usuario QUIERO marcar como favorito un artículo PARA PODER añadirlo a mi lista de favoritos._
 **Criterios de aceptación:**
 * _Al momento de consultar o buscar un artículo debe existir la opción para marcar como favorito._
 
@@ -166,8 +149,6 @@ _Al seleccionar un artículo se debe poder ver más información de el._
  
 ### _15. COMO Usuario QUIERO consultar todas las categorías PARA PODER conocer cuales existen._
  * _Se debe mostrar todas las diferentes categorías para los productos existentes._
- * _Se debe mostrar las categorías más populares._
- * _Se debe mostrar las categorías "Para ti" (las preferidas del usuario)._
 
 ### _16. COMO Usuario QUIERO consultar una categoría específica PARA PODER ver los artículos correspondientes a ésta._
  * _Se debe mostrar una lista de artículos disponibles correspondiente a la categoría seleccionada._
