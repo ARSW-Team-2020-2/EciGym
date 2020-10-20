@@ -6,7 +6,7 @@
 ## _Gitbook_ 🔨
 [Sale-it](https://https-sale-it-herokuapp-com.gitbook.io/saleit/)
 ## _Despliegue en Heroku_ 🚀
- [![Deployed to Heroku] https://www.herokucdn.com/deploy/button.png)](https://sale-it-back.herokuapp.com/)
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://sale-it-back.herokuapp.com/)
  ## _Calidad del código_ 👨‍💻
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/5430bb4ffa9947c9b7a02fa442496563)](https://www.codacy.com/gh/ARSW-Team-2020-2/SaleIt?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ARSW-Team-2020-2/SaleIt&amp;utm_campaign=Badge_Grade)
  ## _Integración continua_ ✔️
