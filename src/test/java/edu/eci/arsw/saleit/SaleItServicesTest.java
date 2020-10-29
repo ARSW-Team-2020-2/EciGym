@@ -289,6 +289,23 @@ public class SaleItServicesTest {
         Usuario usuario1 = saleItServices.getUserByEmail("test@mail.com");
         assertEquals(usuario, usuario1);
     }
+    
+    @Transactional
+    @Test
+    public void shouldGetAuctionByArticleId() throws SaleItServicesException {
+        Categoria categoria = new Categoria("CatPruebaBidAuc");
+        saleItServices.addCategory(categoria);
+        Articulo articulo = new Articulo("Tenis Random5", "Nuevo", "Zapatos", 2500000, "15*60", "Cali", categoria.getId());
+        saleItServices.addArticle(articulo);
+        Usuario usuario = new Usuario("test6@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+        saleItServices.addUser(usuario);
+        Timestamp fechaInicio = Timestamp.valueOf("2022-10-13 10:30:30.0");
+        Timestamp fechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
+        Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
+        saleItServices.addAuction(subasta, usuario.getId()); 
+        Subasta sub = saleItServices.getAuctionByArticleId(articulo.getId());
+        assertEquals(sub, subasta);
+    }
 
     @Transactional
     @Test
