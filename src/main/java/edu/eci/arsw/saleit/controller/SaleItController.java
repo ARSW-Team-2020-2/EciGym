@@ -167,6 +167,16 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         }
     }
+    
+    @GetMapping("/auctions/article/{id}")
+    public ResponseEntity<?> getAuctionByArticleId(@PathVariable int id) {
+        try {
+            return new ResponseEntity<>(saleItServices.getAuctionByArticleId(id), HttpStatus.ACCEPTED);
+        } catch (SaleItServicesException e) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 
     @PutMapping("/users/{id}/auctions")
     public ResponseEntity<?> modifyAuction(@RequestBody Subasta auction, @PathVariable int id) {

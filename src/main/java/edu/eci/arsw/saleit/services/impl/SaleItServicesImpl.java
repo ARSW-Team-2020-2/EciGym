@@ -235,4 +235,13 @@ public class SaleItServicesImpl implements SaleItServices {
             throw new SaleItServicesException(e.getMessage(), e);
         }
     }
+    
+    @Override
+    public Subasta getAuctionByArticleId(int articleId) throws SaleItServicesException {
+        try {
+            return saleItPersistence.getAuctionByArticleId(articleId);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
 }

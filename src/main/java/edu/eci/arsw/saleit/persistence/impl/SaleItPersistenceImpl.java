@@ -282,11 +282,10 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             throw new SaleItPersistenceException("Solo el vendedor de la subasta puede modificarla");
         }
 
-        getCategoryById(articulo.getCategoria());
-        /**
+        getCategoryById(articulo.getCategoria());        
         if (!subasta.getFechaInicio().equals(auction.getFechaInicio())) {
             throw new SaleItPersistenceException("La fecha de inicio no se puede modificar! Solamente se puede cambiar la fecha de finalización");
-        }*/
+        }
         try {
             subasta.updateArticle(articulo);
 
@@ -320,6 +319,18 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             throw new SaleItPersistenceException("El usuario con ese email no existe");
         }
         return (Usuario) query.getSingleResult();
+    }
+    
+    @Override
+    public Subasta getAuctionByArticleId(int articleId) throws SaleItPersistenceException {        
+        List<Subasta> auctions = auctionRepo.findAll();
+        Subasta sub = new Subasta();
+        for (Subasta a: auctions){
+            if((a.getArticulo()).getId() == articleId){
+                sub = a;                
+            }
+        }
+        return sub;        
     }
 
 

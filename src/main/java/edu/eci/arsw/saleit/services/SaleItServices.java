@@ -77,5 +77,7 @@ public interface SaleItServices {
     void deleteAuction(int auction, int id) throws SaleItServicesException;
 
     Usuario getUserByEmail(String id) throws SaleItServicesException;
+    
+    Subasta getAuctionByArticleId(int articleId) throws SaleItServicesException;
 
 }
