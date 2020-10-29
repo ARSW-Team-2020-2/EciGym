@@ -53,6 +53,15 @@ public class Articulo {
         this.categoria = categoria;
         this.articulosFavoritos = new ArrayList<>();
     }
+    
+    public Articulo(String nombre, String estadoDeUso, String descripcion, double precioMinimo, String dimensiones, String ubicacion) {
+        this.nombre = nombre;
+        this.estadoDeUso = estadoDeUso;
+        this.descripcion = descripcion;
+        this.precioMinimo = precioMinimo;
+        this.dimensiones = dimensiones;
+        this.ubicacion = ubicacion;        
+    }
 
     public Articulo(int id) {
         this.id = id;

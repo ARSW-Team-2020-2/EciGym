@@ -283,9 +283,10 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         }
 
         getCategoryById(articulo.getCategoria());
+        /**
         if (!subasta.getFechaInicio().equals(auction.getFechaInicio())) {
             throw new SaleItPersistenceException("La fecha de inicio no se puede modificar! Solamente se puede cambiar la fecha de finalización");
-        }
+        }*/
         try {
             subasta.updateArticle(articulo);
 
