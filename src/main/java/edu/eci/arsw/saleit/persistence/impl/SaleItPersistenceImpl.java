@@ -44,6 +44,10 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         if (user == null) {
             throw new SaleItPersistenceException("El usuario no puede ser nulo.");
         }
+        List<Usuario> usuarios = userRepo.findAll();
+        if (usuarios.contains(user)) {
+            throw new SaleItPersistenceException("Ese usuario ya existe.");
+        }
         userRepo.save(user);
     }
 
@@ -282,7 +286,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
             throw new SaleItPersistenceException("Solo el vendedor de la subasta puede modificarla");
         }
 
-        getCategoryById(articulo.getCategoria());        
+        getCategoryById(articulo.getCategoria());
         if (!subasta.getFechaInicio().equals(auction.getFechaInicio())) {
             throw new SaleItPersistenceException("La fecha de inicio no se puede modificar! Solamente se puede cambiar la fecha de finalización");
         }
@@ -304,7 +308,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         Articulo articulo = getArticleOfAnAuction(auction);
         if (subasta.getVendedor() != usuario.getId()) {
             throw new SaleItPersistenceException("Solo el vendedor de la subasta puede eliminarla");
-        }        
+        }
         auctionRepo.delete(subasta);
         articleRepo.delete(articulo);
     }
@@ -320,17 +324,17 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         }
         return (Usuario) query.getSingleResult();
     }
-    
+
     @Override
-    public Subasta getAuctionByArticleId(int articleId) throws SaleItPersistenceException {        
+    public Subasta getAuctionByArticleId(int articleId) throws SaleItPersistenceException {
         List<Subasta> auctions = auctionRepo.findAll();
         Subasta sub = new Subasta();
-        for (Subasta a: auctions){
-            if((a.getArticulo()).getId() == articleId){
-                sub = a;                
+        for (Subasta a : auctions) {
+            if ((a.getArticulo()).getId() == articleId) {
+                sub = a;
             }
         }
-        return sub;        
+        return sub;
     }
 
 
