@@ -4,7 +4,7 @@
 *   _Angie Daniela Ruiz Alfonso_
 *   _Juan Sebastián Díaz Salamanca_
 ## _Gitbook_ 🔨
-[Sale-it](https://https-sale-it-herokuapp-com.gitbook.io/saleit/)
+[Sale-it](https://app.gitbook.com/@angied-ruiz/s/saleit/)
 ## _Despliegue en Heroku_ 🚀
 ### _Back-End_
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://sale-it-back.herokuapp.com/)
