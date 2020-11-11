@@ -319,7 +319,6 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         Query query = entityManager.createNativeQuery("select * from usuario where email=?", Usuario.class);
         query.setParameter(1, email);
         if (query.getResultList().size() == 0) {
-
             throw new SaleItPersistenceException("El usuario con ese email no existe");
         }
         return (Usuario) query.getSingleResult();
@@ -328,11 +327,14 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     @Override
     public Subasta getAuctionByArticleId(int articleId) throws SaleItPersistenceException {
         List<Subasta> auctions = auctionRepo.findAll();
-        Subasta sub = new Subasta();
-        for (Subasta a : auctions) {
-            if ((a.getArticulo()).getId() == articleId) {
-                sub = a;
+        Subasta sub = null;
+        for (Subasta s : auctions) {
+            if ((s.getArticulo()).getId() == articleId) {
+                sub = s;
             }
+        }
+        if(sub == null){
+            throw new SaleItPersistenceException("El articulo con ese id no existe");
         }
         return sub;
     }
