@@ -289,7 +289,7 @@ public class SaleItServicesTest {
         Usuario usuario1 = saleItServices.getUserByEmail("test@mail.com");
         assertEquals(usuario, usuario1);
     }
-    
+
     @Transactional
     @Test
     public void shouldGetAuctionByArticleId() throws SaleItServicesException {
@@ -302,9 +302,31 @@ public class SaleItServicesTest {
         Timestamp fechaInicio = Timestamp.valueOf("2022-10-13 10:30:30.0");
         Timestamp fechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
         Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
-        saleItServices.addAuction(subasta, usuario.getId()); 
+        saleItServices.addAuction(subasta, usuario.getId());
         Subasta sub = saleItServices.getAuctionByArticleId(articulo.getId());
         assertEquals(sub, subasta);
+    }
+
+    @Transactional
+    @Test
+    public void shouldUpdateUserProfile() throws SaleItServicesException {
+        Usuario usuario = new Usuario("test@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+        saleItServices.addUser(usuario);
+        Usuario usuario2 = new Usuario("testupdate@mail.com", "123", "Pepega", "3002981478", TipoDeDocumento.CC, "9998753419");
+        saleItServices.modifyUser(usuario2, usuario.getId());
+        Usuario user = saleItServices.getUserById(usuario.getId());
+        assertEquals(user, usuario);
+    }
+
+    @Transactional
+    @Test
+    public void shouldUpdateUserPassword() throws SaleItServicesException {
+        Usuario usuario = new Usuario("test@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+        saleItServices.addUser(usuario);
+        Usuario usuario2 = new Usuario("test@mail.com", "newPassword", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+        saleItServices.modifyUserPassword(usuario2, usuario.getId());
+        Usuario user = saleItServices.getUserById(usuario.getId());
+        assertEquals(user, usuario);
     }
 
     @Transactional
@@ -633,12 +655,12 @@ public class SaleItServicesTest {
             Timestamp nuevafechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
             subasta.setFechaFin(nuevafechaFin);
             saleItServices.modifyAuction(null, usuario.getId());
-            fail("Debió fallar al intentar modificar una subasta nula");            
+            fail("Debió fallar al intentar modificar una subasta nula");
         } catch (SaleItServicesException e) {
             assertEquals("La subasta no puede ser nula", e.getMessage());
         }
     }
-    
+
     @Transactional
     @Test
     public void shouldNotModifyAuctionWithNullArticle() throws SaleItServicesException {
@@ -657,12 +679,12 @@ public class SaleItServicesTest {
             subasta.setFechaFin(nuevafechaFin);
             subasta.setArticulo(null);
             saleItServices.modifyAuction(subasta, usuario.getId());
-            fail("Debió fallar al intentar modificar una subasta con artículo nulo");            
+            fail("Debió fallar al intentar modificar una subasta con artículo nulo");
         } catch (SaleItServicesException e) {
             assertEquals("El artículo de la subasta no puede ser nulo", e.getMessage());
         }
     }
-    
+
     @Transactional
     @Test
     public void shouldNotModifyAuctionOfOtherUser() throws SaleItServicesException {
@@ -680,11 +702,96 @@ public class SaleItServicesTest {
             Subasta subasta = new Subasta(fechaInicio, fechaFin, articulo);
             saleItServices.addAuction(subasta, usuario.getId());
             Timestamp nuevafechaFin = Timestamp.valueOf("2022-10-14 10:30:30.0");
-            subasta.setFechaFin(nuevafechaFin);            
+            subasta.setFechaFin(nuevafechaFin);
             saleItServices.modifyAuction(subasta, usuario2.getId());
-            fail("Debió fallar al intentar modificar una subasta de otro usuario");            
+            fail("Debió fallar al intentar modificar una subasta de otro usuario");
         } catch (SaleItServicesException e) {
             assertEquals("Solo el vendedor de la subasta puede modificarla", e.getMessage());
         }
     }
+    
+    @Transactional
+    @Test
+    public void shouldNotModifyUserWithNullUser() {
+        try {
+            Usuario usuario = new Usuario("test@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+            saleItServices.addUser(usuario);
+            Usuario usuario2 = null;
+            saleItServices.modifyUser(usuario2, usuario.getId());
+            fail("Debio fallar por intentar modificar un usuario nulo");
+        } catch (SaleItServicesException e) {
+            assertEquals("El usuario no puede ser nulo", e.getMessage());
+        }
+    }
+
+    @Transactional
+    @Test
+    public void shouldNotModifyUserWithEmptyName() {
+        try {
+            Usuario usuario = new Usuario("test@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+            saleItServices.addUser(usuario);
+            Usuario usuario2 = new Usuario("testupdate@mail.com", "123", "", "3002981478", TipoDeDocumento.CC, "9998753419");
+            saleItServices.modifyUser(usuario2, usuario.getId());
+            fail("Debio fallar por intentar modificar un usuario con nombre vacío");
+        } catch (SaleItServicesException e) {
+            assertEquals("El nombre del usuario no puede estar vacío", e.getMessage());
+        }
+    }
+    
+    @Transactional
+    @Test
+    public void shouldNotModifyUserWithEmptyEmail() {
+        try {
+            Usuario usuario = new Usuario("test@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+            saleItServices.addUser(usuario);
+            Usuario usuario2 = new Usuario("", "123", "Pepega", "3002981478", TipoDeDocumento.CC, "9998753419");
+            saleItServices.modifyUser(usuario2, usuario.getId());
+            fail("Debio fallar por intentar modificar un usuario con correo vacío");
+        } catch (SaleItServicesException e) {
+            assertEquals("El correo del usuario no puede estar vacío", e.getMessage());
+        }
+    }
+    
+    @Transactional
+    @Test
+    public void shouldNotModifyUserWithEmptyDocument() {
+        try {
+            Usuario usuario = new Usuario("test@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+            saleItServices.addUser(usuario);
+            Usuario usuario2 = new Usuario("testses@mail.com", "123", "Pepega", "", TipoDeDocumento.CC, "9998753419");
+            saleItServices.modifyUser(usuario2, usuario.getId());
+            fail("Debio fallar por intentar modificar un usuario con documento vacío");
+        } catch (SaleItServicesException e) {
+            assertEquals("El documento del usuario no puede estar vacío", e.getMessage());
+        }
+    }
+    
+    @Transactional
+    @Test
+    public void shouldNotModifyUserWithEmptyPhone() {
+        try {
+            Usuario usuario = new Usuario("test@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+            saleItServices.addUser(usuario);
+            Usuario usuario2 = new Usuario("test6@mail", "123", "Pepega", "8222981478", TipoDeDocumento.CC, "");
+            saleItServices.modifyUser(usuario2, usuario.getId());
+            fail("Debio fallar por intentar modificar un usuario con teléfono vacío");
+        } catch (SaleItServicesException e) {
+            assertEquals("El teléfono del usuario no puede estar vacío", e.getMessage());
+        }
+    }
+    
+    @Transactional
+    @Test
+    public void shouldNotModifyPasswordUserWithNullUser() {
+        try {
+            Usuario usuario = new Usuario("test@mail.com", "123", "Pepe", "8222981478", TipoDeDocumento.CC, "2148753419");
+            saleItServices.addUser(usuario);
+            Usuario usuario2 = null;
+            saleItServices.modifyUserPassword(usuario2, usuario.getId());
+            fail("Debio fallar por intentar modificar un usuario nulo");
+        } catch (SaleItServicesException e) {
+            assertEquals("El usuario no puede ser nulo", e.getMessage());
+        }
+    }
+    
 }

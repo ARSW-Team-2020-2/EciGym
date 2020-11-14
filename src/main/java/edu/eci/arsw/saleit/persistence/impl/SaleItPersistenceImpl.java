@@ -353,10 +353,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         if ((user.getTelefono()).equals("")) {
             throw new SaleItPersistenceException("El teléfono del usuario no puede estar vacío");
         }
-        Usuario usuario = getUserById(id);
-        if (usuario.getId() != user.getId()) {
-            throw new SaleItPersistenceException("Sólo el dueño del perfil puede modificar su propio perfil");
-        }
+        Usuario usuario = getUserById(id);        
         usuario.setNombre(user.getNombre());
         usuario.setEmail(user.getEmail());
         usuario.setDocumento(user.getDocumento());
@@ -370,13 +367,7 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         if (user == null) {
             throw new SaleItPersistenceException("El usuario no puede ser nulo");
         }
-        Usuario usuario = getUserById(id);
-        if (usuario.getId() != user.getId()) {
-            throw new SaleItPersistenceException("Sólo el dueño del perfil puede modificar su propio perfil");
-        }
-        if ((usuario.getPassword()).equals(user.getPassword())) {
-            throw new SaleItPersistenceException("La nueva clave no puede ser igual a la actual");
-        }
+        Usuario usuario = getUserById(id);      
         usuario.setPassword(user.getPassword());
         userRepo.save(usuario);
         
