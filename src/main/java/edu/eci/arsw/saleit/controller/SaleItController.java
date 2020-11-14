@@ -65,6 +65,38 @@ public class SaleItController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
+    
+    //Funciona
+    @PutMapping("/users/{id}/updateProfile")
+    public ResponseEntity<?> modifyUser(@RequestBody Usuario user, @PathVariable int id) {
+        try {
+            saleItServices.modifyUser(user, id);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (SaleItServicesException ex) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, null, ex);
+            if (ex.getMessage().equals("El usuario con ese ID no existe")) {
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+            }
+        }
+    }
+    
+    //Funciona
+    @PutMapping("/users/{id}/changePassword")
+    public ResponseEntity<?> modifyUserPassword(@RequestBody Usuario user, @PathVariable int id) {
+        try {
+            saleItServices.modifyUserPassword(user, id);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (SaleItServicesException ex) {
+            Logger.getLogger(SaleItController.class.getName()).log(Level.SEVERE, null, ex);
+            if (ex.getMessage().equals("El usuario con ese ID no existe")) {
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+            }
+        }
+    }
 
 
     //ARTICULOS

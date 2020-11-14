@@ -57,4 +57,8 @@ public interface SaleItPersistence {
     Usuario getUserByEmail(String email) throws SaleItPersistenceException;
     
     Subasta getAuctionByArticleId(int articleId) throws SaleItPersistenceException;
+    
+    void modifyUser(Usuario user, int id) throws SaleItPersistenceException;
+    
+    void modifyUserPassword(Usuario user, int id) throws SaleItPersistenceException;
 }

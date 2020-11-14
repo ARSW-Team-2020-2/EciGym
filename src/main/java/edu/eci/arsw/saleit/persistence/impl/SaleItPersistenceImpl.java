@@ -38,7 +38,6 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
     @Autowired
     private PujaRepo pujaRepo;
 
-
     @Override
     public void addUser(Usuario user) throws SaleItPersistenceException {
         if (user == null) {
@@ -197,7 +196,6 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         return subasta;
     }
 
-
     @Override
     public void makeABid(Puja puja, int usuario, int subasta) throws SaleItPersistenceException {
         Usuario user = getUserById(usuario);
@@ -313,7 +311,6 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
         articleRepo.delete(articulo);
     }
 
-
     @Override
     public Usuario getUserByEmail(String email) throws SaleItPersistenceException {
         Query query = entityManager.createNativeQuery("select * from usuario where email=?", Usuario.class);
@@ -333,11 +330,55 @@ public class SaleItPersistenceImpl implements SaleItPersistence {
                 sub = s;
             }
         }
-        if(sub == null){
+        if (sub == null) {
             throw new SaleItPersistenceException("El articulo con ese id no existe");
         }
         return sub;
     }
 
-
+    @Override
+    public void modifyUser(Usuario user, int id) throws SaleItPersistenceException {
+        if (user == null) {
+            throw new SaleItPersistenceException("El usuario no puede ser nulo");
+        }
+        if ((user.getNombre()).equals("")) {
+            throw new SaleItPersistenceException("El nombre del usuario no puede estar vacío");
+        }
+        if ((user.getEmail()).equals("")) {
+            throw new SaleItPersistenceException("El correo del usuario no puede estar vacío");
+        }
+        if ((user.getDocumento()).equals("")) {
+            throw new SaleItPersistenceException("El documento del usuario no puede estar vacío");
+        }
+        if ((user.getTelefono()).equals("")) {
+            throw new SaleItPersistenceException("El teléfono del usuario no puede estar vacío");
+        }
+        Usuario usuario = getUserById(id);
+        if (usuario.getId() != user.getId()) {
+            throw new SaleItPersistenceException("Sólo el dueño del perfil puede modificar su propio perfil");
+        }
+        usuario.setNombre(user.getNombre());
+        usuario.setEmail(user.getEmail());
+        usuario.setDocumento(user.getDocumento());
+        usuario.setTelefono(user.getTelefono());
+        usuario.setTipoDeDocumento(user.getTipoDeDocumento());
+        userRepo.save(usuario);
+    }
+    
+    @Override
+    public void modifyUserPassword(Usuario user, int id) throws SaleItPersistenceException {
+        if (user == null) {
+            throw new SaleItPersistenceException("El usuario no puede ser nulo");
+        }
+        Usuario usuario = getUserById(id);
+        if (usuario.getId() != user.getId()) {
+            throw new SaleItPersistenceException("Sólo el dueño del perfil puede modificar su propio perfil");
+        }
+        if ((usuario.getPassword()).equals(user.getPassword())) {
+            throw new SaleItPersistenceException("La nueva clave no puede ser igual a la actual");
+        }
+        usuario.setPassword(user.getPassword());
+        userRepo.save(usuario);
+        
+    }
 }

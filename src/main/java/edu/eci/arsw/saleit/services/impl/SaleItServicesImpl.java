@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
 @Service
 public class SaleItServicesImpl implements SaleItServices {
 
@@ -108,7 +107,6 @@ public class SaleItServicesImpl implements SaleItServices {
             throw new SaleItServicesException(e.getMessage(), e);
         }
     }
-
 
     @Override
     public Categoria getCategoryById(int id) throws SaleItServicesException {
@@ -235,11 +233,29 @@ public class SaleItServicesImpl implements SaleItServices {
             throw new SaleItServicesException(e.getMessage(), e);
         }
     }
-    
+
     @Override
     public Subasta getAuctionByArticleId(int articleId) throws SaleItServicesException {
         try {
             return saleItPersistence.getAuctionByArticleId(articleId);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void modifyUser(Usuario user, int id) throws SaleItServicesException {
+        try {
+            saleItPersistence.modifyUser(user, id);
+        } catch (SaleItPersistenceException e) {
+            throw new SaleItServicesException(e.getMessage(), e);
+        }
+    }
+    
+    @Override
+    public void modifyUserPassword(Usuario user, int id) throws SaleItServicesException {
+        try {
+            saleItPersistence.modifyUserPassword(user, id);
         } catch (SaleItPersistenceException e) {
             throw new SaleItServicesException(e.getMessage(), e);
         }
